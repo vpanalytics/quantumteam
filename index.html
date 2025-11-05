@@ -249,6 +249,7 @@ body {
 }
 
 
+
 /* Define os quadros da animação */
 @keyframes aurora-animation {
     0% { background-position: 0% 50%; }
@@ -256,12 +257,212 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* ======================================================= */
+/* == INÍCIO DAS REGRAS EXCLUSIVAS PARA LAYOUT MOBILE   == */
+/* ======================================================= */
 
-    
+/* ======================================================= */
+/* == INÍCIO DAS REGRAS EXCLUSIVAS PARA LAYOUT MOBILE   == */
+/* ======================================================= */
+
+/* ======================================================= */
+/* == INÍCIO DAS REGRAS EXCLUSIVAS PARA LAYOUT MOBILE   == */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+
+    /* --- GERAL --- */
+    body {
+        overflow: auto;
+    }
+
+    /* --- TELA DE LOGIN --- */
+    #login-section {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        justify-content: flex-start;
+    }
+    .left-panel {
+        width: 100%;
+        height: auto;
+        padding: 4rem 1rem 2rem 1rem;
+    }
+    .right-panel {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+    .static-formation {
+        width: 320px;
+        height: 320px;
+        margin: 0 auto;
+    }
+    .agent-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    .central-agent .agent-avatar {
+        width: 90px;
+        height: 90px;
+    }
+    #rafaela-m { transform: rotate(0deg) translateY(-140px) rotate(0deg) !important; }
+    #andre-v   { transform: rotate(51.4deg) translateY(-140px) rotate(-51.4deg) !important; }
+    #marcelo-k { transform: rotate(102.8deg) translateY(-140px) rotate(-102.8deg) !important; }
+    #eduardo-a { transform: rotate(154.2deg) translateY(-150px) rotate(-154.2deg) !important; }
+    #gustavo-r { transform: rotate(205.6deg) translateY(-150px) rotate(-205.6deg) !important; }
+    #carolina-f{ transform: rotate(257deg) translateY(-140px) rotate(-257deg) !important; }
+    #beatriz-l { transform: rotate(308.4deg) translateY(-140px) rotate(-308.4deg) !important; }
+    .agent-info .agent-name { font-size: 0.8rem; }
+    .agent-info .agent-title { font-size: 0.7rem; }
+    .login-box {
+        width: 100%;
+        max-width: none;
+        padding: 2rem 1rem;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: transparent;
+    }
+
+    /* --- PAINEL PRINCIPAL (APP SHELL) --- */
+    .app-main-content {
+        width: 100%;
+    }
+    #portal-section,
+    #agents-info-section {
+        padding: 1.5rem 1rem;
+    }
+    .agent-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .portal-header h1,
+    .carousel-header h1 {
+        font-size: 2rem;
+    }
+
+    /* --- CABEÇALHO E MENU HAMBÚRGUER --- */
+    .mobile-header {
+        display: flex; /* Mostra o cabeçalho no mobile */
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: var(--gold-secondary);
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+    }
+    .mobile-header-title {
+        font-family: var(--font-title);
+        font-size: 1.5rem;
+        color: var(--gold-primary);
+    }
+    .mobile-menu-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+    .mobile-menu-button svg {
+        width: 24px;
+        height: 24px;
+        color: var(--text-dark);
+    }
+    .app-sidebar {
+        position: fixed; /* Transforma em menu flutuante */
+        top: 0;
+        left: -100%; /* Esconde à esquerda */
+        width: 280px;
+        height: 100%;
+        z-index: 200;
+        transition: left 0.3s ease-in-out;
+        /* A regra 'display: none' foi removida daqui */
+    }
+    .app-sidebar.mobile-visible {
+        left: 0; /* Mostra o menu */
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 199;
+        display: none;
+    }
+    .overlay.visible {
+        display: block;
+    }
+
+    /* --- PLATAFORMA DE CHAT --- */
+    #chat-platform-section {
+        padding: 0;
+    }
+    .conversation-list-panel {
+        width: 100%;
+    }
+    .chat-area-panel {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 100%;
+        height: 100%;
+        transition: left 0.3s ease-in-out;
+        z-index: 100;
+    }
+    .chat-area-panel.mobile-active {
+        left: 0;
+    }
+    .chat-area-header {
+        display: flex;
+        align-items: center;
+    }
+    .back-button {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--text-dark);
+        cursor: pointer;
+        padding: 0 1rem 0 0;
+    }
+}
+/* Dentro do seu bloco @media (max-width: 768px) */
+
+/* ... (outras regras) ... */
+
+.mobile-menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: none; /* Esconde o botão por padrão no mobile */
+}
+
+/* ======================================================= */
+/* == REGRAS DE SEGURANÇA PARA O LAYOUT DESKTOP         == */
+/* ======================================================= */
+
+@media (min-width: 769px) {
+    /* Garante que o cabeçalho mobile NUNCA apareça no desktop */
+    .mobile-header {
+        display: none !important;
+    }
+}
+   
     </style>
 </head>
 <body>
-
+    <div class="overlay"></div>
+    <!-- ... resto do seu HTML ... -->
+    <!-- NOVO CABEÇALHO EXCLUSIVO PARA MOBILE -->
+    <header class="mobile-header">
+        <h2 class="mobile-header-title">Quantum Minds</h2>
+        <button id="mobile-menu-btn" class="mobile-menu-button">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+        </button>
+    </header>
     <!-- TELA 1: LOGIN -->
     <section id="login-section">
         <div class="left-panel">
@@ -319,6 +520,7 @@ body {
             </div>
         </aside>
         <main class="app-main-content">
+
             <!-- TELA 2: PÁGINA INICIAL (GRADE ) -->
             <section id="portal-section">
                 <div class="portal-header">
@@ -361,7 +563,13 @@ body {
                         <div class="conversation-list" id="conversation-list"></div>
                     </div>
                     <div class="chat-area-panel">
-                        <div class="chat-area-header" id="chat-area-header"></div>
+                        <div class="chat-area-header" id="chat-area-header">
+                        <button id="back-to-conversations-btn" class="back-button">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <span id="chat-header-title"></span>
+                    </div>
+
                         <div class="chat-history" id="chat-history"></div>
                         <form class="chat-input-area" id="chat-form">
                             <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
@@ -374,6 +582,12 @@ body {
     </div>
 
     <script>
+
+        // Adicione estas linhas junto com suas outras seleções de elementos
+        const chatAreaPanel = document.querySelector('.chat-area-panel');
+        const backToConversationsBtn = document.getElementById('back-to-conversations-btn');
+        const chatHeaderTitle = document.getElementById('chat-header-title');
+
         // =======================================================
         // == DADOS E BANCO DE DADOS SIMULADO                   ==
         // =======================================================
@@ -482,7 +696,11 @@ body {
         const contentSections = document.querySelectorAll('.app-main-content > section');
 
         const agentGridPortal = document.getElementById('agent-grid-portal');
-        
+        // Adicione estas linhas junto com suas outras seleções
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.querySelector('.app-sidebar');
+        const overlay = document.querySelector('.overlay');
+
         // Elementos do Carrossel
         const carouselMainImg = document.getElementById('carousel-main-img');
         const carouselAgentName = document.getElementById('carousel-agent-name');
@@ -508,11 +726,16 @@ body {
             if (emailInput.value === 'v' && passwordInput.value === '1') {
                 loginSection.style.display = 'none';
                 appShell.style.display = 'flex';
+                
+                // MOSTRA O BOTÃO DE MENU APENAS APÓS O LOGIN
+                mobileMenuBtn.style.display = 'block'; 
+                
                 showSection('portal-section');
             } else {
                 alert('Usuário ou senha incorretos!');
             }
         });
+
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -591,6 +814,7 @@ body {
             renderActiveChat();
         }
 
+        // Substitua sua função renderConversationList por esta
         function renderConversationList() {
             conversationList.innerHTML = '';
             agentIds.forEach(agentId => {
@@ -606,20 +830,28 @@ body {
                 
                 item.addEventListener('click', () => {
                     activeChatAgentId = agentId;
-                    initializeChatPlatform();
+                    renderActiveChat();
+                    
+                    // LÓGICA EXCLUSIVA PARA MOBILE
+                    if (window.innerWidth <= 768) {
+                        chatAreaPanel.classList.add('mobile-active');
+                    }
                 });
                 conversationList.appendChild(item);
             });
         }
 
+
+        // Substitua sua função renderActiveChat por esta
         function renderActiveChat() {
             const agent = agents[activeChatAgentId];
             const history = chatHistories[activeChatAgentId];
-            chatAreaHeader.textContent = `Conversa com ${agent.name}`;
+            chatHeaderTitle.textContent = `Conversa com ${agent.name}`; // Atualiza apenas o texto do título
             chatHistoryContainer.innerHTML = '';
             history.forEach(message => addMessageToDom(message.text, message.sender, agent.img));
             chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
         }
+
 
         function addMessageToDom(text, sender, agentImg) {
             const messageGroup = document.createElement('div');
@@ -648,7 +880,31 @@ body {
                 renderConversationList();
             }, 1500);
         });
-        
+        // Adicione este bloco de código ao final do seu script
+
+        // Função para abrir/fechar o menu
+        function toggleMobileMenu() {
+            sidebar.classList.toggle('mobile-visible');
+            overlay.classList.toggle('visible');
+        }
+
+        // Abre/fecha o menu ao clicar no botão de 3 pontos
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Fecha o menu se o usuário clicar no fundo escuro (overlay)
+        overlay.addEventListener('click', toggleMobileMenu);
+
+        // Fecha o menu se o usuário clicar em um link de navegação
+        sidebar.addEventListener('click', function(event) {
+            // Verifica se o clique foi em um link dentro da navegação
+            if (event.target.closest('.app-nav-link')) {
+                // Se o menu estiver visível, fecha ele
+                if (sidebar.classList.contains('mobile-visible')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
         // =======================================================
         // == LÓGICA DO BOTÃO DE LOGOUT (SAIR)                ==
         // =======================================================
@@ -668,6 +924,46 @@ body {
             loginSection.style.display = 'flex';
         });
 
+        // Adicione este novo bloco de código ao final do seu script
+        backToConversationsBtn.addEventListener('click', () => {
+            chatAreaPanel.classList.remove('mobile-active'); // Esconde o painel do chat
+        });
+// =======================================================
+// == LÓGICA DE ARRASTAR PARA VOLTAR (SWIPE TO GO BACK) ==
+// =======================================================
+
+// Variáveis para controlar o estado do toque
+let touchStartX = 0;
+let touchEndX = 0;
+const swipeThreshold = 50; // Distância mínima em pixels para considerar um swipe
+
+// Escuta o início do toque na tela de chat
+chatAreaPanel.addEventListener('touchstart', function(event) {
+    // Pega a posição inicial do primeiro dedo na tela
+    touchStartX = event.changedTouches[0].screenX;
+}, { passive: true }); // { passive: true } melhora a performance de rolagem
+
+// Escuta o movimento do dedo na tela
+chatAreaPanel.addEventListener('touchmove', function(event) {
+    // Atualiza a posição final do dedo enquanto ele se move
+    touchEndX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+// Escuta quando o usuário tira o dedo da tela
+chatAreaPanel.addEventListener('touchend', function(event) {
+    // Calcula a distância e a direção do arrasto
+    const swipeDistance = touchEndX - touchStartX;
+
+    // Verifica se foi um arrasto para a direita e se a distância foi suficiente
+    if (touchEndX > 0 && swipeDistance > swipeThreshold) {
+        // Se sim, executa a mesma ação do botão "Voltar"
+        chatAreaPanel.classList.remove('mobile-active');
+    }
+
+    // Reseta as variáveis para o próximo toque
+    touchStartX = 0;
+    touchEndX = 0;
+});
 
     </script>
 
