@@ -31,22 +31,29 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--background-light);
-            color: var(--text-dark);
-            overflow: hidden;
-        }
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-light); /* Usando a variável original para branco */
+    color: var(--text-dark);
+    overflow: hidden;
+}
+
 
         /* ============================================= */
         /* == TELA 1: PÁGINA DE LOGIN                 == */
         /* ============================================= */
-        #login-section { display: flex; width: 100vw; height: 100vh; }
-        .left-panel, .right-panel { width: 50%; height: 100%; display: flex; justify-content: center; align-items: center; padding: 2rem; }
+        #login-section { display: flex; width: 100vw; height: 100vh;justify-content: center;    background-color: #f7f4ef; 
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%),
+        radial-gradient(at 98% 1%, hsla(38, 56%, 63%, 0.6) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, hsla(38, 50%, 70%, 0.3) 0px, transparent 50%),
+        radial-gradient(at 20% 70%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%);
+}
+        .left-panel, .right-panel { height: 100%; display: flex; justify-content: center; align-items: center; padding: 2rem; }
         .static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
         .agent-container { position: absolute; display: flex; flex-direction: column; align-items: center; width: 140px; }
-        .agent-avatar { width: 120px; height: 120px; border-radius: 20%; object-fit: cover; border: 3px solid var(--gold-primary); box-shadow: 0 0 15px 5px var(--gold-glow); }
-        .central-agent .agent-avatar { width: 160px; height: 160px; }
+        .agent-avatar { width: 160px; height: 160px; border-radius: 20%; object-fit: cover; border: 3px solid var(--gold-primary); box-shadow: 0 0 15px 5px var(--gold-glow); }
+        .central-agent .agent-avatar { width: 200px; height: 200px; }
         .agent-info { margin-top: 0.75rem; text-align: center; }
         .agent-name { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); }
         .agent-title { font-size: 0.75rem; font-weight: 300; color: var(--text-secondary); }
@@ -71,7 +78,14 @@
         /* ============================================= */
         /* == ESTRUTURA PRINCIPAL PÓS-LOGIN (APP SHELL) == */
         /* ============================================= */
-        #app-shell { display: none; width: 100vw; height: 100vh; display: flex; }
+        #app-shell { 
+    display: none; 
+    width: 100vw; 
+    height: 100vh; 
+    display: flex; 
+    background-color: var(--background-light); /* Garante o fundo branco */
+}
+
         .app-sidebar { width: 280px; height: 100%; background-color: var(--gold-secondary); border-right: 1px solid var(--border-color); padding: 2rem 1.5rem; display: flex; flex-direction: column; flex-shrink: 0; }
         .app-sidebar-header { text-align: center; margin-bottom: 3rem; }
         .app-sidebar-header img { width: 80px; margin-bottom: 0.5rem; }
@@ -222,6 +236,26 @@
     background-color: #d9534f; /* Um vermelho para indicar uma ação destrutiva */
     color: white;
 }
+body {
+    /* ... (suas outras propriedades como font-family, etc.) ... */
+    
+    /* Define o fundo base e o gradiente estático */
+    background-color: #f7f4ef; 
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%),
+        radial-gradient(at 98% 1%, hsla(34, 100%, 87%, 0.9) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, hsla(34, 100%, 87%, 0.9) 0px, transparent 50%),
+        radial-gradient(at 20% 70%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%);
+}
+
+
+/* Define os quadros da animação */
+@keyframes aurora-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
     
     </style>
@@ -615,6 +649,26 @@
             }, 1500);
         });
         
+        // =======================================================
+        // == LÓGICA DO BOTÃO DE LOGOUT (SAIR)                ==
+        // =======================================================
+
+        // 1. Seleciona o botão de "Sair" que você criou no HTML
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // 2. Adiciona um "escutador" que espera por um clique no botão
+        logoutBtn.addEventListener('click', function(event) {
+            // Previne que a página recarregue
+            event.preventDefault(); 
+
+            // Esconde a interface principal (o painel com as abas)
+            appShell.style.display = 'none';
+
+            // Mostra novamente a tela de login
+            loginSection.style.display = 'flex';
+        });
+
+
     </script>
 
 </body>
