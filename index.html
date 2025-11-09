@@ -18,9 +18,7 @@
             --background-panel: #F9FAFB;
             --gold-primary: #c5a773;
             --gold-secondary: #f7f4ef;
-            --gold-glow: rgba(197, 167, 115, 0.5 );
-            --primary-color: #4A44F2;
-            --primary-light: #EBEAFE;
+            --gold-glow: rgba(197, 167, 115, 0.5  );
             --text-dark: #333333;
             --text-secondary: #6B7280;
             --border-color: #E5E7EB;
@@ -31,28 +29,40 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    font-family: var(--font-body);
-    background-color: var(--background-light); /* Usando a variável original para branco */
-    color: var(--text-dark);
-    overflow: hidden;
-}
-
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            overflow: hidden;
+        }
 
         /* ============================================= */
         /* == TELA 1: PÁGINA DE LOGIN                 == */
         /* ============================================= */
-        #login-section { display: flex; width: 100vw; height: 100vh;justify-content: center;    background-color: #f7f4ef; 
-    background-image: 
-        radial-gradient(at 0% 0%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%),
-        radial-gradient(at 98% 1%, hsla(38, 56%, 63%, 0.6) 0px, transparent 50%),
-        radial-gradient(at 80% 80%, hsla(38, 50%, 70%, 0.3) 0px, transparent 50%),
-        radial-gradient(at 20% 70%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%);
-}
+        #login-section { 
+            display: flex; 
+            width: 100vw; 
+            height: 100vh;
+            justify-content: center;
+            background-color: var(--background-light); /* FUNDO BRANCO */
+        }
         .left-panel, .right-panel { height: 100%; display: flex; justify-content: center; align-items: center; padding: 2rem; }
         .static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
         .agent-container { position: absolute; display: flex; flex-direction: column; align-items: center; width: 140px; }
-        .agent-avatar { width: 160px; height: 160px; border-radius: 20%; object-fit: cover; border: 3px solid var(--gold-primary); box-shadow: 0 0 15px 5px var(--gold-glow); }
+        
+        /* Regra CORRIGIDA */
+        .agent-avatar {
+            width: 160px;       /* Mantém a largura para controlar o tamanho */
+            height: auto;       /* A altura se ajusta automaticamente para manter a proporção */
+            display: block;     /* Garante que a imagem se comporte como um bloco */
+            
+            /* As propriedades que criavam a máscara foram removidas:
+            - border-radius
+            - object-fit
+            - height (fixa)
+            */
+        }
+
         .central-agent .agent-avatar { width: 200px; height: 200px; }
         .agent-info { margin-top: 0.75rem; text-align: center; }
         .agent-name { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); }
@@ -66,105 +76,161 @@ body {
         #carolina-f{ transform: rotate(257deg) translateY(-250px) rotate(-257deg); }
         #beatriz-l { transform: rotate(308.4deg) translateY(-250px) rotate(-308.4deg); }
         
-        .login-box { width: 100%; max-width: 450px; position: relative; background-color: var(--gold-secondary); border-radius: 20px; padding: 1.5rem 3.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); text-align: center; }
-        .login-logo { width: 120px; height: auto; margin-bottom: 1rem; }
-        .login-box h1 { font-family: var(--font-title); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--gold-primary); }
-        .login-box p { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; }
+        .login-box {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            background: #000000; /* Fundo preto sólido */
+            background-image: radial-gradient(circle at center, rgba(197, 167, 115, 0.15) 0%, transparent 60%); /* Efeito de brilho dourado sutil */
+            border-radius: 20px;
+            padding: 2.5rem 3.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid rgba(197, 167, 115, 0.2);
+        }
+
+        /* Nova regra para a logo do escudo */
+        .login-shield-logo {
+            width: 80px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+            margin-bottom: 1rem; /* Espaço entre o escudo e o título */
+        }
+
+        .login-title-logo {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 2.5rem;
+        }
         .input-group { margin-bottom: 1.5rem; text-align: left; }
-        .input-group label { display: block; margin-bottom: 0.5rem; font-weight: 300; color: var(--text-secondary); }
-        .input-group input { width: 100%; padding: 1rem; background-color: #fff; border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-dark); font-size: 1rem; }
-        .btn-login { width: 100%; padding: 1rem; margin-top: 1rem; background-color: var(--gold-primary); color: var(--background-light); border: none; border-radius: 5px; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(197, 167, 115, 0.3);
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
+        .input-group input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background-color: var(--gold-primary);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-login:hover { background-color: #dfc395; }
 
         /* ============================================= */
         /* == ESTRUTURA PRINCIPAL PÓS-LOGIN (APP SHELL) == */
         /* ============================================= */
         #app-shell { 
-    display: none; 
-    width: 100vw; 
-    height: 100vh; 
-    display: flex; 
-    background-color: var(--background-light); /* Garante o fundo branco */
-}
+            display: none; 
+            width: 100vw; 
+            height: 100vh; 
+            display: flex; 
+            background-color: var(--background-light);
+        }
+/* Dentro da tag <style> */
 
-        .app-sidebar { width: 280px; height: 100%; background-color: var(--gold-secondary); border-right: 1px solid var(--border-color); padding: 2rem 1.5rem; display: flex; flex-direction: column; flex-shrink: 0; }
-        .app-sidebar-header { text-align: center; margin-bottom: 3rem; }
+        .app-sidebar {
+            width: 280px;
+            height: 100%;
+            background: #000000; /* FUNDO PRETO */
+            background-image: radial-gradient(circle at top, rgba(197, 167, 115, 0.15) 0%, transparent 70%); /* Efeito de brilho no topo */
+            border-right: 1px solid rgba(197, 167, 115, 0.2); /* Borda dourada sutil */
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        /* Regra CORRIGIDA */
+        .app-sidebar-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            
+            /* LINHAS ADICIONADAS PARA CORRIGIR O ALINHAMENTO */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Garante que ambas as logos fiquem centralizadas horizontalmente */
+        }
+
+
+        .sidebar-shield-logo {
+            width: 60px; /* Tamanho um pouco menor para a sidebar */
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .sidebar-title-logo {
+            width: 70%;
+            max-width: 200px;
+            height: auto;
+        }
+
         .app-sidebar-header img { width: 80px; margin-bottom: 0.5rem; }
         .app-sidebar-header h2 { font-family: var(--font-title); color: var(--gold-primary); }
         .app-nav { display: flex; flex-direction: column; gap: 0.5rem; }
-        .app-nav-link { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; border-radius: 8px; text-decoration: none; color: var(--text-dark); font-weight: 500; transition: background-color 0.2s ease; }
-        .app-nav-link:hover { background-color: #eaddc7; }
-        .app-nav-link.active { background-color: var(--gold-primary); color: white; }
-        .app-nav-link svg { width: 20px; height: 20px; }
+        /* Dentro da tag <style> */
+
+        .app-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8); /* COR DA FONTE: BRANCO SEMI-TRANSPARENTE */
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Efeito ao passar o mouse */
+        .app-nav-link:hover {
+            background-color: rgba(197, 167, 115, 0.1); /* Fundo dourado bem sutil */
+            color: white; /* Fonte fica branca sólida */
+        }
+
+        /* Estilo do link ATIVO */
+        .app-nav-link.active {
+            background-color: var(--gold-primary); /* Fundo dourado sólido */
+            color: black; /* Fonte preta para contraste */
+        }
+
+        /* Cor dos ícones SVG */
+        .app-nav-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor; /* O ícone pega a cor do texto do link */
+        }
+
+        /* Dentro da tag <style> */
+
+        .app-sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(197, 167, 115, 0.2); /* Linha dourada sutil */
+        }
+
+        #logout-btn:hover { background-color: #d9534f; color: white; }
         .app-main-content { flex-grow: 1; height: 100%; overflow-y: auto; position: relative; }
         .app-main-content > section { display: none; width: 100%; height: 100%; flex-direction: column; }
 
         /* ============================================= */
-        /* == TELA 2: PÁGINA INICIAL (GRADE 4x2)      == */
-        /* ============================================= */
-        #portal-section { padding: 2rem 3rem; justify-content: flex-start; align-items: flex-start; }
-        .portal-header { text-align: left; margin-bottom: 2rem; }
-        .portal-header h1 { font-family: var(--font-title); font-size: 3rem; color: var(--gold-primary); }
-        .portal-header p { font-size: 1.2rem; color: var(--text-secondary); }
-        .agent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; width: 100%; }
-/* ============================================= */
-/* == TELA 2: PÁGINA INICIAL (GRADE 4x2)      == */
-/* ============================================= */
-
-.portal-agent-card {
-    position: relative; /* ESSENCIAL: Cria o contexto para o z-index funcionar. */
-    border-radius: 15px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    height: 25vh;
-    min-height: 200px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    /* A cor aqui serve como um fallback, mas vamos definir a cor diretamente no texto. */
-}
-
-.portal-agent-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Seu gradiente, que está ótimo para criar contraste. */
-    background: linear-gradient(to top, rgba(48, 48, 48, 0.9) 0%, rgba(0,0,0,0) 50%); 
-    z-index: 1; /* CORREÇÃO: O degradê fica na camada 1 (meio). */
-}
-
-.portal-agent-card:hover {
-    transform: scale(1.03);
-}
-
-/* Regra combinada para nome e título */
-.portal-agent-card .agent-name, 
-.portal-agent-card .agent-title {
-    position: relative; /* Garante que o z-index seja aplicado corretamente. */
-    z-index: 2; /* CORREÇÃO: O texto fica na camada 2 (frente de tudo). */
-    color: white; /* CORREÇÃO CRÍTICA: Força a cor do texto a ser branca, ignorando qualquer herança. */
-    text-shadow: none; /* Opcional, mas recomendado para um visual limpo, já que o degradê dá o contraste. */
-}
-
-/* Regras individuais para tamanho da fonte */
-.portal-agent-card .agent-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.portal-agent-card .agent-title {
-    font-size: 1rem;
-    font-weight: 300;
-}
-
-        /* ============================================= */
-        /* == TELA 3: CONHEÇA OS AGENTES (NOVO LAYOUT) == */
+        /* == TELA "NOSSOS AGENTES" (CARROSSEL)       == */
         /* ============================================= */
         #agents-info-section { padding: 2rem 3rem; justify-content: flex-start; align-items: flex-start; }
         .carousel-header { text-align: left; margin-bottom: 2rem; }
@@ -172,7 +238,21 @@ body {
         .carousel-header p { font-size: 1.2rem; color: var(--text-secondary); }
         .carousel-content { display: flex; gap: 3rem; width: 100%; align-items: center; }
         .carousel-image-container { flex-basis: 45%; flex-shrink: 0; }
-        .carousel-image-container img { width: 100%; height: auto; max-height: 60vh; object-fit: cover; border-radius: 20px; }
+        /* Regra CORRIGIDA */
+        .carousel-image-container img {
+            width: 100%;
+            max-width: 450px; /* Adiciona um limite para não ficar gigante em telas largas */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Centraliza a imagem dentro do seu container */
+
+            /* As propriedades que criavam a máscara foram removidas:
+            - max-height
+            - object-fit
+            - border-radius
+            */
+        }
+
         .carousel-text-container { flex-basis: 55%; }
         .carousel-text-container h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
         .carousel-text-container h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
@@ -183,329 +263,140 @@ body {
         .carousel-counter { font-size: 1.2rem; font-weight: 500; color: var(--text-dark); }
 
         /* ============================================= */
-        /* == TELA 4: PLATAFORMA DE CHAT              == */
+        /* == TELA "CHATS" (TEIA DE AGENTES)          == */
         /* ============================================= */
-        #chat-platform-section { justify-content: flex-start; align-items: flex-start; }
-        .chat-platform { display: flex; width: 100%; height: 100%; font-family: var(--font-chat); }
-        .conversation-list-panel { width: 360px; height: 100%; background-color: var(--background-panel); border-right: 1px solid var(--border-color); padding: 24px; display: flex; flex-direction: column; }
-        .conversation-list-header { font-size: 1.5rem; font-weight: 600; margin-bottom: 24px; }
-        .search-bar { position: relative; margin-bottom: 24px; }
-        .search-bar input { width: 100%; padding: 12px 16px 12px 40px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--background-light); font-size: 0.9rem; }
-        .search-bar svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
-        .last-chats-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
-        .conversation-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
-        .conversation-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; cursor: pointer; }
-        .conversation-item.active { background-color: var(--primary-light); }
-        .conversation-item:hover { background-color: #f0e8da; }
-        .conversation-item .agent-avatar-chat { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-        .conversation-details { flex-grow: 1; overflow: hidden; }
-        .conversation-details .agent-name { font-weight: 500; }
-        .conversation-details .last-message { font-size: 0.9rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .chat-area-panel { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--background-light); height: 100%; }
-        .chat-area-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); font-size: 1.2rem; font-weight: 600; background-color: var(--background-panel); }
-        .chat-history { flex-grow: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
-        .message-group { display: flex; gap: 16px; max-width: 75%; }
-        .message-group.user { align-self: flex-end; flex-direction: row-reverse; }
-        .message-group.agent { align-self: flex-start; }
-        .message-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; align-self: flex-end; }
-        .message-content { display: flex; flex-direction: column; gap: 6px; }
-        .message-bubble { padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.5; }
-        .user .message-bubble { background-color: var(--gold-primary); color: white; border-bottom-right-radius: 4px; }
-        .agent .message-bubble { background-color: var(--background-panel); border: 1px solid var(--border-color); border-bottom-left-radius: 4px; }
-        .chat-input-area { padding: 16px 24px; border-top: 1px solid var(--border-color); display: flex; align-items: center; gap: 16px; background-color: var(--background-panel); }
-        #chat-input { flex-grow: 1; border: 1px solid var(--border-color); background-color: var(--background-light); border-radius: 8px; padding: 12px 16px; font-size: 1rem; }
-        #send-button { width: 48px; height: 48px; border-radius: 8px; border: none; background-color: var(--gold-primary); color: white; display: flex; justify-content: center; align-items: center; cursor: pointer; }
-    
-    
-    /* Adicione esta regra para o container da barra lateral */
-.app-sidebar {
-    /* ... outras propriedades que já existem ... */
-    display: flex;
-    flex-direction: column; /* Garante que os itens fiquem em coluna */
-}
+        #chat-platform-section { padding: 2rem 3rem; justify-content: center; align-items: center; }
+        .chat-agent-web-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .chat-web-header { text-align: left; margin-bottom: 2rem; width: 100%; }
+        .chat-web-header h1 { font-family: var(--font-title); font-size: 2.5rem; color: var(--gold-primary); }
+        .chat-static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
+        .chat-static-formation .agent-container { cursor: pointer; transition: transform 0.3s ease; z-index: 10; position: absolute; }
+        .chat-static-formation .agent-container:hover { transform: scale(1.1); z-index: 20; }
+        .chat-static-formation .agent-avatar { transition: box-shadow 0.3s ease; }
+        .chat-web-logo { position: absolute; width: 100px; height: auto; top: 100px; left: 50%; transform: translateX(-50%); z-index: 5; }
+        #chat-web-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .chat-conversation-container { display: none; width: 100%; height: 100%; }
+        .chat-conversation-container .chat-area-panel { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--background-light); height: 100%; }
+        .chat-conversation-container .chat-area-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); font-size: 1.2rem; font-weight: 600; background-color: var(--background-panel); display: flex; align-items: center; }
+        .chat-conversation-container .chat-history { flex-grow: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+        .chat-conversation-container .message-group { display: flex; gap: 16px; max-width: 75%; }
+        .chat-conversation-container .message-group.user { align-self: flex-end; flex-direction: row-reverse; }
+        .chat-conversation-container .message-group.agent { align-self: flex-start; }
+        .chat-conversation-container .message-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; align-self: flex-end; }
+        .chat-conversation-container .message-content { display: flex; flex-direction: column; gap: 6px; }
+        .chat-conversation-container .message-bubble { padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.5; }
+        .chat-conversation-container .user .message-bubble { background-color: var(--gold-primary); color: white; border-bottom-right-radius: 4px; }
+        .chat-conversation-container .agent .message-bubble { background-color: var(--background-panel); border: 1px solid var(--border-color); border-bottom-left-radius: 4px; }
+        .chat-conversation-container .chat-input-area { padding: 16px 24px; border-top: 1px solid var(--border-color); display: flex; align-items: center; gap: 16px; background-color: var(--background-panel); }
+        .chat-conversation-container #chat-input-web { flex-grow: 1; border: 1px solid var(--border-color); background-color: var(--background-light); border-radius: 8px; padding: 12px 16px; font-size: 1rem; }
+        .chat-conversation-container #send-button-web { width: 48px; height: 48px; border-radius: 8px; border: none; background-color: var(--gold-primary); color: white; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+        .back-button-web { display: flex; align-items: center; gap: 0.5rem; background: none; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem; color: var(--text-dark); margin-right: 1.5rem; }
+        .back-button-web:hover { background-color: var(--background-panel); }
+        #chat-header-title-web { font-size: 1.2rem; font-weight: 600; }
+        .mobile-header { display: none; }
 
-/* Adicione esta nova regra para o rodapé da barra lateral */
-.app-sidebar-footer {
-    margin-top: auto; /* A MÁGICA ACONTECE AQUI! Empurra o item para o final. */
-    padding-top: 1rem; /* Um pequeno espaço para separar da borda ou de outros itens */
-    border-top: 1px solid #eaddc7; /* Linha divisória sutil */
-}
+        /* ======================================================= */
+        /* == REGRAS EXCLUSIVAS PARA LAYOUT MOBILE            == */
+        /* ======================================================= */
+        @media (max-width: 768px) {
+            body { overflow: auto; }
+            #login-section { flex-direction: column; height: auto; min-height: 100vh; justify-content: flex-start; }
+            .left-panel { width: 100%; height: auto; padding: 4rem 1rem 2rem 1rem; }
+            .right-panel { width: 100%; height: auto; padding: 1rem; }
+            .static-formation { width: 320px; height: 320px; margin: 0 auto; }
+            /* Regra de ajuste para o mobile */
+            .agent-avatar {
+                width: 90px; /* Experimente este valor, ou ajuste conforme necessário */
+            }
 
-/* Opcional: Estilo customizado para o botão de sair, se desejar */
-#logout-btn:hover {
-    background-color: #d9534f; /* Um vermelho para indicar uma ação destrutiva */
-    color: white;
-}
-body {
-    /* ... (suas outras propriedades como font-family, etc.) ... */
-    
-    /* Define o fundo base e o gradiente estático */
-    background-color: #f7f4ef; 
-    background-image: 
-        radial-gradient(at 0% 0%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%),
-        radial-gradient(at 98% 1%, hsla(34, 100%, 87%, 0.9) 0px, transparent 50%),
-        radial-gradient(at 80% 80%, hsla(34, 100%, 87%, 0.9) 0px, transparent 50%),
-        radial-gradient(at 20% 70%, hsla(0, 0%, 100%, 0.9) 0px, transparent 50%);
-}
+            .central-agent .agent-avatar {
+                width: 110px; /* Um pouco maior para o agente central */
+            }
 
-
-
-/* Define os quadros da animação */
-@keyframes aurora-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* ======================================================= */
-/* == INÍCIO DAS REGRAS EXCLUSIVAS PARA LAYOUT MOBILE   == */
-/* ======================================================= */
-
-/* ======================================================= */
-/* == INÍCIO DAS REGRAS EXCLUSIVAS PARA LAYOUT MOBILE   == */
-/* ======================================================= */
-
-/* ======================================================= */
-/* == INÍCIO DAS REGRAS EXCLUSIVAS PARA LAYOUT MOBILE   == */
-/* ======================================================= */
-
-@media (max-width: 768px) {
-
-    /* --- GERAL --- */
-    body {
-        overflow: auto;
-    }
-
-    /* --- TELA DE LOGIN --- */
-    #login-section {
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-        justify-content: flex-start;
-    }
-    .left-panel {
-        width: 100%;
-        height: auto;
-        padding: 4rem 1rem 2rem 1rem;
-    }
-    .right-panel {
-        width: 100%;
-        height: auto;
-        padding: 1rem;
-    }
-    .static-formation {
-        width: 320px;
-        height: 320px;
-        margin: 0 auto;
-    }
-    .agent-avatar {
-        width: 70px;
-        height: 70px;
-    }
-    .central-agent .agent-avatar {
-        width: 90px;
-        height: 90px;
-    }
-    #rafaela-m { transform: rotate(0deg) translateY(-140px) rotate(0deg) !important; }
-    #andre-v   { transform: rotate(51.4deg) translateY(-140px) rotate(-51.4deg) !important; }
-    #marcelo-k { transform: rotate(102.8deg) translateY(-140px) rotate(-102.8deg) !important; }
-    #eduardo-a { transform: rotate(154.2deg) translateY(-150px) rotate(-154.2deg) !important; }
-    #gustavo-r { transform: rotate(205.6deg) translateY(-150px) rotate(-205.6deg) !important; }
-    #carolina-f{ transform: rotate(257deg) translateY(-140px) rotate(-257deg) !important; }
-    #beatriz-l { transform: rotate(308.4deg) translateY(-140px) rotate(-308.4deg) !important; }
-    .agent-info .agent-name { font-size: 0.8rem; }
-    .agent-info .agent-title { font-size: 0.7rem; }
-    .login-box {
-        width: 100%;
-        max-width: none;
-        padding: 2rem 1rem;
-        box-shadow: none;
-        border-radius: 0;
-        background-color: transparent;
-    }
-
-    /* --- PAINEL PRINCIPAL (APP SHELL) --- */
-    .app-main-content {
-        width: 100%;
-    }
-    #portal-section,
-    #agents-info-section {
-        padding: 1.5rem 1rem;
-    }
-    .agent-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    .portal-header h1,
-    .carousel-header h1 {
-        font-size: 2rem;
-    }
-
-    /* --- CABEÇALHO E MENU HAMBÚRGUER --- */
-    .mobile-header {
-        display: flex; /* Mostra o cabeçalho no mobile */
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        background-color: var(--gold-secondary);
-        border-bottom: 1px solid var(--border-color);
-        width: 100%;
-    }
-    .mobile-header-title {
-        font-family: var(--font-title);
-        font-size: 1.5rem;
-        color: var(--gold-primary);
-    }
-    .mobile-menu-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-    }
-    .mobile-menu-button svg {
-        width: 24px;
-        height: 24px;
-        color: var(--text-dark);
-    }
-    .app-sidebar {
-        position: fixed; /* Transforma em menu flutuante */
-        top: 0;
-        left: -100%; /* Esconde à esquerda */
-        width: 280px;
-        height: 100%;
-        z-index: 200;
-        transition: left 0.3s ease-in-out;
-        /* A regra 'display: none' foi removida daqui */
-    }
-    .app-sidebar.mobile-visible {
-        left: 0; /* Mostra o menu */
-    }
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 199;
-        display: none;
-    }
-    .overlay.visible {
-        display: block;
-    }
-
-    /* --- PLATAFORMA DE CHAT --- */
-    #chat-platform-section {
-        padding: 0;
-    }
-    .conversation-list-panel {
-        width: 100%;
-    }
-    .chat-area-panel {
-        position: absolute;
-        top: 0;
-        left: 100%;
-        width: 100%;
-        height: 100%;
-        transition: left 0.3s ease-in-out;
-        z-index: 100;
-    }
-    .chat-area-panel.mobile-active {
-        left: 0;
-    }
-    .chat-area-header {
-        display: flex;
-        align-items: center;
-    }
-    .back-button {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        border: none;
-        color: var(--text-dark);
-        cursor: pointer;
-        padding: 0 1rem 0 0;
-    }
-}
-/* Dentro do seu bloco @media (max-width: 768px) */
-
-/* ... (outras regras) ... */
-
-.mobile-menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: none; /* Esconde o botão por padrão no mobile */
-}
-
-/* ======================================================= */
-/* == REGRAS DE SEGURANÇA PARA O LAYOUT DESKTOP         == */
-/* ======================================================= */
-
-@media (min-width: 769px) {
-    /* Garante que o cabeçalho mobile NUNCA apareça no desktop */
-    .mobile-header {
-        display: none !important;
-    }
-}
-   
+            #rafaela-m { transform: rotate(0deg) translateY(-140px) rotate(0deg) !important; }
+            #andre-v   { transform: rotate(51.4deg) translateY(-140px) rotate(-51.4deg) !important; }
+            #marcelo-k { transform: rotate(102.8deg) translateY(-140px) rotate(-102.8deg) !important; }
+            #eduardo-a { transform: rotate(154.2deg) translateY(-150px) rotate(-154.2deg) !important; }
+            #gustavo-r { transform: rotate(205.6deg) translateY(-150px) rotate(-205.6deg) !important; }
+            #carolina-f{ transform: rotate(257deg) translateY(-140px) rotate(-257deg) !important; }
+            #beatriz-l { transform: rotate(308.4deg) translateY(-140px) rotate(-308.4deg) !important; }
+            .agent-info .agent-name { font-size: 0.8rem; }
+            .agent-info .agent-title { font-size: 0.7rem; }
+            .login-box { width: 100%; max-width: none; padding: 2rem 1rem; box-shadow: none; border-radius: 0; }
+            .app-main-content { width: 100%; }
+            #agents-info-section { padding: 1.5rem 1rem; }
+            .carousel-header h1 { font-size: 2rem; }
+            .mobile-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: var(--gold-secondary); border-bottom: 1px solid var(--border-color); width: 100%; }
+            .mobile-header-title { font-family: var(--font-title); font-size: 1.5rem; color: var(--gold-primary); }
+            .mobile-menu-button { background: none; border: none; cursor: pointer; padding: 0.5rem; display: none; }
+            .mobile-menu-button svg { width: 24px; height: 24px; color: var(--text-dark); }
+            .app-sidebar { position: fixed; top: 0; left: -100%; width: 280px; height: 100%; z-index: 200; transition: left 0.3s ease-in-out; }
+            .app-sidebar.mobile-visible { left: 0; }
+            .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 199; display: none; }
+            .overlay.visible { display: block; }
+            #chat-platform-section { padding: 0; }
+            .chat-conversation-container .chat-area-panel { position: absolute; top: 0; left: 100%; width: 100%; height: 100%; transition: left 0.3s ease-in-out; z-index: 100; }
+            .chat-conversation-container.mobile-active { left: 0; }
+            .chat-conversation-container .chat-area-header { display: flex; align-items: center; }
+            .back-button-web { display: flex !important; }
+            .carousel-content { flex-direction: column; gap: 0; }
+            .carousel-image-container, .carousel-text-container { flex-basis: 100%; width: 100%; }
+            .carousel-image-container { order: 1; }
+            .carousel-text-container { order: 2; text-align: center; padding-top: 1.5rem; }
+            .carousel-image-container img { max-height: 50vh; object-fit: cover; width: 100%; margin-bottom: 0; }
+            .carousel-text-container h2 { font-size: 2rem; margin-top: 0; }
+            .carousel-text-container h3 { font-size: 1.1rem; margin-bottom: 1.5rem; }
+            .carousel-description { text-align: left; }
+            .carousel-controls { justify-content: center; margin-top: 1.5rem; }
+        }
+        @media (min-width: 769px) {
+            .mobile-header { display: none !important; }
+        }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
-    <!-- ... resto do seu HTML ... -->
-    <!-- NOVO CABEÇALHO EXCLUSIVO PARA MOBILE -->
     <header class="mobile-header">
         <h2 class="mobile-header-title">Quantum Minds</h2>
         <button id="mobile-menu-btn" class="mobile-menu-button">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
         </button>
     </header>
-    <!-- TELA 1: LOGIN -->
+    
     <section id="login-section">
         <div class="left-panel">
             <div class="static-formation">
-                <div id="allex-lopes" class="agent-container central-agent"><img src="https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.jpg" alt="Allex Lopes" class="agent-avatar"><div class="agent-info"><p class="agent-name">Allex Lopes</p><p class="agent-title">CEO MasterMind</p></div></div>
-                <div id="rafaela-m" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.jpg" alt="Rafaela" class="agent-avatar"><div class="agent-info"><p class="agent-name">Rafaela</p><p class="agent-title">Marketing</p></div></div>
-                <div id="andre-v" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.jpg" alt="André" class="agent-avatar"><div class="agent-info"><p class="agent-name">André</p><p class="agent-title">Comercial</p></div></div>
-                <div id="marcelo-k" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.jpg4" alt="Marcelo" class="agent-avatar"><div class="agent-info"><p class="agent-name">Marcelo</p><p class="agent-title">Tecnologia</p></div></div>
-                <div id="eduardo-a" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.jpg5" alt="Eduardo" class="agent-avatar"><div class="agent-info"><p class="agent-name">Eduardo</p><p class="agent-title">Financeiro</p></div></div>
-                <div id="gustavo-r" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.jpg6" alt="Gustavo" class="agent-avatar"><div class="agent-info"><p class="agent-name">Gustavo</p><p class="agent-title">Jurídico</p></div></div>
-                <div id="carolina-f" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.jpg7" alt="Carolina" class="agent-avatar"><div class="agent-info"><p class="agent-name">Carolina</p><p class="agent-title">R.H.</p></div></div>
-                <div id="beatriz-l" class="agent-container"><img src="https://victorpaulovichbueno-gif.github.io/agente-8/unnamed.jpg8" alt="Beatriz" class="agent-avatar"><div class="agent-info"><p class="agent-name">Beatriz</p><p class="agent-title">C.S.</p></div></div>
+                <!-- Agentes da tela de login serão inseridos aqui -->
             </div>
         </div>
         <div class="right-panel">
-            <div class="login-box">
-                <img src="https://static.wixstatic.com/media/cb07f3_66a0d5d310234f858f3220c3cff5f83d~mv2.webp" alt="Logo Quantum Minds" class="login-logo">
-                <h1>QUANTUM MINDS</h1>
-                <p>Acesse sua inteligência personalizada.</p>
-                <form id="login-form">
-                    <div class="input-group"><label for="email">USUÁRIO</label><input type="text" id="email" value="v"></div>
-                    <div class="input-group"><label for="password">SENHA</label><input type="password" id="password" value="1"></div>
-                    <button type="submit" class="btn-login">ENTRAR</button>
-                </form>
-            </div>
+        <!-- Bloco CORRIGIDO -->
+        <div class="login-box">
+            <!-- NOVA LOGO ADICIONADA AQUI -->
+            <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="login-shield-logo">
+            
+            <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-nome/logo" alt="Quantum Minds Logo" class="login-title-logo">
+            
+            <form id="login-form">
+                <div class="input-group"><label for="email">USUÁRIO</label><input type="text" id="email" value="v"></div>
+                <div class="input-group"><label for="password">SENHA</label><input type="password" id="password" value="1"></div>
+                <button type="submit" class="btn-login">ENTRAR</button>
+            </form>
+        </div>
+
         </div>
     </section>
 
-    <!-- ESTRUTURA PRINCIPAL PÓS-LOGIN -->
     <div id="app-shell">
         <aside class="app-sidebar">
             <div class="app-sidebar-header">
-                <img src="https://static.wixstatic.com/media/cb07f3_66a0d5d310234f858f3220c3cff5f83d~mv2.webp" alt="Logo Quantum Minds">
-                <h2>Quantum Minds</h2>
+                <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="sidebar-shield-logo">
+                <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-nome/logo" alt="Quantum Minds Logo" class="sidebar-title-logo">
             </div>
             <nav class="app-nav">
-                <a href="#" class="app-nav-link active" data-target="portal-section">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    <span>Página Inicial</span>
-                </a>
                 <a href="#" class="app-nav-link" data-target="agents-info-section">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 21V5a2 2 0 00-2-2H9a2 2 0 00-2 2v16"></path></svg>
-                    <span>Conheça os Agentes</span>
+                    <span>Nossos Agentes</span>
                 </a>
                 <a href="#" class="app-nav-link" data-target="chat-platform-section">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
@@ -520,17 +411,7 @@ body {
             </div>
         </aside>
         <main class="app-main-content">
-
-            <!-- TELA 2: PÁGINA INICIAL (GRADE ) -->
-            <section id="portal-section">
-                <div class="portal-header">
-                    <h1>Quantum Team</h1>
-                    <p>Selecione o Agente para iniciar uma conversa.</p>
-                </div>
-                <div class="agent-grid" id="agent-grid-portal"></div>
-            </section>
-
-            <!-- TELA 3: CONHEÇA OS AGENTES (CARROSSEL) -->
+            <!-- TELA "NOSSOS AGENTES" (CARROSSEL ) -->
             <section id="agents-info-section">
                 <div class="carousel-header">
                     <h1>Conheça Nossos Agentes</h1>
@@ -553,27 +434,34 @@ body {
                 </div>
             </section>
 
-            <!-- TELA 4: PLATAFORMA DE CHAT -->
+            <!-- TELA "CHATS" (TEIA) -->
             <section id="chat-platform-section">
-                <div class="chat-platform">
-                    <div class="conversation-list-panel">
-                        <h1 class="conversation-list-header">Conversas</h1>
-                        <div class="search-bar"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><input type="text" placeholder="Buscar..."></div>
-                        <div class="last-chats-header"><span>Recentes</span></div>
-                        <div class="conversation-list" id="conversation-list"></div>
+                <!-- Container para a Teia de Agentes -->
+                <div class="chat-agent-web-container">
+                    <div class="chat-web-header">
+                        <h1>Selecione um Agente</h1>
                     </div>
-                    <div class="chat-area-panel">
-                        <div class="chat-area-header" id="chat-area-header">
-                        <button id="back-to-conversations-btn" class="back-button">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        </button>
-                        <span id="chat-header-title"></span>
+                    <div class="chat-static-formation">
+                        <img src="https://static.wixstatic.com/media/cb07f3_66a0d5d310234f858f3220c3cff5f83d~mv2.webp" alt="Logo Conselho Quantum" class="chat-web-logo">
+                        <canvas id="chat-web-canvas"></canvas>
+                        <!-- As divs dos agentes serão inseridas aqui via JavaScript -->
                     </div>
+                </div>
 
-                        <div class="chat-history" id="chat-history"></div>
-                        <form class="chat-input-area" id="chat-form">
-                            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
-                            <button type="submit" id="send-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.49997 20.5001V13.5001L10.5 12.0001L3.49997 10.5001V3.50006L20.5 12.0001L3.49997 20.5001Z" fill="white"/></svg></button>
+                <!-- Container para a Conversa Ativa (escondido por padrão ) -->
+                <div class="chat-conversation-container">
+                    <div class="chat-area-panel">
+                        <div class="chat-area-header" id="chat-area-header-web">
+                            <button id="back-to-web-btn" class="back-button-web">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                                <span>Voltar</span>
+                            </button>
+                            <span id="chat-header-title-web"></span>
+                        </div>
+                        <div class="chat-history" id="chat-history-web"></div>
+                        <form class="chat-input-area" id="chat-form-web">
+                            <input type="text" id="chat-input-web" placeholder="Digite sua mensagem..." autocomplete="off">
+                            <button type="submit" id="send-button-web"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.49997 20.5001V13.5001L10.5 12.0001L3.49997 10.5001V3.50006L20.5 12.0001L3.49997 20.5001Z" fill="white"/></svg></button>
                         </form>
                     </div>
                 </div>
@@ -582,104 +470,31 @@ body {
     </div>
 
     <script>
-
-        // Adicione estas linhas junto com suas outras seleções de elementos
-        const chatAreaPanel = document.querySelector('.chat-area-panel');
-        const backToConversationsBtn = document.getElementById('back-to-conversations-btn');
-        const chatHeaderTitle = document.getElementById('chat-header-title');
-
         // =======================================================
         // == DADOS E BANCO DE DADOS SIMULADO                   ==
         // =======================================================
-        const agents = {
-            'allex': { 
-                name: 'Allex Lopes', 
-                title: 'CEO MasterMind', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.jpg', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.</p>
-                    <p><strong>Exemplos de uso:</strong> Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.</p>
-                `
-            },
-            'rafaela': { 
-                name: 'Rafaela', 
-                title: 'Marketing', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.jpg', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p>
-                    <p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>
-                `
-            },
-            'andre': { 
-                name: 'André', 
-                title: 'Comercial', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.jpg', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM). André é focado em converter leads em resultados.</p>
-                    <p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>
-                `
-            },
-            'marcelo': { 
-                name: 'Marcelo', 
-                title: 'Tecnologia', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.jpg4', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Arquitetura de software, desenvolvimento, infraestrutura e inovação tecnológica. Marcelo resolve os desafios técnicos mais complexos.</p>
-                    <p><strong>Exemplos de uso:</strong> Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, peça para ele revisar um código ou planejar a arquitetura de um novo sistema.</p>
-                `
-            },
-            'eduardo': { 
-                name: 'Eduardo', 
-                title: 'Financeiro', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.jpg5', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Análise de DRE, fluxo de caixa, projeções financeiras e otimização de custos. Eduardo garante a saúde financeira e a sustentabilidade do negócio.</p>
-                    <p><strong>Exemplos de uso:</strong> Peça uma análise de viabilidade para um novo investimento, ajuda para criar o orçamento anual ou dicas para otimizar o fluxo de caixa.</p>
-                `
-            },
-            'gustavo': { 
-                name: 'Gustavo', 
-                title: 'Jurídico', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.jpg6', 
-                description: `
-                                        <p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance). Gustavo protege a empresa de riscos legais.</p>
-                    <p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>
-                `
-            },
-            'carolina': { 
-                name: 'Carolina', 
-                title: 'R.H.', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.jpg7', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Recrutamento e seleção, cultura organizacional, desenvolvimento de talentos e gestão de desempenho. Carolina cuida do ativo mais importante: as pessoas.</p>
-                    <p><strong>Exemplos de uso:</strong> Peça ajuda para criar a descrição de uma nova vaga, ideias para melhorar o clima organizacional ou um plano de desenvolvimento para um colaborador.</p>
-                `
-            },
-            'beatriz': { 
-                name: 'Beatriz', 
-                title: 'C.S.', 
-                img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamed.jpg8', 
-                description: `
-                    <p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p>
-                    <p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>
-                `
-            }
+                const agents = {
+            'allex': { name: 'Allex', title: 'CEO MasterMind', img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.</p><p><strong>Exemplos de uso:</strong> Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.</p>` },
+            'rafaela': { name: 'Rafaela', title: 'Marketing', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p><p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>` },
+            'eduardo': { name: 'Eduardo', title: 'Financeiro', img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Análise de DRE, fluxo de caixa, projeções financeiras e otimização de custos. Eduardo garante a saúde financeira e a sustentabilidade do negócio.</p><p><strong>Exemplos de uso:</strong> Peça uma análise de viabilidade para um novo investimento, ajuda para criar o orçamento anual ou dicas para otimizar o fluxo de caixa.</p>` },
+            'andre': { name: 'André', title: 'Comercial', img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM ). André é focado em converter leads em resultados.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>` },
+            'carolina': { name: 'Carolina', title: 'R.H.', img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Recrutamento e seleção, cultura organizacional, desenvolvimento de talentos e gestão de desempenho. Carolina cuida do ativo mais importante: as pessoas.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para criar a descrição de uma nova vaga, ideias para melhorar o clima organizacional ou um plano de desenvolvimento para um colaborador.</p>` },
+            'beatriz': { name: 'Beatriz', title: 'C.S.', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success ), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p><p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>` },
+            'leo': { name: 'Leo', title: 'Tecnologia', img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Arquitetura de software, desenvolvimento, infraestrutura e inovação tecnológica. Leo resolve os desafios técnicos mais complexos.</p><p><strong>Exemplos de uso:</strong> Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, peça para ele revisar um código ou planejar a arquitetura de um novo sistema.</p>` },
+            'drgustavo': { name: 'Dr. Gustavo', title: 'Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png', description: `<p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance ). Dr. Gustavo protege a empresa de riscos legais.</p><p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>` }
         };
-
         const agentIds = Object.keys(agents);
         let currentCarouselIndex = 0;
-
         const chatHistories = {
             'allex': [{ sender: 'agent', text: 'Allex aqui. Como posso ajudar a expandir sua visão hoje?' }],
             'rafaela': [{ sender: 'agent', text: 'Olá! Sou a Rafaela. Vamos criar uma campanha de marketing de impacto?' }],
-            'andre': [{ sender: 'agent', text: 'André falando. Pronto para batermos algumas metas de vendas?' }],
-            'marcelo': [{ sender: 'agent', text: 'Marcelo. Qual desafio tecnológico vamos resolver hoje?' }],
             'eduardo': [{ sender: 'agent', text: 'Eduardo. Vamos analisar os números e otimizar seus investimentos.' }],
-            'gustavo': [{ sender: 'agent', text: 'Gustavo a postos. Precisa de alguma consultoria jurídica?' }],
+            'andre': [{ sender: 'agent', text: 'André falando. Pronto para batermos algumas metas de vendas?' }],
             'carolina': [{ sender: 'agent', text: 'Carolina, R.H. Como posso ajudar a gerir seu time?' }],
-            'beatriz': [{ sender: 'agent', text: 'Beatriz, C.S. Qual problema do seu cliente vamos solucionar?' }]
+            'beatriz': [{ sender: 'agent', text: 'Beatriz, C.S. Qual problema do seu cliente vamos solucionar?' }],
+            'leo': [{ sender: 'agent', text: 'Leo. Qual desafio tecnológico vamos resolver hoje?' }],
+            'drgustavo': [{ sender: 'agent', text: 'Dr. Gustavo a postos. Precisa de alguma consultoria jurídica?' }]
         };
-
         let activeChatAgentId = 'allex';
 
         // =======================================================
@@ -687,21 +502,14 @@ body {
         // =======================================================
         const loginSection = document.getElementById('login-section');
         const appShell = document.getElementById('app-shell');
-        
         const loginForm = document.getElementById('login-form');
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
-
         const navLinks = document.querySelectorAll('.app-nav-link');
         const contentSections = document.querySelectorAll('.app-main-content > section');
-
-        const agentGridPortal = document.getElementById('agent-grid-portal');
-        // Adicione estas linhas junto com suas outras seleções
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.querySelector('.app-sidebar');
         const overlay = document.querySelector('.overlay');
-
-        // Elementos do Carrossel
         const carouselMainImg = document.getElementById('carousel-main-img');
         const carouselAgentName = document.getElementById('carousel-agent-name');
         const carouselAgentTitle = document.getElementById('carousel-agent-title');
@@ -709,33 +517,38 @@ body {
         const carouselCounter = document.getElementById('carousel-counter');
         const carouselPrevBtn = document.getElementById('carousel-prev-btn');
         const carouselNextBtn = document.getElementById('carousel-next-btn');
-
-        // Elementos do Chat
-        const conversationList = document.getElementById('conversation-list');
-        const chatAreaHeader = document.getElementById('chat-area-header');
-        const chatHistoryContainer = document.getElementById('chat-history');
-        const chatForm = document.getElementById('chat-form');
-        const chatInput = document.getElementById('chat-input');
+        const chatWebContainer = document.querySelector('.chat-agent-web-container');
+        const chatConversationContainer = document.querySelector('.chat-conversation-container');
+        const chatFormation = document.querySelector('.chat-static-formation');
+        const backToWebBtn = document.getElementById('back-to-web-btn');
+        const chatHeaderTitleWeb = document.getElementById('chat-header-title-web');
+        const chatHistoryWeb = document.getElementById('chat-history-web');
+        const chatFormWeb = document.getElementById('chat-form-web');
+        const chatInputWeb = document.getElementById('chat-input-web');
+        const logoutBtn = document.getElementById('logout-btn');
+        const loginFormation = document.querySelector('#login-section .static-formation');
 
         // =======================================================
-        // == LÓGICA DE NAVEGAÇÃO PRINCIPAL                   ==
+        // == LÓGICA DE NAVEGAÇÃO E RENDERIZAÇÃO INICIAL       ==
         // =======================================================
         
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAgentFormation(loginFormation);
+        });
+
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
             if (emailInput.value === 'v' && passwordInput.value === '1') {
                 loginSection.style.display = 'none';
                 appShell.style.display = 'flex';
-                
-                // MOSTRA O BOTÃO DE MENU APENAS APÓS O LOGIN
-                mobileMenuBtn.style.display = 'block'; 
-                
-                showSection('portal-section');
+                if (window.innerWidth <= 768) {
+                    mobileMenuBtn.style.display = 'block';
+                }
+                showSection('agents-info-section');
             } else {
                 alert('Usuário ou senha incorretos!');
             }
         });
-
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -759,39 +572,36 @@ body {
                 link.classList.toggle('active', link.dataset.target === targetId);
             });
 
-            if (targetId === 'portal-section') renderPortalGrid();
-            if (targetId === 'agents-info-section') renderCarousel();
-            if (targetId === 'chat-platform-section') initializeChatPlatform();
+            if (targetId === 'agents-info-section') {
+                renderCarousel();
+            } else if (targetId === 'chat-platform-section') {
+                renderChatWeb();
+                showWeb();
+            }
         }
 
         // =======================================================
         // == FUNÇÕES DAS SEÇÕES                              ==
         // =======================================================
 
-        function renderPortalGrid() {
-            agentGridPortal.innerHTML = '';
+        function renderAgentFormation(container) {
+            container.innerHTML = '';
+            const positions = { 'allex': '', 'rafaela': 'transform: rotate(0deg) translateY(-250px) rotate(0deg);', 'eduardo': 'transform: rotate(51.4deg) translateY(-250px) rotate(-51.4deg);', 'andre': 'transform: rotate(102.8deg) translateY(-250px) rotate(-102.8deg);', 'carolina': 'transform: rotate(154.2deg) translateY(-250px) rotate(-154.2deg);', 'beatriz': 'transform: rotate(205.6deg) translateY(-250px) rotate(-205.6deg);', 'leo': 'transform: rotate(257deg) translateY(-250px) rotate(-257deg);', 'drgustavo': 'transform: rotate(308.4deg) translateY(-250px) rotate(-308.4deg);' };
+            
             agentIds.forEach(agentId => {
                 const agent = agents[agentId];
-                const card = document.createElement('div');
-                card.classList.add('portal-agent-card');
-                card.style.backgroundImage = `url(${agent.img})`;
-                
-                card.innerHTML = `
-                    <p class="agent-name">${agent.name}</p>
-                    <p class="agent-title">${agent.title}</p>
-                `;
-                
-                card.addEventListener('click', () => {
-                    activeChatAgentId = agentId;
-                    showSection('chat-platform-section');
-                });
-                agentGridPortal.appendChild(card);
+                const agentDiv = document.createElement('div');
+                agentDiv.classList.add('agent-container');
+                agentDiv.dataset.agentId = agentId;
+                if (agentId === 'allex') agentDiv.classList.add('central-agent');
+                agentDiv.style.cssText = positions[agentId];
+                agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info"><p class="agent-name">${agent.name}</p><p class="agent-title">${agent.title}</p></div>`;
+                container.appendChild(agentDiv);
             });
         }
 
         function renderCarousel() {
             const mainAgent = agents[agentIds[currentCarouselIndex]];
-
             carouselMainImg.src = mainAgent.img;
             carouselAgentName.textContent = mainAgent.name;
             carouselAgentTitle.textContent = mainAgent.title;
@@ -809,163 +619,151 @@ body {
             renderCarousel();
         });
 
-        function initializeChatPlatform() {
-            renderConversationList();
-            renderActiveChat();
-        }
+        // =======================================================
+        // == LÓGICA DO NOVO CHAT EM TEIA                     ==
+        // =======================================================
 
-        // Substitua sua função renderConversationList por esta
-        function renderConversationList() {
-            conversationList.innerHTML = '';
-            agentIds.forEach(agentId => {
-                const agent = agents[agentId];
-                const history = chatHistories[agentId];
-                const lastMessage = history.length > 0 ? history[history.length - 1].text : 'Nenhuma mensagem...';
-
-                const item = document.createElement('div');
-                item.classList.add('conversation-item');
-                if (agentId === activeChatAgentId) item.classList.add('active');
-                item.dataset.agentId = agentId;
-                item.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar-chat"><div class="conversation-details"><div class="agent-name">${agent.name}</div><div class="last-message">${lastMessage}</div></div>`;
-                
-                item.addEventListener('click', () => {
-                    activeChatAgentId = agentId;
-                    renderActiveChat();
-                    
-                    // LÓGICA EXCLUSIVA PARA MOBILE
-                    if (window.innerWidth <= 768) {
-                        chatAreaPanel.classList.add('mobile-active');
-                    }
+        function renderChatWeb() {
+            renderAgentFormation(chatFormation);
+            const agentDivs = chatFormation.querySelectorAll('.agent-container');
+            agentDivs.forEach(div => {
+                div.addEventListener('click', () => {
+                    activeChatAgentId = div.dataset.agentId;
+                    showConversation();
                 });
-                conversationList.appendChild(item);
             });
+            setTimeout(drawChatWebLines, 100);
         }
 
+        function showConversation() {
+            chatWebContainer.style.display = 'none';
+            chatConversationContainer.style.display = 'block';
+            renderActiveChatWeb();
+        }
 
-        // Substitua sua função renderActiveChat por esta
-        function renderActiveChat() {
+        function showWeb() {
+            chatConversationContainer.style.display = 'none';
+            chatWebContainer.style.display = 'flex';
+        }
+
+        function renderActiveChatWeb() {
             const agent = agents[activeChatAgentId];
             const history = chatHistories[activeChatAgentId];
-            chatHeaderTitle.textContent = `Conversa com ${agent.name}`; // Atualiza apenas o texto do título
-            chatHistoryContainer.innerHTML = '';
-            history.forEach(message => addMessageToDom(message.text, message.sender, agent.img));
-            chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
+            chatHeaderTitleWeb.textContent = `Conversa com ${agent.name}`;
+            chatHistoryWeb.innerHTML = '';
+            history.forEach(message => addMessageToDom(message.text, message.sender, agent.img, chatHistoryWeb));
+            chatHistoryWeb.scrollTop = chatHistoryWeb.scrollHeight;
         }
 
-
-        function addMessageToDom(text, sender, agentImg) {
+        function addMessageToDom(text, sender, agentImg, container) {
             const messageGroup = document.createElement('div');
             messageGroup.classList.add('message-group', sender);
             messageGroup.innerHTML = (sender === 'agent')
                 ? `<img src="${agentImg}" class="message-avatar"><div class="message-content"><div class="message-bubble">${text}</div></div>`
                 : `<div class="message-content"><div class="message-bubble">${text}</div></div>`;
-            chatHistoryContainer.appendChild(messageGroup);
-            chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
+            container.appendChild(messageGroup);
+            container.scrollTop = container.scrollHeight;
         }
 
-        chatForm.addEventListener('submit', function(event) {
+        chatFormWeb.addEventListener('submit', function(event) {
             event.preventDefault();
-            const userMessageText = chatInput.value.trim();
+            const userMessageText = chatInputWeb.value.trim();
             if (userMessageText === '') return;
-
             chatHistories[activeChatAgentId].push({ sender: 'user', text: userMessageText });
-            addMessageToDom(userMessageText, 'user');
-            renderConversationList();
-            chatInput.value = '';
-
+            addMessageToDom(userMessageText, 'user', null, chatHistoryWeb);
+            chatInputWeb.value = '';
             setTimeout(() => {
                 const agentResponse = `Resposta simulada para: "${userMessageText}"`;
                 chatHistories[activeChatAgentId].push({ sender: 'agent', text: agentResponse });
-                addMessageToDom(agentResponse, 'agent', agents[activeChatAgentId].img);
-                renderConversationList();
+                addMessageToDom(agentResponse, 'agent', agents[activeChatAgentId].img, chatHistoryWeb);
             }, 1500);
         });
-        // Adicione este bloco de código ao final do seu script
 
-        // Função para abrir/fechar o menu
+        backToWebBtn.addEventListener('click', showWeb);
+
+        function drawChatWebLines() {
+            const canvas = document.getElementById('chat-web-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const container = document.querySelector('.chat-static-formation');
+            const dpr = window.devicePixelRatio || 1;
+            const rect = container.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            ctx.strokeStyle = 'var(--gold-primary)';
+            ctx.lineWidth = 1.5;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            function getCenter(agentId) {
+                const agentElement = document.querySelector(`.chat-static-formation [data-agent-id="${agentId}"]`);
+                if (!agentElement) return null;
+                const x = agentElement.offsetLeft + agentElement.offsetWidth / 2;
+                const y = agentElement.offsetTop + agentElement.offsetHeight / 2;
+                return { x, y };
+            }
+
+            function connect(id1, id2) {
+                const pos1 = getCenter(id1);
+                const pos2 = getCenter(id2);
+                if (pos1 && pos2) {
+                    ctx.beginPath();
+                    ctx.moveTo(pos1.x, pos1.y);
+                    ctx.lineTo(pos2.x, pos2.y);
+                    ctx.stroke();
+                }
+            }
+
+            const logoPos = { x: container.offsetWidth / 2, y: 150 };
+            const topAgents = ['rafaela', 'eduardo', 'andre'];
+            topAgents.forEach(id => {
+                const agentPos = getCenter(id);
+                if (agentPos) {
+                    ctx.beginPath();
+                    ctx.moveTo(logoPos.x, logoPos.y);
+                    ctx.lineTo(agentPos.x, agentPos.y);
+                    ctx.stroke();
+                }
+            });
+
+            connect('rafaela', 'carolina');
+            connect('eduardo', 'beatriz');
+            connect('andre', 'leo');
+            connect('carolina', 'drgustavo');
+            connect('beatriz', 'allex');
+            connect('leo', 'allex');
+            connect('drgustavo', 'allex');
+        }
+
+        // =======================================================
+        // == LÓGICA DO MENU MOBILE E LOGOUT                  ==
+        // =======================================================
+
         function toggleMobileMenu() {
             sidebar.classList.toggle('mobile-visible');
             overlay.classList.toggle('visible');
         }
 
-        // Abre/fecha o menu ao clicar no botão de 3 pontos
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-        // Fecha o menu se o usuário clicar no fundo escuro (overlay)
         overlay.addEventListener('click', toggleMobileMenu);
 
-        // Fecha o menu se o usuário clicar em um link de navegação
         sidebar.addEventListener('click', function(event) {
-            // Verifica se o clique foi em um link dentro da navegação
             if (event.target.closest('.app-nav-link')) {
-                // Se o menu estiver visível, fecha ele
                 if (sidebar.classList.contains('mobile-visible')) {
                     toggleMobileMenu();
                 }
             }
         });
 
-        // =======================================================
-        // == LÓGICA DO BOTÃO DE LOGOUT (SAIR)                ==
-        // =======================================================
-
-        // 1. Seleciona o botão de "Sair" que você criou no HTML
-        const logoutBtn = document.getElementById('logout-btn');
-
-        // 2. Adiciona um "escutador" que espera por um clique no botão
         logoutBtn.addEventListener('click', function(event) {
-            // Previne que a página recarregue
             event.preventDefault(); 
-
-            // Esconde a interface principal (o painel com as abas)
             appShell.style.display = 'none';
-
-            // Mostra novamente a tela de login
             loginSection.style.display = 'flex';
+            if (window.innerWidth <= 768) {
+                mobileMenuBtn.style.display = 'none';
+            }
         });
-
-        // Adicione este novo bloco de código ao final do seu script
-        backToConversationsBtn.addEventListener('click', () => {
-            chatAreaPanel.classList.remove('mobile-active'); // Esconde o painel do chat
-        });
-// =======================================================
-// == LÓGICA DE ARRASTAR PARA VOLTAR (SWIPE TO GO BACK) ==
-// =======================================================
-
-// Variáveis para controlar o estado do toque
-let touchStartX = 0;
-let touchEndX = 0;
-const swipeThreshold = 50; // Distância mínima em pixels para considerar um swipe
-
-// Escuta o início do toque na tela de chat
-chatAreaPanel.addEventListener('touchstart', function(event) {
-    // Pega a posição inicial do primeiro dedo na tela
-    touchStartX = event.changedTouches[0].screenX;
-}, { passive: true }); // { passive: true } melhora a performance de rolagem
-
-// Escuta o movimento do dedo na tela
-chatAreaPanel.addEventListener('touchmove', function(event) {
-    // Atualiza a posição final do dedo enquanto ele se move
-    touchEndX = event.changedTouches[0].screenX;
-}, { passive: true });
-
-// Escuta quando o usuário tira o dedo da tela
-chatAreaPanel.addEventListener('touchend', function(event) {
-    // Calcula a distância e a direção do arrasto
-    const swipeDistance = touchEndX - touchStartX;
-
-    // Verifica se foi um arrasto para a direita e se a distância foi suficiente
-    if (touchEndX > 0 && swipeDistance > swipeThreshold) {
-        // Se sim, executa a mesma ação do botão "Voltar"
-        chatAreaPanel.classList.remove('mobile-active');
-    }
-
-    // Reseta as variáveis para o próximo toque
-    touchStartX = 0;
-    touchEndX = 0;
-});
 
     </script>
-
 </body>
 </html>
