@@ -48,14 +48,17 @@
         }
         .left-panel, .right-panel { height: 100%; display: flex; justify-content: center; align-items: center; padding: 2rem; }
         .static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
-        .agent-container { position: absolute; display: flex; flex-direction: column; align-items: center; width: 140px; }
+        .agent-container { position: absolute; display: flex; flex-direction: column; align-items: center; }
         
         .agent-avatar {
-            width: 160px;
+            width: 140px;
             height: auto;
             display: block;
         }
-        .central-agent .agent-avatar { width: 200px; }
+        .central-agent .agent-avatar {
+            width: 190px;
+        }
+
         .agent-info { margin-top: 0.75rem; text-align: center; }
         .agent-name { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); }
         .agent-title { font-size: 0.75rem; font-weight: 300; color: var(--text-secondary); }
@@ -72,30 +75,135 @@
             text-align: center;
             border: 1px solid rgba(197, 167, 115, 0.2);
         }
-        .login-shield-logo { width: 80px; height: auto; margin-bottom: 1rem; }
-        .login-title-logo { width: 80%; max-width: 300px; height: auto; margin-bottom: 2.5rem; }
+
+        .login-shield-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .login-title-logo {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 2.5rem;
+        }
         .input-group { margin-bottom: 1.5rem; text-align: left; }
-        .input-group label { display: block; margin-bottom: 0.5rem; font-weight: 300; color: rgba(255, 255, 255, 0.7); }
-        .input-group input { width: 100%; padding: 1rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 167, 115, 0.3); border-radius: 5px; color: white; font-size: 1rem; }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(197, 167, 115, 0.3);
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
         .input-group input::placeholder { color: rgba(255, 255, 255, 0.5); }
-        .btn-login { width: 100%; padding: 1rem; margin-top: 1rem; background-color: var(--gold-primary); color: black; border: none; border-radius: 5px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; }
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background-color: var(--gold-primary);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
         .btn-login:hover { background-color: #dfc395; }
+
+        #login-web-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
         /* ============================================= */
         /* == ESTRUTURA PRINCIPAL PÓS-LOGIN (APP SHELL) == */
         /* ============================================= */
-        #app-shell { display: none; width: 100vw; height: 100vh; display: flex; background-color: var(--background-light); }
-        .app-sidebar { width: 280px; height: 100%; background: #000000; background-image: radial-gradient(circle at top, rgba(197, 167, 115, 0.15) 0%, transparent 70%); border-right: 1px solid rgba(197, 167, 115, 0.2); padding: 2rem 1.5rem; display: flex; flex-direction: column; flex-shrink: 0; }
-        .app-sidebar-header { text-align: center; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; }
-        .sidebar-shield-logo { width: 60px; height: auto; margin-bottom: 1rem; }
-        .sidebar-title-logo { width: 70%; max-width: 200px; height: auto; }
+        #app-shell { 
+            display: none; 
+            width: 100vw; 
+            height: 100vh; 
+            display: flex; 
+            background-color: var(--background-light);
+        }
+
+        .app-sidebar {
+            width: 280px;
+            height: 100%;
+            background: #000000;
+            background-image: radial-gradient(circle at top, rgba(197, 167, 115, 0.15) 0%, transparent 70%);
+            border-right: 1px solid rgba(197, 167, 115, 0.2);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .app-sidebar-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar-shield-logo {
+            width: 60px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .sidebar-title-logo {
+            width: 70%;
+            max-width: 200px;
+            height: auto;
+        }
+
         .app-nav { display: flex; flex-direction: column; gap: 0.5rem; }
-        .app-nav-link { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; border-radius: 8px; text-decoration: none; color: rgba(255, 255, 255, 0.8); font-weight: 500; transition: background-color 0.2s ease, color 0.2s ease; }
-        .app-nav-link:hover { background-color: rgba(197, 167, 115, 0.1); color: white; }
-        .app-nav-link.active { background-color: var(--gold-primary); color: black; }
-        .app-nav-link svg { width: 20px; height: 20px; stroke: currentColor; }
-        .app-sidebar-footer { margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(197, 167, 115, 0.2); }
+        
+        .app-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .app-nav-link:hover {
+            background-color: rgba(197, 167, 115, 0.1);
+            color: white;
+        }
+        .app-nav-link.active {
+            background-color: var(--gold-primary);
+            color: black;
+        }
+        .app-nav-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        .app-sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(197, 167, 115, 0.2);
+        }
         #logout-btn:hover { background-color: #d9534f; color: white; }
+
         .app-main-content { flex-grow: 1; height: 100%; overflow-y: auto; position: relative; }
         .app-main-content > section { display: none; width: 100%; height: 100%; flex-direction: column; }
 
@@ -108,7 +216,15 @@
         .carousel-header p { font-size: 1.2rem; color: var(--text-secondary); }
         .carousel-content { display: flex; gap: 3rem; width: 100%; align-items: center; }
         .carousel-image-container { flex-basis: 45%; flex-shrink: 0; }
-        .carousel-image-container img { width: 100%; max-width: 450px; height: auto; display: block; margin: 0 auto; }
+        
+        .carousel-image-container img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
         .carousel-text-container { flex-basis: 55%; }
         .carousel-text-container h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
         .carousel-text-container h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
@@ -123,44 +239,59 @@
         /* ============================================= */
         #chat-platform-section { padding: 2rem 3rem; justify-content: center; align-items: center; }
         .chat-agent-web-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
-        .chat-web-header { text-align: left; margin-bottom: 2rem; width: 100%; }
-        .chat-web-header h1 { font-family: var(--font-title); font-size: 2.5rem; color: var(--gold-primary); }
-        .chat-static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
-        .chat-static-formation .agent-container { cursor: pointer; transition: transform 0.3s ease; z-index: 10; position: absolute; }
-        .chat-static-formation .agent-container:hover { transform: scale(1.1); z-index: 20; }
-        .chat-web-logo { position: absolute; width: 250px; height: auto; top: 0; left: 50%; transform: translateX(-50%); z-index: 5; }
-        #chat-web-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        /* Bloco CORRIGIDO para o balão de informações do agente */
-.chat-static-formation .agent-info {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #000000; /* CORREÇÃO: Fundo preto sólido */
-    padding: 8px 12px; /* Aumenta um pouco o padding para mais respiro */
-    border-radius: 5px;
-    white-space: nowrap;
-    text-align: center; /* Garante que o texto dentro do balão esteja centralizado */
-}
-
-/* NOVA REGRA para a cor do NOME */
-.chat-static-formation .agent-info .agent-name {
-    color: var(--gold-primary); /* CORREÇÃO: Nome em dourado */
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-/* NOVA REGRA para a cor do TÍTULO */
-.chat-static-formation .agent-info .agent-title {
-    color: white; /* CORREÇÃO: Subtítulo em branco */
-    font-size: 0.8rem;
-    font-weight: 300;
-}
-
-        .chat-static-formation .agent-container:hover .agent-info { opacity: 1; }
         
+        .chat-static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
+        .chat-static-formation .agent-container { cursor: pointer; transition: transform 0.3s ease; z-index: 10; position: absolute; display: flex; flex-direction: column; align-items: center; }
+        
+        .chat-web-logo {
+            position: absolute;
+            width: 250px;
+            height: auto;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        #chat-web-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .chat-static-formation .agent-info {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            text-align: center;
+        }
+        .chat-static-formation .agent-container:hover .agent-info {
+            opacity: 1;
+        }
+        .chat-static-formation .agent-info .agent-name {
+            color: var(--gold-primary);
+            font-weight: bold;
+        }
+        .chat-static-formation .agent-info .agent-title {
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .chat-static-formation .agent-container:hover {
+            transform: scale(1.1);
+            z-index: 20;
+        }
+
         .chat-conversation-container { display: none; width: 100%; height: 100%; }
         .chat-conversation-container .chat-area-panel { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--background-light); height: 100%; }
         .chat-conversation-container .chat-area-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); font-size: 1.2rem; font-weight: 600; background-color: var(--background-panel); display: flex; align-items: center; }
@@ -168,18 +299,12 @@
         .chat-conversation-container .message-group { display: flex; gap: 16px; max-width: 75%; }
         .chat-conversation-container .message-group.user { align-self: flex-end; flex-direction: row-reverse; }
         .chat-conversation-container .message-group.agent { align-self: flex-start; }
-        /* Bloco CORRIGIDO para o avatar dentro do chat */
-.chat-conversation-container .message-avatar {
-    width: 40px;        /* Mantém a largura para controlar o tamanho */
-    height: auto;       /* A altura se ajusta automaticamente para manter a proporção */
-    align-self: flex-end;
-
-    /* As propriedades que criavam a máscara foram removidas:
-       - border-radius: 50%
-       - object-fit: cover
-       - height (fixa)
-    */
-}
+        
+        .chat-conversation-container .message-avatar {
+            width: 40px;
+            height: auto;
+            align-self: flex-end;
+        }
 
         .chat-conversation-container .message-content { display: flex; flex-direction: column; gap: 6px; }
         .chat-conversation-container .message-bubble { padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.5; }
@@ -191,30 +316,38 @@
         .back-button-web { display: flex; align-items: center; gap: 0.5rem; background: none; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem; color: var(--text-dark); margin-right: 1.5rem; }
         .back-button-web:hover { background-color: var(--background-panel); }
         #chat-header-title-web { font-size: 1.2rem; font-weight: 600; }
+        
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #9E9EA1;
+            border-radius: 50%;
+            display: inline-block;
+            animation: wave 1.3s infinite;
+        }
+        .typing-indicator span:nth-of-type(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-of-type(3) { animation-delay: 0.4s; }
+        @keyframes wave {
+            0%, 60%, 100% { transform: initial; }
+            30% { transform: translateY(-8px); }
+        }
+
+        /* ======================================================= */
+        /* == REGRAS PARA LAYOUT MOBILE                       == */
+        /* ======================================================= */
         .mobile-header { display: none; }
 
-/* Dentro da tag <style> */
-
-#login-web-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Fica atrás dos agentes (que têm z-index maior) */
-}
-
-
-        /* ======================================================= */
-        /* == REGRAS EXCLUSIVAS PARA LAYOUT MOBILE            == */
-        /* ======================================================= */
         @media (max-width: 768px) {
             body { overflow: auto; }
             #login-section { flex-direction: column; height: auto; min-height: 100vh; justify-content: flex-start; }
-            .left-panel { display: none; }
+            .left-panel { width: 100%; height: auto; padding: 4rem 1rem 2rem 1rem; }
             .right-panel { width: 100%; height: auto; padding: 1rem; }
-            .login-box { width: 100%; max-width: none; padding: 2rem 1rem; box-shadow: none; border-radius: 0; background: #000; }
+            .static-formation { width: 320px; height: 320px; margin: 0 auto; }
             
+            .agent-avatar { width: 60px; }
+            .central-agent .agent-avatar { width: 75px; }
+
+            .login-box { width: 100%; max-width: none; padding: 2rem 1rem; box-shadow: none; border-radius: 0; }
             .app-main-content { width: 100%; }
             #agents-info-section { padding: 1.5rem 1rem; }
             .carousel-header h1 { font-size: 2rem; }
@@ -239,14 +372,11 @@
             .carousel-image-container, .carousel-text-container { flex-basis: 100%; width: 100%; }
             .carousel-image-container { order: 1; }
             .carousel-text-container { order: 2; text-align: center; padding-top: 1.5rem; }
-            .carousel-image-container img { max-height: 50vh; width: 100%; margin-bottom: 0; }
+            .carousel-image-container img { max-height: 50vh; }
             .carousel-text-container h2 { font-size: 2rem; margin-top: 0; }
             .carousel-text-container h3 { font-size: 1.1rem; margin-bottom: 1.5rem; }
             .carousel-description { text-align: left; }
             .carousel-controls { justify-content: center; margin-top: 1.5rem; }
-        }
-        @media (min-width: 769px) {
-            .mobile-header { display: none !important; }
         }
     </style>
 </head>
@@ -260,14 +390,11 @@
     </header>
     
     <section id="login-section">
-<div class="left-panel">
-    <div class="static-formation">
-        <!-- NOVO CANVAS ADICIONADO AQUI -->
-        <canvas id="login-web-canvas"></canvas>
-        <!-- Agentes da tela de login serão inseridos aqui -->
-    </div>
-</div>
-
+        <div class="left-panel">
+            <div class="static-formation">
+                <canvas id="login-web-canvas"></canvas>
+            </div>
+        </div>
         <div class="right-panel">
             <div class="login-box">
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="login-shield-logo">
@@ -305,7 +432,6 @@
             </div>
         </aside>
         <main class="app-main-content">
-            <!-- TELA "NOSSOS AGENTES" (CARROSSEL ) -->
             <section id="agents-info-section">
                 <div class="carousel-header">
                     <h1>Conheça Nossos Agentes</h1>
@@ -328,16 +454,11 @@
                 </div>
             </section>
 
-            <!-- TELA "CHATS" (TEIA) -->
             <section id="chat-platform-section">
                 <div class="chat-agent-web-container">
-                    <div class="chat-web-header">
-                        <h1>Selecione um Agente</h1>
-                    </div>
                     <div class="chat-static-formation">
                         <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-ambas/logo" alt="Logo Conselho Quantum" class="chat-web-logo">
                         <canvas id="chat-web-canvas"></canvas>
-                        <!-- As divs dos agentes serão inseridas aqui via JavaScript -->
                     </div>
                 </div>
 
@@ -367,25 +488,25 @@
         // =======================================================
         const agents = {
             'allex': { name: 'Allex', title: 'CEO MasterMind', img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.</p><p><strong>Exemplos de uso:</strong> Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.</p>` },
-            'rafaela': { name: 'Rafaela', title: 'Marketing', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p><p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>` },
+                        'rafaela': { name: 'Rafaela', title: 'Marketing', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p><p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>` },
             'eduardo': { name: 'Eduardo', title: 'Financeiro', img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Análise de DRE, fluxo de caixa, projeções financeiras e otimização de custos. Eduardo garante a saúde financeira e a sustentabilidade do negócio.</p><p><strong>Exemplos de uso:</strong> Peça uma análise de viabilidade para um novo investimento, ajuda para criar o orçamento anual ou dicas para otimizar o fluxo de caixa.</p>` },
-            'andre': { name: 'André', title: 'Comercial', img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM ). André é focado em converter leads em resultados.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>` },
+            'andre': { name: 'André', title: 'Comercial', img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM  ). André é focado em converter leads em resultados.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>` },
             'carolina': { name: 'Carolina', title: 'R.H.', img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Recrutamento e seleção, cultura organizacional, desenvolvimento de talentos e gestão de desempenho. Carolina cuida do ativo mais importante: as pessoas.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para criar a descrição de uma nova vaga, ideias para melhorar o clima organizacional ou um plano de desenvolvimento para um colaborador.</p>` },
-                        'beatriz': { name: 'Beatriz', title: 'C.S.', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success ), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p><p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>` },
+            'beatriz': { name: 'Beatriz', title: 'C.S.', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success  ), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p><p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>` },
             'leo': { name: 'Leo', title: 'Tecnologia', img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Arquitetura de software, desenvolvimento, infraestrutura e inovação tecnológica. Leo resolve os desafios técnicos mais complexos.</p><p><strong>Exemplos de uso:</strong> Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, peça para ele revisar um código ou planejar a arquitetura de um novo sistema.</p>` },
-            'drgustavo': { name: 'Dr. Gustavo', title: 'Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png', description: `<p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance ). Dr. Gustavo protege a empresa de riscos legais.</p><p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>` }
+            'drgustavo': { name: 'Dr. Gustavo', title: 'Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png', description: `<p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance  ). Dr. Gustavo protege a empresa de riscos legais.</p><p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>` }
         };
         const agentIds = Object.keys(agents);
         let currentCarouselIndex = 0;
         const chatHistories = {
-            'allex': [{ sender: 'agent', text: 'Allex aqui. Como posso ajudar a expandir sua visão hoje?' }],
-            'rafaela': [{ sender: 'agent', text: 'Olá! Sou a Rafaela. Vamos criar uma campanha de marketing de impacto?' }],
-            'eduardo': [{ sender: 'agent', text: 'Eduardo. Vamos analisar os números e otimizar seus investimentos.' }],
-            'andre': [{ sender: 'agent', text: 'André falando. Pronto para batermos algumas metas de vendas?' }],
-            'carolina': [{ sender: 'agent', text: 'Carolina, R.H. Como posso ajudar a gerir seu time?' }],
-            'beatriz': [{ sender: 'agent', text: 'Beatriz, C.S. Qual problema do seu cliente vamos solucionar?' }],
-            'leo': [{ sender: 'agent', text: 'Leo. Qual desafio tecnológico vamos resolver hoje?' }],
-            'drgustavo': [{ sender: 'agent', text: 'Dr. Gustavo a postos. Precisa de alguma consultoria jurídica?' }]
+            'allex': [{ role: 'assistant', content: 'Allex aqui. Como posso ajudar a expandir sua visão hoje?' }],
+            'rafaela': [{ role: 'assistant', content: 'Olá! Sou a Rafaela. Vamos criar uma campanha de marketing de impacto?' }],
+            'eduardo': [{ role: 'assistant', content: 'Eduardo. Vamos analisar os números e otimizar seus investimentos.' }],
+            'andre': [{ role: 'assistant', content: 'André falando. Pronto para batermos algumas metas de vendas?' }],
+            'carolina': [{ role: 'assistant', content: 'Carolina, R.H. Como posso ajudar a gerir seu time?' }],
+            'beatriz': [{ role: 'assistant', content: 'Beatriz, C.S. Qual problema do seu cliente vamos solucionar?' }],
+            'leo': [{ role: 'assistant', content: 'Leo. Qual desafio tecnológico vamos resolver hoje?' }],
+            'drgustavo': [{ role: 'assistant', content: 'Dr. Gustavo a postos. Precisa de alguma consultoria jurídica?' }]
         };
         let activeChatAgentId = 'allex';
 
@@ -424,12 +545,10 @@
         // == LÓGICA DE NAVEGAÇÃO E RENDERIZAÇÃO INICIAL       ==
         // =======================================================
         
-document.addEventListener('DOMContentLoaded', () => {
-    renderAgentFormation(loginFormation);
-    // Adiciona um pequeno delay para garantir que os elementos foram renderizados
-    setTimeout(drawLoginWebLines, 100); 
-});
-
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAgentFormation(loginFormation);
+            setTimeout(drawLoginWebLines, 100);
+        });
 
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -546,41 +665,82 @@ document.addEventListener('DOMContentLoaded', () => {
             const history = chatHistories[activeChatAgentId];
             chatHeaderTitleWeb.textContent = `Conversa com ${agent.name}`;
             chatHistoryWeb.innerHTML = '';
-            history.forEach(message => addMessageToDom(message.text, message.sender, agent.img, chatHistoryWeb));
+            history.forEach(message => addMessageToDom(message.content, message.role, agent.img, chatHistoryWeb));
             chatHistoryWeb.scrollTop = chatHistoryWeb.scrollHeight;
         }
 
-        function addMessageToDom(text, sender, agentImg, container) {
+        function addMessageToDom(text, role, agentImg, container) {
             const messageGroup = document.createElement('div');
-            messageGroup.classList.add('message-group', sender);
-            messageGroup.innerHTML = (sender === 'agent')
-                ? `<img src="${agentImg}" class="message-avatar"><div class="message-content"><div class="message-bubble">${text}</div></div>`
-                : `<div class="message-content"><div class="message-bubble">${text}</div></div>`;
+            const senderClass = (role === 'user') ? 'user' : 'agent';
+            messageGroup.classList.add('message-group', senderClass);
+            
+            if (senderClass === 'agent') {
+                messageGroup.innerHTML = `<img src="${agentImg}" class="message-avatar"><div class="message-content"><div class="message-bubble">${text}</div></div>`;
+            } else {
+                messageGroup.innerHTML = `<div class="message-content"><div class="message-bubble">${text}</div></div>`;
+            }
             container.appendChild(messageGroup);
             container.scrollTop = container.scrollHeight;
         }
 
-        chatFormWeb.addEventListener('submit', function(event) {
+        function addTypingIndicator(container) {
+            const typingIndicator = document.createElement('div');
+            typingIndicator.classList.add('message-group', 'agent', 'typing-indicator');
+            typingIndicator.innerHTML = `<img src="${agents[activeChatAgentId].img}" class="message-avatar"><div class="message-content"><div class="message-bubble"><span></span><span></span><span></span></div></div>`;
+            container.appendChild(typingIndicator);
+            container.scrollTop = container.scrollHeight;
+            return typingIndicator;
+        }
+
+        async function getOpenAIResponse(agentId, history) {
+            const typingIndicator = addTypingIndicator(chatHistoryWeb);
+            try {
+                const response = await fetch('http://127.0.0.1:5001/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ agent_id: agentId, history: history } )
+                });
+                typingIndicator.remove();
+                if (!response.ok) {
+                    throw new Error('Erro na resposta da rede');
+                }
+                const data = await response.json();
+                return data.response;
+            } catch (error) {
+                typingIndicator.remove();
+                console.error("Erro ao buscar resposta da API:", error);
+                return "Erro: Não foi possível conectar ao servidor.";
+            }
+        }
+
+        chatFormWeb.addEventListener('submit', async function(event) {
             event.preventDefault();
             const userMessageText = chatInputWeb.value.trim();
             if (userMessageText === '') return;
-            chatHistories[activeChatAgentId].push({ sender: 'user', text: userMessageText });
+
+            const userMessage = { role: 'user', content: userMessageText };
+            chatHistories[activeChatAgentId].push(userMessage);
             addMessageToDom(userMessageText, 'user', null, chatHistoryWeb);
             chatInputWeb.value = '';
-            setTimeout(() => {
-                const agentResponse = `Resposta simulada para: "${userMessageText}"`;
-                chatHistories[activeChatAgentId].push({ sender: 'agent', text: agentResponse });
-                addMessageToDom(agentResponse, 'agent', agents[activeChatAgentId].img, chatHistoryWeb);
-            }, 1500);
+
+            const aiResponseText = await getOpenAIResponse(activeChatAgentId, chatHistories[activeChatAgentId]);
+            
+            const aiMessage = { role: 'assistant', content: aiResponseText };
+            chatHistories[activeChatAgentId].push(aiMessage);
+            addMessageToDom(aiResponseText, 'assistant', agents[activeChatAgentId].img, chatHistoryWeb);
         });
 
         backToWebBtn.addEventListener('click', showWeb);
 
-        function drawChatWebLines() {
-            const canvas = document.getElementById('chat-web-canvas');
+        // =======================================================
+        // == FUNÇÕES DE DESENHO DA TEIA                      ==
+        // =======================================================
+
+        function drawLines(canvasId, formationSelector, logoSelector) {
+            const canvas = document.getElementById(canvasId);
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            const container = document.querySelector('.chat-static-formation');
+            const container = document.querySelector(formationSelector);
             const dpr = window.devicePixelRatio || 1;
             const rect = container.getBoundingClientRect();
 
@@ -609,96 +769,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            const logoEl = document.querySelector('.chat-web-logo');
+            const logoEl = document.querySelector(logoSelector);
             const logoPos = getCenter(logoEl);
             
-            const allexPos = getCenter(container.querySelector('[data-agent-id="allex"]'));
-            const rafaelaPos = getCenter(container.querySelector('[data-agent-id="rafaela"]'));
-            const eduardoPos = getCenter(container.querySelector('[data-agent-id="eduardo"]'));
-            const andrePos = getCenter(container.querySelector('[data-agent-id="andre"]'));
-            const carolinaPos = getCenter(container.querySelector('[data-agent-id="carolina"]'));
-            const beatrizPos = getCenter(container.querySelector('[data-agent-id="beatriz"]'));
-            const leoPos = getCenter(container.querySelector('[data-agent-id="leo"]'));
-            const drgustavoPos = getCenter(container.querySelector('[data-agent-id="drgustavo"]'));
+            const agentPositions = {};
+            agentIds.forEach(id => {
+                agentPositions[id] = getCenter(container.querySelector(`[data-agent-id="${id}"]`));
+            });
 
-            connect(logoPos, rafaelaPos);
-            connect(logoPos, eduardoPos);
-            connect(logoPos, andrePos);
+            if (logoSelector) {
+                connect(logoPos, agentPositions.rafaela);
+                connect(logoPos, agentPositions.eduardo);
+                connect(logoPos, agentPositions.andre);
+            }
 
-            connect(rafaelaPos, allexPos);
-            connect(eduardoPos, allexPos);
-            connect(andrePos, allexPos);
-            
-            connect(rafaelaPos, carolinaPos);
-            connect(andrePos, leoPos);
-            
-            connect(carolinaPos, drgustavoPos);
-            connect(beatrizPos, allexPos);
-            connect(leoPos, allexPos);
-            
-            connect(drgustavoPos, allexPos);
-            connect(beatrizPos, drgustavoPos);
+            connect(agentPositions.rafaela, agentPositions.allex);
+            connect(agentPositions.eduardo, agentPositions.allex);
+            connect(agentPositions.andre, agentPositions.allex);
+            connect(agentPositions.rafaela, agentPositions.carolina);
+            connect(agentPositions.andre, agentPositions.leo);
+            connect(agentPositions.carolina, agentPositions.drgustavo);
+            connect(agentPositions.beatriz, agentPositions.allex);
+            connect(agentPositions.leo, agentPositions.allex);
+            connect(agentPositions.drgustavo, agentPositions.allex);
+            connect(agentPositions.beatriz, agentPositions.drgustavo);
         }
-// Dentro da tag <script>
 
-function drawLoginWebLines() {
-    const canvas = document.getElementById('login-web-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const container = document.querySelector('#login-section .static-formation');
-    const dpr = window.devicePixelRatio || 1;
-    const rect = container.getBoundingClientRect();
-
-    if (rect.width === 0 || rect.height === 0) return;
-
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-    ctx.strokeStyle = 'var(--gold-primary)';
-    ctx.lineWidth = 1;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    function getCenter(element) {
-        if (!element) return null;
-        const x = element.offsetLeft + element.offsetWidth / 2;
-        const y = element.offsetTop + element.offsetHeight / 2;
-        return { x, y };
-    }
-
-    function connect(pos1, pos2) {
-        if (pos1 && pos2) {
-            ctx.beginPath();
-            ctx.moveTo(pos1.x, pos1.y);
-            ctx.lineTo(pos2.x, pos2.y);
-            ctx.stroke();
-        }
-    }
-
-    // Pega a posição dos agentes na tela de login
-    const allexPos = getCenter(container.querySelector('[data-agent-id="allex"]'));
-    const rafaelaPos = getCenter(container.querySelector('[data-agent-id="rafaela"]'));
-    const eduardoPos = getCenter(container.querySelector('[data-agent-id="eduardo"]'));
-    const andrePos = getCenter(container.querySelector('[data-agent-id="andre"]'));
-    const carolinaPos = getCenter(container.querySelector('[data-agent-id="carolina"]'));
-    const beatrizPos = getCenter(container.querySelector('[data-agent-id="beatriz"]'));
-    const leoPos = getCenter(container.querySelector('[data-agent-id="leo"]'));
-    const drgustavoPos = getCenter(container.querySelector('[data-agent-id="drgustavo"]'));
-
-    // Conecta os agentes entre si
-    connect(rafaelaPos, allexPos);
-    connect(eduardoPos, allexPos);
-    connect(andrePos, allexPos);
-    
-    connect(rafaelaPos, carolinaPos);
-    connect(andrePos, leoPos);
-    
-    connect(carolinaPos, drgustavoPos);
-    connect(beatrizPos, allexPos);
-    connect(leoPos, allexPos);
-    
-    connect(drgustavoPos, allexPos);
-    connect(beatrizPos, drgustavoPos);
-}
+        function drawLoginWebLines() { drawLines('login-web-canvas', '#login-section .static-formation', null); }
+        function drawChatWebLines() { drawLines('chat-web-canvas', '#chat-platform-section .chat-static-formation', '.chat-web-logo'); }
 
         // =======================================================
         // == LÓGICA DO MENU MOBILE E LOGOUT                  ==
