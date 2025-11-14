@@ -674,6 +674,25 @@
 .panel-agent-identity h2 {
     margin-bottom: 0;
 }
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Estilo para os novos ícones da navegação */
+.app-nav-icon {
+    width: 20px;  /* Define a largura do ícone */
+    height: auto; /* Mantém a proporção */
+    filter: brightness(0) invert(1); /* Colore o ícone de branco/cinza */
+    transition: filter 0.2s ease; /* Anima a mudança de cor */
+}
+
+/* Muda a cor do ícone no hover */
+.app-nav-link:hover .app-nav-icon {
+    filter: none; /* Remove o filtro, mostrando a cor dourada original */
+}
+
+/* Muda a cor do ícone quando o link está ativo */
+.app-nav-link.active .app-nav-icon {
+    filter:  none; /* Colore o ícone de preto para contrastar com o fundo dourado */
+}
 
 /* ============================================= */
 /* == EFEITO DE PULSO NO AGENTE CENTRAL (ALLEX) == */
@@ -703,6 +722,72 @@
     /* Aplica a animação 'pulse' */
     animation: pulse 2.5s infinite;
 }
+
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat do Dr. Gustavo */
+.chat-area-panel.juridico-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-juridico/fundo' );
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+}
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat do Leo */
+.chat-area-panel.tecnologia-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-tecnologia/fundo' );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat da Rafaela */
+.chat-area-panel.marketing-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-marketing/fundo' );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat do Eduardo */
+.chat-area-panel.financeiro-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-financeiro/fundo' );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat do André */
+.chat-area-panel.comercial-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-comercial/fundo' );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat do Allex */
+.chat-area-panel.mastermind-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-quantum/fundo' );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
+
+/* Fundo personalizado para o chat da Carolina (RH) */
+.chat-area-panel.rh-bg {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-RH/fundo' );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 
 /* Define a animação 'pulse' */
 @keyframes pulse {
@@ -824,16 +909,19 @@
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="sidebar-shield-logo">
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-nome/logo" alt="Quantum Minds Logo" class="sidebar-title-logo">
             </div>
-            <nav class="app-nav">
-                <a href="#" class="app-nav-link" data-target="agents-info-section">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 21V5a2 2 0 00-2-2H9a2 2 0 00-2 2v16"></path></svg>
-                    <span>Mesa de Mentores</span>
-                </a>
-                <a href="#" class="app-nav-link" data-target="chat-platform-section">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    <span>Chats</span>
-                </a>
-            </nav>
+<nav class="app-nav">
+    <!-- Link "Mesa de Mentores" COM O NOVO ÍCONE -->
+    <a href="#" class="app-nav-link" data-target="agents-info-section">
+        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" class="app-nav-icon">
+        <span>Mesa de Mentores</span>
+    </a>
+    
+    <!-- Link "Chats" COM O NOVO ÍCONE -->
+    <a href="#" class="app-nav-link" data-target="chat-platform-section">
+        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" class="app-nav-icon">
+        <span>Chats</span>
+    </a>
+</nav>
              <div class="app-sidebar-footer">
                 <a href="#" id="logout-btn" class="app-nav-link">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
@@ -1031,14 +1119,14 @@ function renderAgentWeb() {
         'drgustavo': 'transform: translateY(255px);',
 
         // --- BANCADA DA ESQUERDA (Alinhada em X = -240px) ---
-        'leo':       'transform: translate(-160px, -150px);',
-        'beatriz':   'transform: translate(-160px, 0px);',
-        'carolina':  'transform: translate(-160px, 150px);',
+        'leo':       'transform: translate(-165px, -150px);',
+        'beatriz':   'transform: translate(-165px, 0px);',
+        'carolina':  'transform: translate(-165px, 150px);',
 
         // --- BANCADA DA DIREITA (Alinhada em X = 240px) ---
-        'rafaela':   'transform: translate(160px, -150px);', // X: 240px (direita), Y: -150px (em cima)
-        'eduardo':   'transform: translate(160px, 0px);',    // X: 240px (direita), Y: 0px (no centro)
-        'andre':     'transform: translate(160px, 150px);'   // X: 240px (direita), Y: 150px (em baixo)
+        'rafaela':   'transform: translate(165px, -150px);', // X: 240px (direita), Y: -150px (em cima)
+        'eduardo':   'transform: translate(165px, 0px);',    // X: 240px (direita), Y: 0px (no centro)
+        'andre':     'transform: translate(165px, 150px);'   // X: 240px (direita), Y: 150px (em baixo)
     };
     agentIds.forEach(agentId => {
         const agent = agents[agentId];
@@ -1132,11 +1220,47 @@ closePanelBtn.addEventListener('click', closeAgentDetails);
             setTimeout(drawChatWebLines, 100);
         }
 
-        function showConversation() {
-            chatWebContainer.style.display = 'none';
-            chatConversationContainer.style.display = 'block';
-            renderActiveChatWeb();
-        }
+// SUBSTITUA SUA FUNÇÃO 'showConversation' POR ESTA VERSÃO ATUALIZADA
+function showConversation() {
+    const chatPanel = document.querySelector('.chat-conversation-container .chat-area-panel');
+
+    // Limpa TODAS as classes de fundo personalizadas
+    chatPanel.classList.remove('juridico-bg', 'tecnologia-bg', 'marketing-bg', 'financeiro-bg', 'comercial-bg', 'mastermind-bg', 'rh-bg'); 
+
+    // Verifica qual agente está ativo e aplica a classe correta
+    if (activeChatAgentId === 'drgustavo') {
+        chatPanel.classList.add('juridico-bg');
+    }
+    else if (activeChatAgentId === 'leo') {
+        chatPanel.classList.add('tecnologia-bg');
+    }
+    else if (activeChatAgentId === 'rafaela') {
+        chatPanel.classList.add('marketing-bg');
+    }
+    else if (activeChatAgentId === 'eduardo') {
+        chatPanel.classList.add('financeiro-bg');
+    }
+    else if (activeChatAgentId === 'andre') {
+        chatPanel.classList.add('comercial-bg');
+    }
+    else if (activeChatAgentId === 'allex') {
+        chatPanel.classList.add('mastermind-bg');
+    }
+    // **LÓGICA ADICIONADA AQUI**
+    else if (activeChatAgentId === 'carolina') {
+        chatPanel.classList.add('rh-bg');
+    }
+
+    // O resto da função continua igual
+    chatWebContainer.style.display = 'none';
+    chatConversationContainer.style.display = 'block';
+    renderActiveChatWeb();
+}
+
+
+
+
+
 
         function showWeb() {
             chatConversationContainer.style.display = 'none';
