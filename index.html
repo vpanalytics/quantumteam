@@ -44,98 +44,124 @@
             width: 100vw; 
             height: 100vh;
             justify-content: center;
-            background-color: var(--background-light);
+            background-image: url('https://victorpaulovichbueno-gif.github.io/sala-quantum/sala' );
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        .left-panel, .right-panel { height: 100%; display: flex; justify-content: center; align-items: center; padding: 2rem; }
-        .static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
-        .agent-container { position: absolute; display: flex; flex-direction: column; align-items: center; }
-        
-        .agent-avatar {
+        .left-panel, .right-panel { 
+            height: 100%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 2rem; 
+        }
+        .static-formation { 
+            position: relative; 
+            width: 600px; 
+            height: 600px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        #login-section .agent-container { 
+            position: absolute; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        #login-section .agent-avatar {
             width: 140px;
             height: auto;
             display: block;
         }
-        .central-agent .agent-avatar {
+        #login-section .central-agent .agent-avatar {
             width: 220px;
         }
+        #login-section .agent-info {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000b1b;
+            color: var(--gold-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            white-space: nowrap;
+            border: 1px solid rgba(197, 167, 115, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        #login-section .central-agent .agent-info {
+            background-color: var(--gold-primary);
+            color: #000b1b;
+            border: none;
+            font-size: 0.9rem;
+        }
 
-        .agent-info { margin-top: 0.75rem; text-align: center; }
-        .agent-name { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); }
-        .agent-title { font-size: 0.75rem; font-weight: 300; color: var(--text-secondary); }
-        
         .login-box {
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             position: relative;
-            background: #000000;
-            background-image: radial-gradient(circle at center, rgba(197, 167, 115, 0.15) 0%, transparent 60%);
-            border-radius: 20px;
-            padding: 2.5rem 3.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: #232C3B;
+            border-radius: 25px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             text-align: center;
             border: 1px solid rgba(197, 167, 115, 0.2);
+            overflow: hidden;
         }
-.login-video-background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50% );
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1; /* Coloca o vídeo atrás de todo o conteúdo */
-    filter: brightness(0.7); /* Escurece um pouco o vídeo para o texto ficar legível */
-}
-        .login-shield-logo {
-            width: 80px;
-            height: auto;
-            margin-bottom: 1rem;
+        .login-shield-logo, .login-title-logo, .login-subtitle, #login-form, .login-links {
+            position: relative;
+            z-index: 1;
         }
-        .login-title-logo {
-            width: 80%;
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 2.5rem;
-        }
-        .input-group { margin-bottom: 1.5rem; text-align: left; }
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
+        .login-shield-logo { width: 80px; height: auto; margin-bottom: 1rem; }
+        .login-title-logo { width: 80%; max-width: 300px; height: auto; margin-bottom: 1rem; }
+        .login-subtitle {
             color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+        .input-group { margin-bottom: 1.5rem; text-align: left; position: relative; }
+        .input-group label {
+            display: block; margin-bottom: 0.5rem;
+            font-weight: 500; font-size: 0.8rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
         }
         .input-group input {
-            width: 100%;
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(197, 167, 115, 0.3);
-            border-radius: 5px;
-            color: white;
-            font-size: 1rem;
+            width: 100%; padding: 1rem 1.2rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(197, 167, 115, 0.5);
+            border-radius: 50px;
+            color: white; font-size: 1rem;
         }
-        .input-group input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        .input-group input::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .password-group input { padding-right: 3.5rem; }
+        .password-toggle-icon {
+            position: absolute; right: 1.2rem;
+            top: 55%; cursor: pointer;
+            font-size: 1.5rem;
+            color: rgba(197, 167, 115, 0.7);
+        }
         .btn-login {
-            width: 100%;
-            padding: 1rem;
-            margin-top: 1rem;
+            width: 100%; padding: 1rem; margin-top: 1rem;
             background-color: var(--gold-primary);
-            color: black;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            color: #000b1b; border: none;
+            border-radius: 50px;
+            font-size: 1.1rem; font-weight: bold;
+            cursor: pointer; transition: background-color 0.3s ease;
         }
         .btn-login:hover { background-color: #dfc395; }
-
+        .login-links { margin-top: 2rem; font-size: 0.9rem; }
+        .login-links a { color: var(--gold-primary); text-decoration: none; }
+        .login-links a:hover { text-decoration: underline; }
+        .signup-link { margin-top: 1rem; color: rgba(255, 255, 255, 0.7); }
         #login-web-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
         }
 
@@ -153,15 +179,15 @@
         .app-sidebar {
             width: 280px;
             height: 100%;
-            background: #000000;
-            background-image: radial-gradient(circle at top, rgba(197, 167, 115, 0.15) 0%, transparent 70%);
+            background-image: url('https://victorpaulovichbueno-gif.github.io/skin-barralateral-quantum/imagem' );
+            background-size: cover;
+            background-position: center;
             border-right: 1px solid rgba(197, 167, 115, 0.2);
             padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
         }
-
         .app-sidebar-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -169,7 +195,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         .sidebar-shield-logo {
             width: 60px;
             height: auto;
@@ -180,9 +205,7 @@
             max-width: 200px;
             height: auto;
         }
-
         .app-nav { display: flex; flex-direction: column; gap: 0.5rem; }
-        
         .app-nav-link {
             display: flex;
             align-items: center;
@@ -202,623 +225,486 @@
             background-color: var(--gold-primary);
             color: black;
         }
-        .app-nav-link svg {
+        .app-nav-icon {
             width: 20px;
-            height: 20px;
-            stroke: currentColor;
+            height: auto;
+            filter: brightness(0) invert(1);
+            transition: filter 0.2s ease;
         }
-
+        .app-nav-link:hover .app-nav-icon {
+            filter: none;
+        }
+        .app-nav-link.active .app-nav-icon {
+            filter: none;
+        }
         .app-sidebar-footer {
             margin-top: auto;
             padding-top: 1rem;
             border-top: 1px solid rgba(197, 167, 115, 0.2);
         }
         #logout-btn:hover { background-color: #d9534f; color: white; }
+        #logout-btn svg { width: 20px; height: 20px; stroke: currentColor; }
 
         .app-main-content { flex-grow: 1; height: 100%; overflow-y: auto; position: relative; }
-        .app-main-content > section { display: none; width: 100%; height: 100%; flex-direction: column; }
-
-/* ============================================= */
-/* == NOVA SEÇÃO "NOSSOS AGENTES"             == */
-/* ============================================= */
-#agents-info-section {
-    padding: 2rem 3rem;
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.agent-web-header {
-    text-align: left;
-    margin-bottom: 2rem;
-    flex-shrink: 0;
-}
-.agent-web-header h1 {
-    font-family: var(--font-title);
-    font-size: 3rem;
-    color: var(--gold-primary);
-}
-
-.agent-web-display {
-    width: 100%;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translateX(0);
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-}
-.agent-web-display.panel-active {
-    transform: translateX(-225px);
-}
-
-.agent-web-formation {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Encontre esta regra e adicione o z-index */
-.agent-web-formation .agent-container {
-    position: absolute;
-    cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    z-index: 10; /* Camada 10 (acima da mesa) */
-}
-
-
-.agent-web-formation .agent-avatar {
-    width: 120px;
-    height: auto;
-    display: block;
-    position: relative; /* CRUCIAL para a animação funcionar */
-}
-.agent-web-formation .central-agent .agent-avatar {
-    width: 220px;
-}
-
-/* REGRA CORRIGIDA E FINAL */
-.agent-web-formation .agent-container:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 15px var(--gold-glow));
-    z-index: 20; /* <-- ADICIONE ESTA LINHA */
-}
-
-
-.agent-web-formation .agent-info {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    white-space: nowrap;
-    text-align: center;
-    pointer-events: none;
-}
-.agent-web-formation .agent-container:hover .agent-info {
-    opacity: 1;
-}
-.agent-web-formation .agent-info .agent-name {
-    color: var(--gold-primary);
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-.agent-web-formation .agent-info .agent-title {
-    color: white;
-    font-size: 0.8rem;
-}
-
-.agent-details-panel {
-    position: absolute;
-    top: 0;
-    right: -500px;
-    width: 450px;
-    height: 100%;
-    background-color: var(--background-panel);
-    border-left: 1px solid var(--border-color);
-    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-    transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    padding: 2rem;
-    overflow-y: auto;
-    z-index: 150;
-}
-.agent-details-panel.active {
-    right: 0;
-}
-
-.close-panel-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-}
-.panel-content h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
-.panel-content h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
-.panel-content p { margin-bottom: 1rem; line-height: 1.6; color: var(--text-secondary); }
-.panel-content strong { color: var(--text-dark); }
-
-/* EFEITO DE PULSO NO AGENTE CENTRAL (ALLEX) */
-.agent-web-formation .central-agent .agent-avatar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://victorpaulovichbueno-gif.github.io/agente-1-borda/agente-1-borda.png' );
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: -1;
-    animation: pulse 2.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    70% { transform: scale(1.4); opacity: 0; }
-    100% { transform: scale(1.4); opacity: 0; }
-}
+        .app-main-content > section { display: none; width: 100%; height: 100%; }
+        #agents-info-section { display: none; }
 
         /* ============================================= */
-        /* == TELA "CHATS" (TEIA DE AGENTES)          == */
+        /* == SEÇÃO "MESA DE MENTORES" (Layout de Grid) == */
         /* ============================================= */
-        #chat-platform-section { padding: 2rem 3rem; justify-content: center; align-items: center; }
-        .chat-agent-web-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
-        
-        .chat-static-formation { position: relative; width: 600px; height: 600px; display: flex; justify-content: center; align-items: center; }
-        .chat-static-formation .agent-container { cursor: pointer; transition: transform 0.3s ease; z-index: 10; position: absolute; display: flex; flex-direction: column; align-items: center; }
-        
-        .chat-web-logo {
-            position: absolute;
-            width: 250px;
-            height: auto;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-        }
-
-        #chat-web-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        #agents-info-section {
+            display: grid;
+            grid-template-columns: 60% 40%;
             height: 100%;
-            z-index: 1;
+            padding: 0;
+            background-image: url('https://victorpaulovichbueno-gif.github.io/sala-branca-quantum/sala' );
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
-
-        .chat-static-formation .agent-info {
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .agents-grid-container {
+            padding: 3rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .agents-grid-header {
+            text-align: left;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
+        }
+        .agents-grid-header h1 {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            color: var(--text-dark);
+        }
+        .agents-grid-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+        .agents-grid-formation {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .agents-grid-formation .agent-container {
             position: absolute;
-            bottom: -40px;
-            left: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .agents-grid-formation .agent-avatar {
+            width: 110px;
+            height: auto;
+            display: block;
+        }
+        .agents-grid-formation .central-agent .agent-avatar {
+            width: 140px;
+        }
+        .agents-grid-formation .agent-info {
+            position: absolute; bottom: -15px; left: 50%;
             transform: translateX(-50%);
-            background-color: black;
-            padding: 5px 10px;
-            border-radius: 5px;
-            white-space: nowrap;
-            text-align: center;
+            background-color: #000b1b; color: var(--gold-primary);
+            padding: 0.4rem 1rem; border-radius: 8px;
+            text-align: center; white-space: nowrap;
+            border: 1px solid rgba(197, 167, 115, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            font-size: 0.8rem; font-weight: 500;
         }
-        .chat-static-formation .agent-container:hover .agent-info {
-            opacity: 1;
+        .agents-grid-formation .central-agent .agent-info {
+            background-color: var(--gold-primary); color: #000b1b;
+            font-size: 0.9rem;
         }
-        .chat-static-formation .agent-info .agent-name {
-            color: var(--gold-primary);
-            font-weight: bold;
-        }
-        .chat-static-formation .agent-info .agent-title {
-            color: white;
-            font-size: 0.8rem;
-        }
-
-        .chat-static-formation .agent-container:hover {
+        .agents-grid-formation .agent-container:hover {
             transform: scale(1.1);
-            z-index: 20;
         }
+        .expert-card-panel {
+            background-color: rgba(249, 250, 251, 0.95);
+            backdrop-filter: blur(10px);
+            border-left: 1px solid var(--border-color);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .expert-card-content .panel-header {
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .expert-card-content .panel-main-title {
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+        .expert-card-content .panel-agent-identity {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+/* REGRA CORRIGIDA PARA O AVATAR NA FICHA DO EXPERT */
+.expert-card-content .panel-agent-avatar {
+    width: 90px;  /* Controla a largura da imagem */
+    height: auto; /* A altura se ajusta automaticamente para manter a proporção */
+    
+    /* A linha 'clip-path' foi REMOVIDA */
+}
 
-        .chat-conversation-container { display: none; width: 100%; height: 100%; }
-        .chat-conversation-container .chat-area-panel { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--background-light); height: 100%; }
-        .chat-conversation-container .chat-area-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); font-size: 1.2rem; font-weight: 600; background-color: var(--background-panel); display: flex; align-items: center; }
-        .chat-conversation-container .chat-history { flex-grow: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
-        .chat-conversation-container .message-group { display: flex; gap: 16px; max-width: 75%; }
-        .chat-conversation-container .message-group.user { align-self: flex-end; flex-direction: row-reverse; }
-        .chat-conversation-container .message-group.agent { align-self: flex-start; }
-        
-        .chat-conversation-container .message-avatar {
+        .expert-card-content .panel-agent-name h2 {
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+        .expert-card-content .panel-agent-name h3 {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .expert-card-content .panel-body p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .expert-card-content .panel-body strong {
+            display: block;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .btn-access-chat {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--gold-primary);
+            color: #000b1b;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn-access-chat:hover {
+            background-color: #dfc395;
+        }
+        .btn-access-chat img {
             width: 40px;
             height: auto;
-            align-self: flex-end;
         }
-
-        .chat-conversation-container .message-content { display: flex; flex-direction: column; gap: 6px; }
-        .chat-conversation-container .message-bubble { padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.5; }
-        .chat-conversation-container .user .message-bubble { background-color: var(--gold-primary); color: white; border-bottom-right-radius: 4px; }
-        .chat-conversation-container .agent .message-bubble { background-color: var(--background-panel); border: 1px solid var(--border-color); border-bottom-left-radius: 4px; }
-        .chat-conversation-container .chat-input-area { padding: 16px 24px; border-top: 1px solid var(--border-color); display: flex; align-items: center; gap: 16px; background-color: var(--background-panel); }
-        .chat-conversation-container #chat-input-web { flex-grow: 1; border: 1px solid var(--border-color); background-color: var(--background-light); border-radius: 8px; padding: 12px 16px; font-size: 1rem; }
-        .chat-conversation-container #send-button-web { width: 48px; height: 48px; border-radius: 8px; border: none; background-color: var(--gold-primary); color: white; display: flex; justify-content: center; align-items: center; cursor: pointer; }
-        .back-button-web { display: flex; align-items: center; gap: 0.5rem; background: none; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem; color: var(--text-dark); margin-right: 1.5rem; }
-        .back-button-web:hover { background-color: var(--background-panel); }
-        #chat-header-title-web { font-size: 1.2rem; font-weight: 600; }
-        
-        .typing-indicator span {
-            height: 8px;
-            width: 8px;
-            background-color: #9E9EA1;
+        .expert-card-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+        }
+        .nav-arrow {
+            background: none;
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            display: inline-block;
-            animation: wave 1.3s infinite;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
         }
-        .typing-indicator span:nth-of-type(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-of-type(3) { animation-delay: 0.4s; }
-        @keyframes wave {
-            0%, 60%, 100% { transform: initial; }
-            30% { transform: translateY(-8px); }
+        .nav-arrow:hover {
+            background-color: #e5e7eb;
         }
-/* ============================================= */
-/* == NOVA SEÇÃO "NOSSOS AGENTES"             == */
-/* ============================================= */
-/* Regra para a seção principal */
-#agents-info-section {
-    display: block; /* Alterado de flex para block */
-    padding: 2rem 3rem;
-    position: relative;
-    overflow: hidden;
-    height: 100%; /* Garante que o container ocupe a altura toda */
-    display: flex; /* Usamos flexbox para alinhar verticalmente */
-    flex-direction: column; /* Empilha o header e o display */
-}
+        .nav-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #d1d5db;
+            transition: background-color 0.3s ease;
+        }
+        .nav-dot.active {
+            background-color: var(--gold-primary);
+        }
 
-
-/* Regra para a área móvel */
-.agent-web-display {
+        /* ============================================= */
+        /* == TELA "CHATS" (Interface Imersiva)       == */
+        /* ============================================= */
+#chat-platform-section {
+    display: flex;
+    height: 100%;
     width: 100%;
-    text-align: left;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translateX(0);
-    flex-grow: 1; /* Faz esta div ocupar o espaço vertical restante */
-    display: flex; /* Usamos flex para centralizar a teia verticalmente */
-    align-items: center;
+    padding: 0;
+    
+    /* --- AJUSTE PRINCIPAL APLICADO AQUI --- */
+    background-image: url('https://victorpaulovichbueno-gif.github.io/sala-branca-quantum/sala' );
+    background-size: cover;
+    background-position: center;
+    /* A transição não é mais necessária, pois o fundo é fixo */
+}
+        .chat-side-panel {
+            width: 280px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative; /* CRUCIAL para posicionar o fundo */
+            overflow: hidden;   /* Garante que a imagem de fundo não vaze */
+        }
+
+/* REGRA CORRIGIDA PARA CENTRALIZAÇÃO VERTICAL */
+.chat-side-panel-bg {
+    position: absolute;
+    left: 0;
+    
+    /* --- AJUSTES DE CENTRALIZAÇÃO APLICADOS AQUI --- */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* Seus ajustes de tamanho continuam aqui */
+    height: 35%;
+    width: 100px;
+    
+    z-index: 0;
+}
+
+        .chat-agent-display {
+            width: 180px;
+            height: 207px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            padding: 5px;
+            position: relative; /* Garante que o avatar fique sobre o fundo */
+            z-index: 1;
+        }
+/* REGRA MODIFICADA PARA O AVATAR DO AGENTE NO CHAT */
+#chat-active-agent-img {
+    width: 100%;
+    height: 100%;
+    
+    /* SUBSTITUA 'cover' POR 'contain' */
+    object-fit: contain; 
+    
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* REGRA MODIFICADA PARA SOBREPOSIÇÃO */
+.chat-main-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 3rem 2rem 0; 
+    max-height: 100vh;
+
+    /* --- NOVA LINHA ADICIONADA AQUI --- */
+    margin-left: -45px; /* <<-- CONTROLE AQUI O QUANTO VOCÊ QUER MOVER PARA A ESQUERDA */
 }
 
 
-/* NOVO ESTADO: Quando o painel está ativo */
-.agent-web-display.panel-active {
-    transform: translateX(-225px); /* Desloca para a esquerda (metade da largura do painel) */
+        .chat-main-header {
+            text-align: left; /* Alinha o texto à esquerda */
+            padding-bottom: 1.5rem;
+            color: #000b1b; /* Cor do texto Azul Quantum */
+            text-shadow: none; /* Remove a sombra que era para texto branco */
+            flex-shrink: 0;
+        }
+        .chat-main-header h1 {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+        }
+        .chat-main-header h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #000b1b; /* Cor do subtítulo também em Azul Quantum */
+            opacity: 0.8; /* Leve transparência para o subtítulo */
+        }
+.chat-history-area {
+    flex-grow: 1;
+    
+    /* --- MUDANÇAS CRUCIAIS APLICADAS AQUI --- */
+    background-color: transparent; /* 1. Fundo totalmente transparente */
+    backdrop-filter: none;         /* 2. Remove o efeito de desfoque */
+    border: none;                  /* 3. Remove a borda */
+    
+    border-radius: 20px;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+        .message-group {
+            display: flex;
+            gap: 1rem;
+            max-width: 75%;
+        }
+        .message-group.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        .message-group.agent {
+            align-self: flex-start;
+        }
+/* REGRA GERAL PARA AVATARES */
+.message-avatar {
+    width: 40px;
+    height: 40px; /* Altura fixa para garantir o alinhamento */
+    align-self: flex-start;
 }
 
-
-/* Regra para o cabeçalho (agora fixo) */
-.agent-web-header {
-    text-align: left;
-    margin-bottom: 2rem; /* Mantém o espaço abaixo do título */
-    flex-shrink: 0; /* Impede que o header encolha */
-}
-
-.agent-web-header h1 {
-    font-family: var(--font-title);
-    font-size: 3rem;
-    color: var(--gold-primary);
-}
-.agent-web-header p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-}
-
-.agent-web-formation {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    margin: 0 auto;
+/* NOVA REGRA PARA O AVATAR DO USUÁRIO */
+.user-avatar-initial {
+    background-image: url('https://victorpaulovichbueno-gif.github.io/icone-chat-quantum/imagem' );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Flexbox para centralizar a letra */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.agent-web-formation .agent-container {
-    position: absolute;
-    cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease;
+/* NOVA REGRA PARA A LETRA INICIAL */
+.initial-letter {
+    font-family: var(--font-title); /* Usa uma fonte de destaque */
+    font-weight: 700;
+    font-size: 1.1rem; /* Tamanho da letra */
+    color: #000b1b; /* Cor Azul Quantum */
 }
 
-.agent-web-formation .agent-avatar-wrapper {
-    width: 120px; /* Tamanho do hexágono */
-    height: 138px; /* Altura correspondente */
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    position: relative;
+
+        .message-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+.message-sender {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #000b1b; /* Mantém o Azul Quantum para legibilidade */
+    opacity: 0.7;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5); /* 4. Adiciona uma sombra para destacar do fundo */
+}
+
+
+/* REGRA MODIFICADA PARA O NOME DO USUÁRIO */
+.message-group.user .message-sender {
+    text-align: right;
+    color: #000b1b; /* <-- COR ALTERADA PARA O AZUL QUANTUM */
+    opacity: 1;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3); /* Sombra clara para o texto escuro */
+}
+
+
+/* --- AJUSTE DE COR NOS BALÕES DE MENSAGEM --- */
+.message-bubble {
+    padding: 1rem 1.2rem;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* 5. Adiciona uma sombra sutil aos balões */
+}
+
+/* Balão do Agente: fundo branco sólido e texto escuro */
+.message-group.agent .message-bubble {
+    background-color: #FFFFFF; /* 6. Fundo branco sólido */
+    color: #000b1b;
+    border-bottom-left-radius: 4px;
+}
+
+/* Balão do Usuário: continua igual, com alto contraste */
+.message-group.user .message-bubble {
     background-color: var(--gold-primary);
-    padding: 4px; /* Espessura da borda */
-    transition: background-color 0.3s ease;
+    color: #000b1b;
+    border-bottom-right-radius: 4px;
+}
+        .chat-input-footer {
+            padding-top: 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .chat-input-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #chat-input-web {
+            width: 100%;
+            padding: 1.2rem 5rem 1.2rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 11, 27, 0.8);
+            color: white;
+            font-size: 1rem;
+        }
+        #send-button-web {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        #send-button-web img {
+            width: 40px;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+        #send-button-web:hover img {
+            transform: scale(1.1);
+        }
+/* REGRA MODIFICADA COM A COR "AZUL QUANTUM" */
+.disclaimer {
+    font-size: 0.8rem;
+    color: #000b1b; /* <-- COR ALTERADA PARA O AZUL QUANTUM */
+    margin-top: 1rem;
+    opacity: 0.8; /* Opcional: Adiciona uma leve transparência para suavizar */
 }
 
-.agent-web-formation .central-agent .agent-avatar-wrapper {
-    width: 150px;
-    height: 172.5px;
-}
+        #chat-platform-section.juridico-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-juridico/fundo' ); }
+        #chat-platform-section.tecnologia-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-tecnologia/fundo' ); }
+        #chat-platform-section.marketing-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-marketing/fundo' ); }
+        #chat-platform-section.financeiro-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-financeiro/fundo' ); }
+        #chat-platform-section.comercial-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-comercial/fundo' ); }
+        #chat-platform-section.mastermind-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-quantum/fundo' ); }
+        #chat-platform-section.rh-bg { background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-RH/fundo' ); }
 
-
-
-.agent-web-formation .central-agent .agent-avatar {
-    width: 150px; /* Tamanho do agente central */
-}
-
-
-
-.agent-web-formation .agent-container:hover .agent-avatar-wrapper {
-    background-color: #fff; /* Borda fica mais clara */
-}
-
-/* Painel Lateral */
-.agent-details-panel {
-    position: absolute;
-    top: 0;
-    right: -500px; /* Começa fora da tela */
-    width: 450px;
-    height: 100%;
-    background-color: var(--background-panel);
-    border-left: 1px solid var(--border-color);
-    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-    transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    padding: 2rem;
-    overflow-y: auto;
-    z-index: 150;
-}
-
-.agent-details-panel.active {
-    right: 0; /* Desliza para dentro da tela */
-}
-
-.close-panel-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-}
-
-.panel-content h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
-.panel-content h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
-.panel-content p { margin-bottom: 1rem; line-height: 1.6; color: var(--text-secondary); }
-.panel-content strong { color: var(--text-dark); }
-/* Efeito de Pulso no Agente Central */
-.agent-web-formation .central-agent .agent-avatar-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--gold-primary);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    z-index: -1;
-    animation: pulse 2.5s infinite;
-}
-
-/* Estilo para a imagem da mesa do conselho */
-.council-table-img {
-    position: absolute;
-    width: 200px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1; /* Camada 1 (a mais baixa) */
-}
-/* ADICIONE ESTA NOVA REGRA PARA O LOGO NA MESA */
-.table-center-logo {
-    position: absolute;
-    width: 100px; /* <<-- AJUSTE O TAMANHO DO LOGO AQUI */
-    height: auto;
-    
-    /* Centraliza o logo exatamente no mesmo ponto da mesa */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    /* Define a camada do logo */
-    z-index: 2; /* Acima da mesa (z-index: 1) e abaixo dos agentes (z-index: 10) */
-    
-    opacity: 0.8; /* Opcional: dá uma leve transparência para integrar melhor com a mesa */
-}
-/* ADICIONE ESTAS NOVAS REGRAS AO SEU CSS */
-
-/* Estiliza o novo cabeçalho do painel */
-.panel-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-/* Título "Ficha do Expert" em dourado */
-.panel-main-title {
-    font-family: var(--font-title);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--gold-primary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-}
-
-/* Alinha o nome do agente e o selo lado a lado */
-.panel-agent-identity {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Espaço entre o nome e o selo */
-}
-
-/* Estilo para o selo */
-.panel-agent-seal {
-    width: 32px; /* Tamanho do selo */
-    height: auto;
-}
-
-/* Remove a margem padrão do h2 para alinhar com o selo */
-.panel-agent-identity h2 {
-    margin-bottom: 0;
-}
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Estilo para os novos ícones da navegação */
-.app-nav-icon {
-    width: 20px;  /* Define a largura do ícone */
-    height: auto; /* Mantém a proporção */
-    filter: brightness(0) invert(1); /* Colore o ícone de branco/cinza */
-    transition: filter 0.2s ease; /* Anima a mudança de cor */
-}
-
-/* Muda a cor do ícone no hover */
-.app-nav-link:hover .app-nav-icon {
-    filter: none; /* Remove o filtro, mostrando a cor dourada original */
-}
-
-/* Muda a cor do ícone quando o link está ativo */
-.app-nav-link.active .app-nav-icon {
-    filter:  none; /* Colore o ícone de preto para contrastar com o fundo dourado */
-}
 
 /* ============================================= */
-/* == EFEITO DE PULSO NO AGENTE CENTRAL (ALLEX) == */
+/* == ESTILIZAÇÃO DA BARRA DE ROLAGEM         == */
 /* ============================================= */
 
-/* Garante que o container do avatar possa ter um pseudo-elemento posicionado */
-.agent-web-formation .central-agent .agent-avatar {
-    position: relative;
+/* Aplica o estilo a todas as barras de rolagem dentro do app */
+#app-shell ::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
 }
 
-/* Cria o elemento que será a 'onda' de pulso */
-.agent-web-formation .central-agent .agent-avatar::after {
-    content: ''; /* Pseudo-elementos precisam de 'content' */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
-    /* Usa a MESMA imagem do Allex para a onda de pulso */
-    background-image: url('https://victorpaulovichbueno-gif.github.io/agente-1-borda/agente-1-borda.png' );
-    background-size: contain;
-    background-repeat: no-repeat;
-    
-    z-index: -1; /* Coloca a onda de pulso ATRÁS da imagem principal */
-    
-    /* Aplica a animação 'pulse' */
-    animation: pulse 2.5s infinite;
+/* Estilo da trilha (o fundo da barra) */
+#app-shell ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Fundo sutil, quase transparente */
+    border-radius: 10px;
 }
 
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Fundo personalizado para o chat do Dr. Gustavo */
-.chat-area-panel.juridico-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-juridico/fundo' );
-    background-size: cover; /* Faz a imagem cobrir toda a área */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
+/* Estilo do polegar (a parte que se move) */
+#app-shell ::-webkit-scrollbar-thumb {
+    background-color: var(--gold-primary); /* A cor dourada da nossa paleta! */
+    border-radius: 10px;
+    border: 2px solid transparent; /* Cria um preenchimento interno */
+    background-clip: content-box; /* Faz com que a borda transparente funcione como preenchimento */
 }
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
 
-/* Fundo personalizado para o chat do Leo */
-.chat-area-panel.tecnologia-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-tecnologia/fundo' );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Fundo personalizado para o chat da Rafaela */
-.chat-area-panel.marketing-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-marketing/fundo' );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Fundo personalizado para o chat do Eduardo */
-.chat-area-panel.financeiro-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-financeiro/fundo' );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Fundo personalizado para o chat do André */
-.chat-area-panel.comercial-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-comercial/fundo' );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Fundo personalizado para o chat do Allex */
-.chat-area-panel.mastermind-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-quantum/fundo' );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* ADICIONE ESTA NOVA REGRA AO SEU CSS */
-
-/* Fundo personalizado para o chat da Carolina (RH) */
-.chat-area-panel.rh-bg {
-    background-image: url('https://victorpaulovichbueno-gif.github.io/fundo-RH/fundo' );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Efeito de hover no polegar (opcional, mas elegante) */
+#app-shell ::-webkit-scrollbar-thumb:hover {
+    background-color: #dfc395; /* Um dourado um pouco mais claro no hover */
 }
 
 
-
-/* Define a animação 'pulse' */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1.8;
-    }
-    70% {
-        transform: scale(1.4); /* Expande a onda para 140% do tamanho */
-        opacity: 0; /* Desaparece a onda */
-    }
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-    70% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
-}
 
         /* ======================================================= */
         /* == REGRAS PARA LAYOUT MOBILE                       == */
@@ -828,21 +714,16 @@
         @media (max-width: 768px) {
             body { overflow: auto; }
             #login-section { flex-direction: column; height: auto; min-height: 100vh; justify-content: flex-start; }
-            .left-panel { width: 100%; height: auto; padding: 4rem 1rem 2rem 1rem; }
+            .left-panel { display: none; }
             .right-panel { width: 100%; height: auto; padding: 1rem; }
-            .static-formation { width: 320px; height: 320px; margin: 0 auto; }
+            .login-box { width: 100%; max-width: none; padding: 2rem 1rem; box-shadow: none; border-radius: 0; background-color: #000b1b; }
             
-            .agent-avatar { width: 60px; }
-            .central-agent .agent-avatar { width: 75px; }
-
-            .login-box { width: 100%; max-width: none; padding: 2rem 1rem; box-shadow: none; border-radius: 0; }
+            #app-shell { flex-direction: column; }
             .app-main-content { width: 100%; }
-            #agents-info-section { padding: 1.5rem 1rem; }
-            .carousel-header h1 { font-size: 2rem; }
             
             .mobile-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: var(--gold-secondary); border-bottom: 1px solid var(--border-color); width: 100%; }
             .mobile-header-title { font-family: var(--font-title); font-size: 1.5rem; color: var(--gold-primary); }
-            .mobile-menu-button { background: none; border: none; cursor: pointer; padding: 0.5rem; display: none; }
+            .mobile-menu-button { background: none; border: none; cursor: pointer; padding: 0.5rem; display: block; }
             .mobile-menu-button svg { width: 24px; height: 24px; color: var(--text-dark); }
             
             .app-sidebar { position: fixed; top: 0; left: -100%; width: 280px; height: 100%; z-index: 200; transition: left 0.3s ease-in-out; }
@@ -850,32 +731,22 @@
             .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 199; display: none; }
             .overlay.visible { display: block; }
             
-            #chat-platform-section { padding: 0; }
-            .chat-conversation-container .chat-area-panel { position: absolute; top: 0; left: 100%; width: 100%; height: 100%; transition: left 0.3s ease-in-out; z-index: 100; }
-            .chat-conversation-container.mobile-active { left: 0; }
-            .chat-conversation-container .chat-area-header { display: flex; align-items: center; }
-            .back-button-web { display: flex !important; }
+            #agents-info-section { grid-template-columns: 1fr; }
+            .agents-grid-container { display: none; }
+            .expert-card-panel { border-left: none; padding: 1.5rem; }
+            .expert-card-content .panel-agent-name h2 { font-size: 1.5rem; }
             
-            .carousel-content { flex-direction: column; gap: 0; }
-            .carousel-image-container, .carousel-text-container { flex-basis: 100%; width: 100%; }
-            .carousel-image-container { order: 1; }
-            .carousel-text-container { order: 2; text-align: center; padding-top: 1.5rem; }
-            .carousel-image-container img { max-height: 50vh; }
-            .carousel-text-container h2 { font-size: 2rem; margin-top: 0; }
-            .carousel-text-container h3 { font-size: 1.1rem; margin-bottom: 1.5rem; }
-            .carousel-description { text-align: left; }
-            .carousel-controls { justify-content: center; margin-top: 1.5rem; }
+            #chat-platform-section { flex-direction: column; padding: 1rem; }
+            .chat-side-panel { display: none; }
+            .chat-main-container { padding: 1rem; }
+            .chat-main-header h1 { font-size: 1.8rem; }
+            .chat-main-header h2 { font-size: 1rem; }
+            .chat-history-area { padding: 1rem; }
         }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
-    <header class="mobile-header">
-        <h2 class="mobile-header-title">Quantum Minds</h2>
-        <button id="mobile-menu-btn" class="mobile-menu-button">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
-        </button>
-    </header>
     
     <section id="login-section">
         <div class="left-panel">
@@ -885,20 +756,28 @@
         </div>
         <div class="right-panel">
             <div class="login-box">
-                    <!-- VÍDEO ADICIONADO AQUI -->
-    <video autoplay muted loop class="login-video-background">
-        <source src="https://videos.pexels.com/video-files/4784293/4784293-hd.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos em HTML5.
-    </video>
-    <!-- FIM DO VÍDEO -->
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="login-shield-logo">
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-nome/logo" alt="Quantum Minds Logo" class="login-title-logo">
+                
+                <p class="login-subtitle">Mantenha seus dados seguros</p>
+
                 <form id="login-form">
-                    <div class="input-group"><label for="email"> SUA CHAVE DE ACESSO
-</label><input type="text" id="email" value="v"></div>
-                    <div class="input-group"><label for="password">CÓDIGO SECRETO</label><input type="password" id="password" value="1"></div>
-                    <button type="submit" class="btn-login">ACESSAR O SANTUÁRIO</button>
+                    <div class="input-group">
+                        <label for="email">CHAVE DE ACESSO</label>
+                        <input type="text" id="email" placeholder="nome@dominio.com" value="v">
+                    </div>
+                    <div class="input-group password-group">
+                        <label for="password">CÓDIGO SECRETO</label>
+                        <input type="password" id="password" placeholder="••••••••" value="1">
+                        <span class="password-toggle-icon" id="password-toggle"></span>
+                    </div>
+                    <button type="submit" class="btn-login">ACESSAR A SABEDORIA</button>
                 </form>
+
+                <div class="login-links">
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    <p class="signup-link">Não tem conta? <a href="#">Cadastre-se!</a></p>
+                </div>
             </div>
         </div>
     </section>
@@ -909,19 +788,16 @@
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="sidebar-shield-logo">
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-nome/logo" alt="Quantum Minds Logo" class="sidebar-title-logo">
             </div>
-<nav class="app-nav">
-    <!-- Link "Mesa de Mentores" COM O NOVO ÍCONE -->
-    <a href="#" class="app-nav-link" data-target="agents-info-section">
-        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" class="app-nav-icon">
-        <span>Mesa de Mentores</span>
-    </a>
-    
-    <!-- Link "Chats" COM O NOVO ÍCONE -->
-    <a href="#" class="app-nav-link" data-target="chat-platform-section">
-        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" class="app-nav-icon">
-        <span>Chats</span>
-    </a>
-</nav>
+            <nav class="app-nav">
+                <a href="#" class="app-nav-link" data-target="agents-info-section">
+                    <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" class="app-nav-icon">
+                    <span>Mesa de Mentores</span>
+                </a>
+                <a href="#" class="app-nav-link" data-target="chat-platform-section">
+                    <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" class="app-nav-icon">
+                    <span>Chats</span>
+                </a>
+            </nav>
              <div class="app-sidebar-footer">
                 <a href="#" id="logout-btn" class="app-nav-link">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
@@ -929,64 +805,65 @@
                 </a>
             </div>
         </aside>
-        <main class="app-main-content">
-<!-- ======================================================= -->
-<!-- == NOVA SEÇÃO "NOSSOS AGENTES" COM TEIA E PAINEL LATERAL == -->
-<!-- SUBSTITUA A ESTRUTURA ATUAL DESTA SEÇÃO POR ESTA -->
-<section id="agents-info-section">
-    <!-- O CABEÇALHO FIXO -->
-    <div class="agent-web-header">
         
-    </div>
+        <main class="app-main-content">
+            <header class="mobile-header">
+                <h2 class="mobile-header-title">Quantum Minds</h2>
+                <button id="mobile-menu-btn" class="mobile-menu-button">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+                </button>
+            </header>
 
-    <!-- A DIV QUE SE MOVE -->
-    <div class="agent-web-display">
-    
-        <!-- IMAGEM DA MESA NO LUGAR CORRETO -->
-        <img src="https://victorpaulovichbueno-gif.github.io/mesa-quantum/imagem" alt="Mesa do Conselho Quantum" class="council-table-img">
-        <!-- LOGO NO CENTRO DA MESA (Camada 2 ) - ADICIONADO AQUI -->
-        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Logo Quantum Minds" class="table-center-logo">
-
-   
-        <!-- A TEIA DE AGENTES (que será preenchida pelo JS ) -->
-        <div class="agent-web-formation">
-            <!-- Os agentes serão inseridos aqui pelo JavaScript -->
-        </div>
-    </div>
-
-    <!-- O PAINEL LATERAL (continua igual) -->
-    <div class="agent-details-panel" id="agent-details-panel">
-        <button class="close-panel-btn" id="close-panel-btn">&times;</button>
-        <div class="panel-content" id="panel-content">
-            <!-- O conteúdo do agente selecionado será inserido aqui -->
-        </div>
-    </div>
-</section>
-
-
-            <section id="chat-platform-section">
-                <div class="chat-agent-web-container">
-                    <div class="chat-static-formation">
-                        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-ambas/logo" alt="Logo Conselho Quantum" class="chat-web-logo">
-                        <canvas id="chat-web-canvas"></canvas>
+            <section id="agents-info-section">
+                <div class="agents-grid-container">
+                    <div class="agents-grid-header">
+                        <h1>Conheça seus experts!</h1>
+                        <p>Clique sobre o agente que deseja conhecer e inicie a sua conversa.</p>
+                    </div>
+                    <div class="agents-grid-formation">
+                        <!-- A teia de agentes será inserida aqui pelo JavaScript -->
                     </div>
                 </div>
-
-                <div class="chat-conversation-container">
-                    <div class="chat-area-panel">
-                        <div class="chat-area-header" id="chat-area-header-web">
-                            <button id="back-to-web-btn" class="back-button-web">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                                <span>Voltar</span>
-                            </button>
-                            <span id="chat-header-title-web"></span>
-                        </div>
-                        <div class="chat-history" id="chat-history-web"></div>
-                        <form class="chat-input-area" id="chat-form-web">
-                            <input type="text" id="chat-input-web" placeholder="Digite sua mensagem..." autocomplete="off">
-                            <button type="submit" id="send-button-web"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.49997 20.5001V13.5001L10.5 12.0001L3.49997 10.5001V3.50006L20.5 12.0001L3.49997 20.5001Z" fill="white"/></svg></button>
-                        </form>
+                <div class="expert-card-panel">
+                    <div class="expert-card-content">
+                        <!-- O conteúdo da ficha do expert será inserido aqui -->
                     </div>
+                    <div class="expert-card-navigation">
+                        <button id="expert-prev-btn" class="nav-arrow">‹</button>
+                        <div class="nav-dots" id="expert-nav-dots">
+                            <!-- Os pontos de navegação serão inseridos aqui -->
+                        </div>
+                        <button id="expert-next-btn" class="nav-arrow">›</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="chat-platform-section">
+                <div class="chat-side-panel">
+                        <!-- NOVO ELEMENTO GRÁFICO ADICIONADO AQUI -->
+                    <img src="https://victorpaulovichbueno-gif.github.io/icone-barralateral-quantum/imagem" alt="" class="chat-side-panel-bg">
+
+                    <div class="chat-agent-display">
+                        <img src="" alt="Agente Ativo" id="chat-active-agent-img">
+                    </div>
+                </div>
+                <div class="chat-main-container">
+                    <header class="chat-main-header">
+                        <h1 id="chat-header-name"></h1>
+                        <h2 id="chat-header-title"></h2>
+                    </header>
+                    <div class="chat-history-area" id="chat-history-web">
+                        <!-- As mensagens serão inseridas aqui pelo JavaScript -->
+                    </div>
+                    <footer class="chat-input-footer">
+                        <form class="chat-input-wrapper" id="chat-form-web">
+                            <input type="text" id="chat-input-web" placeholder="Peça ao expert" autocomplete="off">
+                            <button type="submit" id="send-button-web">
+                                <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" alt="Enviar">
+                            </button>
+                        </form>
+                        <p class="disclaimer">O conselho possui alto nível de treinamento mas pode cometer erros. Por isso, cheque as respostas.</p>
+                    </footer>
                 </div>
             </section>
         </main>
@@ -997,17 +874,16 @@
         // == DADOS E BANCO DE DADOS SIMULADO                   ==
         // =======================================================
         const agents = {
-            'allex': { name: 'Allex', title: 'CEO MasterMind', img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.</p><p><strong>Exemplos de uso:</strong> Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.</p>` },
-                        'rafaela': { name: 'Rafaela', title: 'Marketing', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p><p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>` },
-            'eduardo': { name: 'Eduardo', title: 'Financeiro', img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Análise de DRE, fluxo de caixa, projeções financeiras e otimização de custos. Eduardo garante a saúde financeira e a sustentabilidade do negócio.</p><p><strong>Exemplos de uso:</strong> Peça uma análise de viabilidade para um novo investimento, ajuda para criar o orçamento anual ou dicas para otimizar o fluxo de caixa.</p>` },
-            'andre': { name: 'André', title: 'Comercial', img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM  ). André é focado em converter leads em resultados.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>` },
-            'carolina': { name: 'Carolina', title: 'R.H.', img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Recrutamento e seleção, cultura organizacional, desenvolvimento de talentos e gestão de desempenho. Carolina cuida do ativo mais importante: as pessoas.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para criar a descrição de uma nova vaga, ideias para melhorar o clima organizacional ou um plano de desenvolvimento para um colaborador.</p>` },
-            'beatriz': { name: 'Beatriz', title: 'C.S.', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success  ), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p><p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>` },
-            'leo': { name: 'Leo', title: 'Tecnologia', img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Arquitetura de software, desenvolvimento, infraestrutura e inovação tecnológica. Leo resolve os desafios técnicos mais complexos.</p><p><strong>Exemplos de uso:</strong> Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, peça para ele revisar um código ou planejar a arquitetura de um novo sistema.</p>` },
-            'drgustavo': { name: 'Dr. Gustavo', title: 'Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png', description: `<p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance  ). Dr. Gustavo protege a empresa de riscos legais.</p><p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>` }
+            'allex': { name: 'Allex', title: 'MasterMind', img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.</p><p><strong>Exemplos de uso:</strong> Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.</p>` },
+            'rafaela': { name: 'Rafaela', title: 'Marketing Estratégico', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p><p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>` },
+            'eduardo': { name: 'Eduardo', title: 'Dinheiro e Finanças', img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Análise de DRE, fluxo de caixa, projeções financeiras e otimização de custos. Eduardo garante a saúde financeira e a sustentabilidade do negócio.</p><p><strong>Exemplos de uso:</strong> Peça uma análise de viabilidade para um novo investimento, ajuda para criar o orçamento anual ou dicas para otimizar o fluxo de caixa.</p>` },
+            'andre': { name: 'André', title: 'Comercial e Vendas', img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM  ). André é focado em converter leads em resultados.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>` },
+            'carolina': { name: 'Carolina', title: 'Recursos Humanos', img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Recrutamento e seleção, cultura organizacional, desenvolvimento de talentos e gestão de desempenho. Carolina cuida do ativo mais importante: as pessoas.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para criar a descrição de uma nova vaga, ideias para melhorar o clima organizacional ou um plano de desenvolvimento para um colaborador.</p>` },
+            'beatriz': { name: 'Beatriz', title: 'Sucesso do Cliente', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success  ), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p><p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>` },
+            'leo': { name: 'Leo', title: 'Tecnologia e I.A.', img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Arquitetura de software, desenvolvimento, infraestrutura e inovação tecnológica. Leo resolve os desafios técnicos mais complexos.</p><p><strong>Exemplos de uso:</strong> Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, peça para ele revisar um código ou planejar a arquitetura de um novo sistema.</p>` },
+            'drgustavo': { name: 'Dr. Gustavo', title: 'Conselho Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png', description: `<p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance  ). Dr. Gustavo protege a empresa de riscos legais.</p><p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>` }
         };
         const agentIds = Object.keys(agents);
-        let currentCarouselIndex = 0;
         const chatHistories = {
             'allex': [{ role: 'assistant', content: 'Allex aqui. Como posso ajudar a expandir sua visão hoje?' }],
             'rafaela': [{ role: 'assistant', content: 'Olá! Sou a Rafaela. Vamos criar uma campanha de marketing de impacto?' }],
@@ -1019,6 +895,11 @@
             'drgustavo': [{ role: 'assistant', content: 'Dr. Gustavo a postos. Precisa de alguma consultoria jurídica?' }]
         };
         let activeChatAgentId = 'allex';
+        let currentExpertIndex = 0;
+        const expertAgentIds = Object.keys(agents);
+        
+        
+        let loggedInUserEmail = ''; // Variável para guardar o e-mail do usuário
 
         // =======================================================
         // == SELEÇÃO DOS ELEMENTOS DO DOM (HTML)             ==
@@ -1033,47 +914,39 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.querySelector('.app-sidebar');
         const overlay = document.querySelector('.overlay');
-        const carouselMainImg = document.getElementById('carousel-main-img');
-        const carouselAgentName = document.getElementById('carousel-agent-name');
-        const carouselAgentTitle = document.getElementById('carousel-agent-title');
-        const carouselAgentDescription = document.getElementById('carousel-agent-description');
-        const carouselCounter = document.getElementById('carousel-counter');
-        const carouselPrevBtn = document.getElementById('carousel-prev-btn');
-        const carouselNextBtn = document.getElementById('carousel-next-btn');
-        const chatWebContainer = document.querySelector('.chat-agent-web-container');
-        const chatConversationContainer = document.querySelector('.chat-conversation-container');
-        const chatFormation = document.querySelector('.chat-static-formation');
-        const backToWebBtn = document.getElementById('back-to-web-btn');
-        const chatHeaderTitleWeb = document.getElementById('chat-header-title-web');
+        const logoutBtn = document.getElementById('logout-btn');
+        const loginFormation = document.querySelector('#login-section .static-formation');
+        const agentGridFormation = document.querySelector('.agents-grid-formation');
+        const expertCardContent = document.querySelector('.expert-card-content');
+        const expertNavDots = document.getElementById('expert-nav-dots');
+        const expertPrevBtn = document.getElementById('expert-prev-btn');
+        const expertNextBtn = document.getElementById('expert-next-btn');
+        const chatSection = document.getElementById('chat-platform-section');
+        const chatActiveAgentImg = document.getElementById('chat-active-agent-img');
+        const chatHeaderName = document.getElementById('chat-header-name');
+        const chatHeaderTitle = document.getElementById('chat-header-title');
         const chatHistoryWeb = document.getElementById('chat-history-web');
         const chatFormWeb = document.getElementById('chat-form-web');
         const chatInputWeb = document.getElementById('chat-input-web');
-        const logoutBtn = document.getElementById('logout-btn');
-        const loginFormation = document.querySelector('#login-section .static-formation');
-        // Adicione estas linhas ao seu bloco de seleção de elementos
-        const agentWebFormation = document.querySelector('.agent-web-formation');
-        const agentDetailsPanel = document.getElementById('agent-details-panel');
-        const closePanelBtn = document.getElementById('close-panel-btn');
-        const panelContent = document.getElementById('panel-content');
-        // Adicione esta linha junto com as outras variáveis
-        const agentWebDisplay = document.querySelector('.agent-web-display');
 
         // =======================================================
         // == LÓGICA DE NAVEGAÇÃO E RENDERIZAÇÃO INICIAL       ==
         // =======================================================
-        
         document.addEventListener('DOMContentLoaded', () => {
-            renderAgentFormation(loginFormation);
-            setTimeout(drawLoginWebLines, 100);
+            renderAgentFormation(loginFormation, true);
+            setTimeout(() => drawLines('login-web-canvas', '#login-section .static-formation'), 100);
         });
 
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
             if (emailInput.value === 'v' && passwordInput.value === '1') {
+                
+                loggedInUserEmail = emailInput.value;
+
                 loginSection.style.display = 'none';
                 appShell.style.display = 'flex';
                 if (window.innerWidth <= 768) {
-                    mobileMenuBtn.style.display = 'block';
+                    document.querySelector('.mobile-header').style.display = 'flex';
                 }
                 showSection('agents-info-section');
             } else {
@@ -1096,7 +969,7 @@
             
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
-                targetSection.style.display = 'flex';
+                targetSection.style.display = (targetId === 'agents-info-section') ? 'grid' : 'flex';
             }
 
             navLinks.forEach(link => {
@@ -1106,88 +979,197 @@
             if (targetId === 'agents-info-section') {
                 renderAgentWeb();
             } else if (targetId === 'chat-platform-section') {
-                renderChatWeb();
-                showWeb();
+                showConversation();
             }
         }
-function renderAgentWeb() {
-    agentWebFormation.innerHTML = ''; 
-    
-    const positions = {
-        // Cabeceiras (permanecem iguais)
-        'allex': 'transform: translateY(-270px);',
-        'drgustavo': 'transform: translateY(255px);',
 
-        // --- BANCADA DA ESQUERDA (Alinhada em X = -240px) ---
-        'leo':       'transform: translate(-165px, -150px);',
-        'beatriz':   'transform: translate(-165px, 0px);',
-        'carolina':  'transform: translate(-165px, 150px);',
+        // =======================================================
+        // == LÓGICA DA "MESA DE MENTORES"                    ==
+        // =======================================================
+        function renderAgentWeb() {
+            if (!agentGridFormation) return;
 
-        // --- BANCADA DA DIREITA (Alinhada em X = 240px) ---
-        'rafaela':   'transform: translate(165px, -150px);', // X: 240px (direita), Y: -150px (em cima)
-        'eduardo':   'transform: translate(165px, 0px);',    // X: 240px (direita), Y: 0px (no centro)
-        'andre':     'transform: translate(165px, 150px);'   // X: 240px (direita), Y: 150px (em baixo)
-    };
-    agentIds.forEach(agentId => {
-        const agent = agents[agentId];
-        const agentDiv = document.createElement('div');
-        agentDiv.classList.add('agent-container');
-        agentDiv.dataset.agentId = agentId;
-        if (agentId === 'allex') agentDiv.classList.add('central-agent');
-        agentDiv.style.cssText = positions[agentId];
+            agentGridFormation.innerHTML = ''; 
+// VERSÃO CORRIGIDA COM AGENTES MAIS PRÓXIMOS
+const positions = {
+    'allex':      'transform: translateY(0);',
+    'rafaela':    'transform: rotate(0deg) translateY(-210px) rotate(0deg);',
+    'eduardo':    'transform: rotate(51.4deg) translateY(-210px) rotate(-51.4deg);',
+    'andre':      'transform: rotate(102.8deg) translateY(-210px) rotate(-102.8deg);',
+    'carolina':   'transform: rotate(154.2deg) translateY(-210px) rotate(-154.2deg);',
+    'beatriz':    'transform: rotate(205.6deg) translateY(-210px) rotate(-205.6deg);',
+    'leo':        'transform: rotate(257deg) translateY(-210px) rotate(-257deg);',
+    'drgustavo':  'transform: rotate(308.4deg) translateY(-210px) rotate(-308.4deg);'
+};
 
-// Dentro da função renderAgentWeb, substitua esta parte:
-agentDiv.innerHTML = `
-    <img src="${agent.img}" alt="${agent.name}" class="agent-avatar">
-    <div class="agent-info">
-        <p class="agent-name">${agent.name}</p>
-        <p class="agent-title">${agent.title}</p>
-    </div>
-`;
+            expertAgentIds.forEach((agentId, index) => {
+                const agent = agents[agentId];
+                const agentDiv = document.createElement('div');
+                agentDiv.classList.add('agent-container');
+                agentDiv.dataset.agentId = agentId;
+                if (agentId === 'allex') agentDiv.classList.add('central-agent');
+                agentDiv.style.cssText = positions[agentId];
+                agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info">${agent.title}</div>`;
+                
+                agentDiv.addEventListener('click', () => {
+                    currentExpertIndex = index;
+                    showExpertDetails();
+                });
+                agentGridFormation.appendChild(agentDiv);
+            });
 
-        
-        agentDiv.addEventListener('click', () => showAgentDetails(agentId));
-        agentWebFormation.appendChild(agentDiv);
-    });
+            expertNavDots.innerHTML = '';
+            expertAgentIds.forEach(() => {
+                expertNavDots.innerHTML += `<div class="nav-dot"></div>`;
+            });
+
+            showExpertDetails();
+        }
+
+        function showExpertDetails() {
+            if (!expertCardContent) return;
+
+            const agentId = expertAgentIds[currentExpertIndex];
+            const agent = agents[agentId];
+            
+            expertCardContent.innerHTML = `
+                <div class="panel-header">
+                    <h4 class="panel-main-title">Ficha do Expert</h4>
+                    <div class="panel-agent-identity">
+                        <img src="${agent.img}" alt="${agent.name}" class="panel-agent-avatar">
+                        <div class="panel-agent-name">
+                            <h2>${agent.name}</h2>
+                            <h3>${agent.title}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    ${agent.description}
+                    <a href="#" class="btn-access-chat" data-agent-id="${agentId}">
+                        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" alt="Acessar Chat">
+                        <span>ACESSAR CHAT</span>
+                    </a>
+                </div>
+            `;
+
+            const accessChatBtn = expertCardContent.querySelector('.btn-access-chat' );
+            accessChatBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                activeChatAgentId = e.currentTarget.dataset.agentId;
+                showSection('chat-platform-section');
+            });
+
+            const dots = expertNavDots.querySelectorAll('.nav-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentExpertIndex);
+            });
+        }
+
+        if (expertPrevBtn && expertNextBtn) {
+            expertPrevBtn.addEventListener('click', () => {
+                currentExpertIndex = (currentExpertIndex - 1 + expertAgentIds.length) % expertAgentIds.length;
+                showExpertDetails();
+            });
+
+            expertNextBtn.addEventListener('click', () => {
+                currentExpertIndex = (currentExpertIndex + 1) % expertAgentIds.length;
+                showExpertDetails();
+            });
+        }
+
+        // =======================================================
+        // == LÓGICA DO CHAT IMERSIVO                         ==
+        // =======================================================
+// VERSÃO SIMPLIFICADA E FINAL
+function showConversation() {
+    const agent = agents[activeChatAgentId];
+    if (!agent) return;
+
+    // 1. Atualiza os elementos da interface com os dados do agente ativo
+    chatHeaderName.textContent = agent.name;
+    chatHeaderTitle.textContent = agent.title;
+    chatActiveAgentImg.src = agent.img;
+
+    // 2. Renderiza o histórico de chat (a lógica de fundo foi movida para o CSS)
+    renderActiveChatWeb();
 }
 
-// SUBSTITUA SUA FUNÇÃO 'showAgentDetails' POR ESTA VERSÃO MELHORADA
-function showAgentDetails(agentId) {
-    const agent = agents[agentId];
+
+        function renderActiveChatWeb() {
+            const history = chatHistories[activeChatAgentId];
+            chatHistoryWeb.innerHTML = '';
+            history.forEach(message => addMessageToDom(message.content, message.role, chatHistoryWeb));
+            chatHistoryWeb.scrollTop = chatHistoryWeb.scrollHeight;
+        }
+
+        function addMessageToDom(text, role, container) {
+            const agent = agents[activeChatAgentId];
+            const messageGroup = document.createElement('div');
+            const senderClass = (role === 'user') ? 'user' : 'agent';
+            messageGroup.classList.add('message-group', senderClass);
+            
+            let senderName = '';
+            let avatarHtml = '';
+
+            if (senderClass === 'agent') {
+                senderName = `${agent.name} - ${agent.title}`;
+                avatarHtml = `<img src="${agent.img}" alt="${agent.name}" class="message-avatar">`;
+// DENTRO DA FUNÇÃO addMessageToDom
+// ...
+// VERSÃO ATUALIZADA E DINÂMICA
+} else {
+    senderName = 'Você';
+    const userInitial = loggedInUserEmail.charAt(0 ).toUpperCase(); // Pega a 1ª letra e a torna maiúscula
     
-    // O novo HTML que será inserido no painel
-    panelContent.innerHTML = `
-        <div class="panel-header">
-            <h4 class="panel-main-title">Ficha do Expert</h4>
-            <div class="panel-agent-identity">
-                <h2>${agent.name}</h2>
-                <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" alt="Selo Quantum" class="panel-agent-seal">
-            </div>
-            <h3>${agent.title}</h3>
-        </div>
-        <div class="panel-body">
-            ${agent.description}
+    // Cria a nova estrutura com a imagem de fundo e a letra no centro
+    avatarHtml = `
+        <div class="message-avatar user-avatar-initial">
+            <span class="initial-letter">${userInitial}</span>
         </div>
     `;
-    
-    agentDetailsPanel.classList.add('active' );
-    agentWebDisplay.classList.add('panel-active');
 }
 
 
-// VERSÃO CORRIGIDA da função closeAgentDetails
-function closeAgentDetails() {
-    agentDetailsPanel.classList.remove('active');
-    agentWebDisplay.classList.remove('panel-active'); // <-- REMOVE A CLASSE
-}
-// Adicione o evento de clique para o botão de fechar
-closePanelBtn.addEventListener('click', closeAgentDetails);
+
+            messageGroup.innerHTML = `
+                ${avatarHtml}
+                <div class="message-content">
+                    <p class="message-sender">${senderName}</p>
+                    <div class="message-bubble">${text}</div>
+                </div>
+            `;
+            
+            container.appendChild(messageGroup );
+            container.scrollTop = container.scrollHeight;
+        }
+
+        chatFormWeb.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const userMessageText = chatInputWeb.value.trim();
+            if (userMessageText === '') return;
+
+            const userMessage = { role: 'user', content: userMessageText };
+            chatHistories[activeChatAgentId].push(userMessage);
+            addMessageToDom(userMessageText, 'user', chatHistoryWeb);
+            chatInputWeb.value = '';
+
+            const aiResponseText = await getOpenAIResponse(activeChatAgentId, chatHistories[activeChatAgentId]);
+            
+            const aiMessage = { role: 'assistant', content: aiResponseText };
+            chatHistories[activeChatAgentId].push(aiMessage);
+            addMessageToDom(aiResponseText, 'assistant', chatHistoryWeb);
+        });
+
+        async function getOpenAIResponse(agentId, history) {
+            // A função de chamada à API continua a mesma
+            // Para testes, estamos usando uma resposta simulada:
+            return "Esta é uma resposta simulada do " + agents[agentId].name + ". A integração real com a API virá a seguir.";
+        }
 
         // =======================================================
-        // == FUNÇÕES DAS SEÇÕES                              ==
+        // == FUNÇÕES DE DESENHO E UTILIDADES                 ==
         // =======================================================
-
-        function renderAgentFormation(container) {
+        function renderAgentFormation(container, isLogin) {
             container.innerHTML = '';
             const positions = { 'allex': '', 'rafaela': 'transform: rotate(0deg) translateY(-250px) rotate(0deg);', 'eduardo': 'transform: rotate(51.4deg) translateY(-250px) rotate(-51.4deg);', 'andre': 'transform: rotate(102.8deg) translateY(-250px) rotate(-102.8deg);', 'carolina': 'transform: rotate(154.2deg) translateY(-250px) rotate(-154.2deg);', 'beatriz': 'transform: rotate(205.6deg) translateY(-250px) rotate(-205.6deg);', 'leo': 'transform: rotate(257deg) translateY(-250px) rotate(-257deg);', 'drgustavo': 'transform: rotate(308.4deg) translateY(-250px) rotate(-308.4deg);' };
             
@@ -1198,156 +1180,20 @@ closePanelBtn.addEventListener('click', closeAgentDetails);
                 agentDiv.dataset.agentId = agentId;
                 if (agentId === 'allex') agentDiv.classList.add('central-agent');
                 agentDiv.style.cssText = positions[agentId];
-                agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info"><p class="agent-name">${agent.name}</p><p class="agent-title">${agent.title}</p></div>`;
+                
+                const infoContent = isLogin ? agent.title : `<p class="agent-name">${agent.name}</p><p class="agent-title">${agent.title}</p>`;
+                agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info">${infoContent}</div>`;
+                
                 container.appendChild(agentDiv);
             });
         }
 
-
-        // =======================================================
-        // == LÓGICA DO NOVO CHAT EM TEIA                     ==
-        // =======================================================
-
-        function renderChatWeb() {
-            renderAgentFormation(chatFormation);
-            const agentDivs = chatFormation.querySelectorAll('.agent-container');
-            agentDivs.forEach(div => {
-                div.addEventListener('click', () => {
-                    activeChatAgentId = div.dataset.agentId;
-                    showConversation();
-                });
-            });
-            setTimeout(drawChatWebLines, 100);
-        }
-
-// SUBSTITUA SUA FUNÇÃO 'showConversation' POR ESTA VERSÃO ATUALIZADA
-function showConversation() {
-    const chatPanel = document.querySelector('.chat-conversation-container .chat-area-panel');
-
-    // Limpa TODAS as classes de fundo personalizadas
-    chatPanel.classList.remove('juridico-bg', 'tecnologia-bg', 'marketing-bg', 'financeiro-bg', 'comercial-bg', 'mastermind-bg', 'rh-bg'); 
-
-    // Verifica qual agente está ativo e aplica a classe correta
-    if (activeChatAgentId === 'drgustavo') {
-        chatPanel.classList.add('juridico-bg');
-    }
-    else if (activeChatAgentId === 'leo') {
-        chatPanel.classList.add('tecnologia-bg');
-    }
-    else if (activeChatAgentId === 'rafaela') {
-        chatPanel.classList.add('marketing-bg');
-    }
-    else if (activeChatAgentId === 'eduardo') {
-        chatPanel.classList.add('financeiro-bg');
-    }
-    else if (activeChatAgentId === 'andre') {
-        chatPanel.classList.add('comercial-bg');
-    }
-    else if (activeChatAgentId === 'allex') {
-        chatPanel.classList.add('mastermind-bg');
-    }
-    // **LÓGICA ADICIONADA AQUI**
-    else if (activeChatAgentId === 'carolina') {
-        chatPanel.classList.add('rh-bg');
-    }
-
-    // O resto da função continua igual
-    chatWebContainer.style.display = 'none';
-    chatConversationContainer.style.display = 'block';
-    renderActiveChatWeb();
-}
-
-
-
-
-
-
-        function showWeb() {
-            chatConversationContainer.style.display = 'none';
-            chatWebContainer.style.display = 'flex';
-        }
-
-        function renderActiveChatWeb() {
-            const agent = agents[activeChatAgentId];
-            const history = chatHistories[activeChatAgentId];
-            chatHeaderTitleWeb.textContent = `Conversa com ${agent.name}`;
-            chatHistoryWeb.innerHTML = '';
-            history.forEach(message => addMessageToDom(message.content, message.role, agent.img, chatHistoryWeb));
-            chatHistoryWeb.scrollTop = chatHistoryWeb.scrollHeight;
-        }
-
-        function addMessageToDom(text, role, agentImg, container) {
-            const messageGroup = document.createElement('div');
-            const senderClass = (role === 'user') ? 'user' : 'agent';
-            messageGroup.classList.add('message-group', senderClass);
-            
-            if (senderClass === 'agent') {
-                messageGroup.innerHTML = `<img src="${agentImg}" class="message-avatar"><div class="message-content"><div class="message-bubble">${text}</div></div>`;
-            } else {
-                messageGroup.innerHTML = `<div class="message-content"><div class="message-bubble">${text}</div></div>`;
-            }
-            container.appendChild(messageGroup);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function addTypingIndicator(container) {
-            const typingIndicator = document.createElement('div');
-            typingIndicator.classList.add('message-group', 'agent', 'typing-indicator');
-            typingIndicator.innerHTML = `<img src="${agents[activeChatAgentId].img}" class="message-avatar"><div class="message-content"><div class="message-bubble"><span></span><span></span><span></span></div></div>`;
-            container.appendChild(typingIndicator);
-            container.scrollTop = container.scrollHeight;
-            return typingIndicator;
-        }
-
-        async function getOpenAIResponse(agentId, history) {
-            const typingIndicator = addTypingIndicator(chatHistoryWeb);
-            try {
-                const response = await fetch('http://127.0.0.1:5001/ask', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ agent_id: agentId, history: history } )
-                });
-                typingIndicator.remove();
-                if (!response.ok) {
-                    throw new Error('Erro na resposta da rede');
-                }
-                const data = await response.json();
-                return data.response;
-            } catch (error) {
-                typingIndicator.remove();
-                console.error("Erro ao buscar resposta da API:", error);
-                return "Erro: Não foi possível conectar ao servidor.";
-            }
-        }
-
-        chatFormWeb.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const userMessageText = chatInputWeb.value.trim();
-            if (userMessageText === '') return;
-
-            const userMessage = { role: 'user', content: userMessageText };
-            chatHistories[activeChatAgentId].push(userMessage);
-            addMessageToDom(userMessageText, 'user', null, chatHistoryWeb);
-            chatInputWeb.value = '';
-
-            const aiResponseText = await getOpenAIResponse(activeChatAgentId, chatHistories[activeChatAgentId]);
-            
-            const aiMessage = { role: 'assistant', content: aiResponseText };
-            chatHistories[activeChatAgentId].push(aiMessage);
-            addMessageToDom(aiResponseText, 'assistant', agents[activeChatAgentId].img, chatHistoryWeb);
-        });
-
-        backToWebBtn.addEventListener('click', showWeb);
-
-        // =======================================================
-        // == FUNÇÕES DE DESENHO DA TEIA                      ==
-        // =======================================================
-
-        function drawLines(canvasId, formationSelector, logoSelector) {
+        function drawLines(canvasId, formationSelector) {
             const canvas = document.getElementById(canvasId);
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             const container = document.querySelector(formationSelector);
+            if (!container) return;
             const dpr = window.devicePixelRatio || 1;
             const rect = container.getBoundingClientRect();
 
@@ -1356,7 +1202,7 @@ function showConversation() {
             canvas.width = rect.width * dpr;
             canvas.height = rect.height * dpr;
             ctx.scale(dpr, dpr);
-            ctx.strokeStyle = 'var(--gold-primary)';
+            ctx.strokeStyle = 'rgba(197, 167, 115, 0.5)';
             ctx.lineWidth = 1;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -1375,40 +1221,25 @@ function showConversation() {
                     ctx.stroke();
                 }
             }
-
-            const logoEl = document.querySelector(logoSelector);
-            const logoPos = getCenter(logoEl);
             
             const agentPositions = {};
             agentIds.forEach(id => {
                 agentPositions[id] = getCenter(container.querySelector(`[data-agent-id="${id}"]`));
             });
 
-            if (logoSelector) {
-                connect(logoPos, agentPositions.rafaela);
-                connect(logoPos, agentPositions.eduardo);
-                connect(logoPos, agentPositions.andre);
+            const centralPos = agentPositions.allex;
+            if(centralPos) {
+                agentIds.forEach(id => {
+                    if (id !== 'allex') connect(centralPos, agentPositions[id]);
+                });
             }
-
-            connect(agentPositions.rafaela, agentPositions.allex);
-            connect(agentPositions.eduardo, agentPositions.allex);
-            connect(agentPositions.andre, agentPositions.allex);
-            connect(agentPositions.rafaela, agentPositions.carolina);
-            connect(agentPositions.andre, agentPositions.leo);
-            connect(agentPositions.carolina, agentPositions.drgustavo);
-            connect(agentPositions.beatriz, agentPositions.allex);
-            connect(agentPositions.leo, agentPositions.allex);
-            connect(agentPositions.drgustavo, agentPositions.allex);
-            connect(agentPositions.beatriz, agentPositions.drgustavo);
         }
 
-        function drawLoginWebLines() { drawLines('login-web-canvas', '#login-section .static-formation', null); }
-        function drawChatWebLines() { drawLines('chat-web-canvas', '#chat-platform-section .chat-static-formation', '.chat-web-logo'); }
+        function drawLoginWebLines() { drawLines('login-web-canvas', '#login-section .static-formation'); }
 
         // =======================================================
-        // == LÓGICA DO MENU MOBILE E LOGOUT                  ==
+        // == LÓGICA DO MENU MOBILE, LOGOUT E OUTROS EVENTOS  ==
         // =======================================================
-
         function toggleMobileMenu() {
             sidebar.classList.toggle('mobile-visible');
             overlay.classList.toggle('visible');
@@ -1427,13 +1258,18 @@ function showConversation() {
 
         logoutBtn.addEventListener('click', function(event) {
             event.preventDefault(); 
-            appShell.style.display = 'none';
-            loginSection.style.display = 'flex';
-            if (window.innerWidth <= 768) {
-                mobileMenuBtn.style.display = 'none';
-            }
+            window.location.reload();
         });
 
+        const passwordToggle = document.getElementById('password-toggle');
+        if (passwordToggle) {
+            passwordToggle.addEventListener('click', () => {
+                const passwordField = document.getElementById('password');
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                passwordToggle.textContent = type === 'password' ? '' : '';
+            });
+        }
     </script>
 </body>
 </html>
