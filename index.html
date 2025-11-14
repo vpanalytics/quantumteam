@@ -56,7 +56,7 @@
             display: block;
         }
         .central-agent .agent-avatar {
-            width: 190px;
+            width: 220px;
         }
 
         .agent-info { margin-top: 0.75rem; text-align: center; }
@@ -75,7 +75,18 @@
             text-align: center;
             border: 1px solid rgba(197, 167, 115, 0.2);
         }
-
+.login-video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50% );
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Coloca o vídeo atrás de todo o conteúdo */
+    filter: brightness(0.7); /* Escurece um pouco o vídeo para o texto ficar legível */
+}
         .login-shield-logo {
             width: 80px;
             height: auto;
@@ -207,32 +218,159 @@
         .app-main-content { flex-grow: 1; height: 100%; overflow-y: auto; position: relative; }
         .app-main-content > section { display: none; width: 100%; height: 100%; flex-direction: column; }
 
-        /* ============================================= */
-        /* == TELA "NOSSOS AGENTES" (CARROSSEL)       == */
-        /* ============================================= */
-        #agents-info-section { padding: 2rem 3rem; justify-content: flex-start; align-items: flex-start; }
-        .carousel-header { text-align: left; margin-bottom: 2rem; }
-        .carousel-header h1 { font-family: var(--font-title); font-size: 3rem; color: var(--gold-primary); }
-        .carousel-header p { font-size: 1.2rem; color: var(--text-secondary); }
-        .carousel-content { display: flex; gap: 3rem; width: 100%; align-items: center; }
-        .carousel-image-container { flex-basis: 45%; flex-shrink: 0; }
-        
-        .carousel-image-container img {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+/* ============================================= */
+/* == NOVA SEÇÃO "NOSSOS AGENTES"             == */
+/* ============================================= */
+#agents-info-section {
+    padding: 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-        .carousel-text-container { flex-basis: 55%; }
-        .carousel-text-container h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
-        .carousel-text-container h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
-        .carousel-description p { margin-bottom: 1rem; line-height: 1.6; color: var(--text-secondary); }
-        .carousel-description strong { color: var(--text-dark); }
-        .carousel-controls { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
-        .carousel-arrow { width: 50px; height: 50px; border-radius: 50%; background-color: var(--gold-primary); color: white; border: none; cursor: pointer; font-size: 1.5rem; display: flex; justify-content: center; align-items: center; }
-        .carousel-counter { font-size: 1.2rem; font-weight: 500; color: var(--text-dark); }
+.agent-web-header {
+    text-align: left;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+.agent-web-header h1 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--gold-primary);
+}
+
+.agent-web-display {
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(0);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+.agent-web-display.panel-active {
+    transform: translateX(-225px);
+}
+
+.agent-web-formation {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Encontre esta regra e adicione o z-index */
+.agent-web-formation .agent-container {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    z-index: 10; /* Camada 10 (acima da mesa) */
+}
+
+
+.agent-web-formation .agent-avatar {
+    width: 120px;
+    height: auto;
+    display: block;
+    position: relative; /* CRUCIAL para a animação funcionar */
+}
+.agent-web-formation .central-agent .agent-avatar {
+    width: 220px;
+}
+
+/* REGRA CORRIGIDA E FINAL */
+.agent-web-formation .agent-container:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--gold-glow));
+    z-index: 20; /* <-- ADICIONE ESTA LINHA */
+}
+
+
+.agent-web-formation .agent-info {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    text-align: center;
+    pointer-events: none;
+}
+.agent-web-formation .agent-container:hover .agent-info {
+    opacity: 1;
+}
+.agent-web-formation .agent-info .agent-name {
+    color: var(--gold-primary);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.agent-web-formation .agent-info .agent-title {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.agent-details-panel {
+    position: absolute;
+    top: 0;
+    right: -500px;
+    width: 450px;
+    height: 100%;
+    background-color: var(--background-panel);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 150;
+}
+.agent-details-panel.active {
+    right: 0;
+}
+
+.close-panel-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+.panel-content h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+.panel-content h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
+.panel-content p { margin-bottom: 1rem; line-height: 1.6; color: var(--text-secondary); }
+.panel-content strong { color: var(--text-dark); }
+
+/* EFEITO DE PULSO NO AGENTE CENTRAL (ALLEX) */
+.agent-web-formation .central-agent .agent-avatar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://victorpaulovichbueno-gif.github.io/agente-1-borda/agente-1-borda.png' );
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    70% { transform: scale(1.4); opacity: 0; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
 
         /* ============================================= */
         /* == TELA "CHATS" (TEIA DE AGENTES)          == */
@@ -331,6 +469,271 @@
             0%, 60%, 100% { transform: initial; }
             30% { transform: translateY(-8px); }
         }
+/* ============================================= */
+/* == NOVA SEÇÃO "NOSSOS AGENTES"             == */
+/* ============================================= */
+/* Regra para a seção principal */
+#agents-info-section {
+    display: block; /* Alterado de flex para block */
+    padding: 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* Garante que o container ocupe a altura toda */
+    display: flex; /* Usamos flexbox para alinhar verticalmente */
+    flex-direction: column; /* Empilha o header e o display */
+}
+
+
+/* Regra para a área móvel */
+.agent-web-display {
+    width: 100%;
+    text-align: left;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(0);
+    flex-grow: 1; /* Faz esta div ocupar o espaço vertical restante */
+    display: flex; /* Usamos flex para centralizar a teia verticalmente */
+    align-items: center;
+}
+
+
+/* NOVO ESTADO: Quando o painel está ativo */
+.agent-web-display.panel-active {
+    transform: translateX(-225px); /* Desloca para a esquerda (metade da largura do painel) */
+}
+
+
+/* Regra para o cabeçalho (agora fixo) */
+.agent-web-header {
+    text-align: left;
+    margin-bottom: 2rem; /* Mantém o espaço abaixo do título */
+    flex-shrink: 0; /* Impede que o header encolha */
+}
+
+.agent-web-header h1 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--gold-primary);
+}
+.agent-web-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.agent-web-formation {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agent-web-formation .agent-container {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.agent-web-formation .agent-avatar-wrapper {
+    width: 120px; /* Tamanho do hexágono */
+    height: 138px; /* Altura correspondente */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    position: relative;
+    background-color: var(--gold-primary);
+    padding: 4px; /* Espessura da borda */
+    transition: background-color 0.3s ease;
+}
+
+.agent-web-formation .central-agent .agent-avatar-wrapper {
+    width: 150px;
+    height: 172.5px;
+}
+
+
+
+.agent-web-formation .central-agent .agent-avatar {
+    width: 150px; /* Tamanho do agente central */
+}
+
+
+
+.agent-web-formation .agent-container:hover .agent-avatar-wrapper {
+    background-color: #fff; /* Borda fica mais clara */
+}
+
+/* Painel Lateral */
+.agent-details-panel {
+    position: absolute;
+    top: 0;
+    right: -500px; /* Começa fora da tela */
+    width: 450px;
+    height: 100%;
+    background-color: var(--background-panel);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 150;
+}
+
+.agent-details-panel.active {
+    right: 0; /* Desliza para dentro da tela */
+}
+
+.close-panel-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.panel-content h2 { font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+.panel-content h3 { font-size: 1.2rem; font-weight: 500; color: var(--gold-primary); margin-bottom: 2rem; }
+.panel-content p { margin-bottom: 1rem; line-height: 1.6; color: var(--text-secondary); }
+.panel-content strong { color: var(--text-dark); }
+/* Efeito de Pulso no Agente Central */
+.agent-web-formation .central-agent .agent-avatar-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--gold-primary);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    animation: pulse 2.5s infinite;
+}
+
+/* Estilo para a imagem da mesa do conselho */
+.council-table-img {
+    position: absolute;
+    width: 200px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Camada 1 (a mais baixa) */
+}
+/* ADICIONE ESTA NOVA REGRA PARA O LOGO NA MESA */
+.table-center-logo {
+    position: absolute;
+    width: 100px; /* <<-- AJUSTE O TAMANHO DO LOGO AQUI */
+    height: auto;
+    
+    /* Centraliza o logo exatamente no mesmo ponto da mesa */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Define a camada do logo */
+    z-index: 2; /* Acima da mesa (z-index: 1) e abaixo dos agentes (z-index: 10) */
+    
+    opacity: 0.8; /* Opcional: dá uma leve transparência para integrar melhor com a mesa */
+}
+/* ADICIONE ESTAS NOVAS REGRAS AO SEU CSS */
+
+/* Estiliza o novo cabeçalho do painel */
+.panel-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Título "Ficha do Expert" em dourado */
+.panel-main-title {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+/* Alinha o nome do agente e o selo lado a lado */
+.panel-agent-identity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Espaço entre o nome e o selo */
+}
+
+/* Estilo para o selo */
+.panel-agent-seal {
+    width: 32px; /* Tamanho do selo */
+    height: auto;
+}
+
+/* Remove a margem padrão do h2 para alinhar com o selo */
+.panel-agent-identity h2 {
+    margin-bottom: 0;
+}
+
+/* ============================================= */
+/* == EFEITO DE PULSO NO AGENTE CENTRAL (ALLEX) == */
+/* ============================================= */
+
+/* Garante que o container do avatar possa ter um pseudo-elemento posicionado */
+.agent-web-formation .central-agent .agent-avatar {
+    position: relative;
+}
+
+/* Cria o elemento que será a 'onda' de pulso */
+.agent-web-formation .central-agent .agent-avatar::after {
+    content: ''; /* Pseudo-elementos precisam de 'content' */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Usa a MESMA imagem do Allex para a onda de pulso */
+    background-image: url('https://victorpaulovichbueno-gif.github.io/agente-1-borda/agente-1-borda.png' );
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    z-index: -1; /* Coloca a onda de pulso ATRÁS da imagem principal */
+    
+    /* Aplica a animação 'pulse' */
+    animation: pulse 2.5s infinite;
+}
+
+/* Define a animação 'pulse' */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1.8;
+    }
+    70% {
+        transform: scale(1.4); /* Expande a onda para 140% do tamanho */
+        opacity: 0; /* Desaparece a onda */
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
 
         /* ======================================================= */
         /* == REGRAS PARA LAYOUT MOBILE                       == */
@@ -397,12 +800,19 @@
         </div>
         <div class="right-panel">
             <div class="login-box">
+                    <!-- VÍDEO ADICIONADO AQUI -->
+    <video autoplay muted loop class="login-video-background">
+        <source src="https://videos.pexels.com/video-files/4784293/4784293-hd.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos em HTML5.
+    </video>
+    <!-- FIM DO VÍDEO -->
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Quantum Minds Shield" class="login-shield-logo">
                 <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-nome/logo" alt="Quantum Minds Logo" class="login-title-logo">
                 <form id="login-form">
-                    <div class="input-group"><label for="email">USUÁRIO</label><input type="text" id="email" value="v"></div>
-                    <div class="input-group"><label for="password">SENHA</label><input type="password" id="password" value="1"></div>
-                    <button type="submit" class="btn-login">ENTRAR</button>
+                    <div class="input-group"><label for="email"> SUA CHAVE DE ACESSO
+</label><input type="text" id="email" value="v"></div>
+                    <div class="input-group"><label for="password">CÓDIGO SECRETO</label><input type="password" id="password" value="1"></div>
+                    <button type="submit" class="btn-login">ACESSAR O SANTUÁRIO</button>
                 </form>
             </div>
         </div>
@@ -417,7 +827,7 @@
             <nav class="app-nav">
                 <a href="#" class="app-nav-link" data-target="agents-info-section">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 21V5a2 2 0 00-2-2H9a2 2 0 00-2 2v16"></path></svg>
-                    <span>Nossos Agentes</span>
+                    <span>Mesa de Mentores</span>
                 </a>
                 <a href="#" class="app-nav-link" data-target="chat-platform-section">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
@@ -432,27 +842,39 @@
             </div>
         </aside>
         <main class="app-main-content">
-            <section id="agents-info-section">
-                <div class="carousel-header">
-                    <h1>Conheça Nossos Agentes</h1>
-                    <p>Especialistas prontos para impulsionar seus resultados.</p>
-                </div>
-                <div class="carousel-content">
-                    <div class="carousel-image-container">
-                        <img id="carousel-main-img" src="" alt="Agente Principal">
-                    </div>
-                    <div class="carousel-text-container">
-                        <h2 id="carousel-agent-name"></h2>
-                        <h3 id="carousel-agent-title"></h3>
-                        <div id="carousel-agent-description" class="carousel-description"></div>
-                        <div class="carousel-controls">
-                            <button class="carousel-arrow" id="carousel-prev-btn">←</button>
-                            <span id="carousel-counter" class="carousel-counter"></span>
-                            <button class="carousel-arrow" id="carousel-next-btn">→</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<!-- ======================================================= -->
+<!-- == NOVA SEÇÃO "NOSSOS AGENTES" COM TEIA E PAINEL LATERAL == -->
+<!-- SUBSTITUA A ESTRUTURA ATUAL DESTA SEÇÃO POR ESTA -->
+<section id="agents-info-section">
+    <!-- O CABEÇALHO FIXO -->
+    <div class="agent-web-header">
+        
+    </div>
+
+    <!-- A DIV QUE SE MOVE -->
+    <div class="agent-web-display">
+    
+        <!-- IMAGEM DA MESA NO LUGAR CORRETO -->
+        <img src="https://victorpaulovichbueno-gif.github.io/mesa-quantum/imagem" alt="Mesa do Conselho Quantum" class="council-table-img">
+        <!-- LOGO NO CENTRO DA MESA (Camada 2 ) - ADICIONADO AQUI -->
+        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum/logo" alt="Logo Quantum Minds" class="table-center-logo">
+
+   
+        <!-- A TEIA DE AGENTES (que será preenchida pelo JS ) -->
+        <div class="agent-web-formation">
+            <!-- Os agentes serão inseridos aqui pelo JavaScript -->
+        </div>
+    </div>
+
+    <!-- O PAINEL LATERAL (continua igual) -->
+    <div class="agent-details-panel" id="agent-details-panel">
+        <button class="close-panel-btn" id="close-panel-btn">&times;</button>
+        <div class="panel-content" id="panel-content">
+            <!-- O conteúdo do agente selecionado será inserido aqui -->
+        </div>
+    </div>
+</section>
+
 
             <section id="chat-platform-section">
                 <div class="chat-agent-web-container">
@@ -540,6 +962,13 @@
         const chatInputWeb = document.getElementById('chat-input-web');
         const logoutBtn = document.getElementById('logout-btn');
         const loginFormation = document.querySelector('#login-section .static-formation');
+        // Adicione estas linhas ao seu bloco de seleção de elementos
+        const agentWebFormation = document.querySelector('.agent-web-formation');
+        const agentDetailsPanel = document.getElementById('agent-details-panel');
+        const closePanelBtn = document.getElementById('close-panel-btn');
+        const panelContent = document.getElementById('panel-content');
+        // Adicione esta linha junto com as outras variáveis
+        const agentWebDisplay = document.querySelector('.agent-web-display');
 
         // =======================================================
         // == LÓGICA DE NAVEGAÇÃO E RENDERIZAÇÃO INICIAL       ==
@@ -587,12 +1016,84 @@
             });
 
             if (targetId === 'agents-info-section') {
-                renderCarousel();
+                renderAgentWeb();
             } else if (targetId === 'chat-platform-section') {
                 renderChatWeb();
                 showWeb();
             }
         }
+function renderAgentWeb() {
+    agentWebFormation.innerHTML = ''; 
+    
+    const positions = {
+        // Cabeceiras (permanecem iguais)
+        'allex': 'transform: translateY(-270px);',
+        'drgustavo': 'transform: translateY(255px);',
+
+        // --- BANCADA DA ESQUERDA (Alinhada em X = -240px) ---
+        'leo':       'transform: translate(-160px, -150px);',
+        'beatriz':   'transform: translate(-160px, 0px);',
+        'carolina':  'transform: translate(-160px, 150px);',
+
+        // --- BANCADA DA DIREITA (Alinhada em X = 240px) ---
+        'rafaela':   'transform: translate(160px, -150px);', // X: 240px (direita), Y: -150px (em cima)
+        'eduardo':   'transform: translate(160px, 0px);',    // X: 240px (direita), Y: 0px (no centro)
+        'andre':     'transform: translate(160px, 150px);'   // X: 240px (direita), Y: 150px (em baixo)
+    };
+    agentIds.forEach(agentId => {
+        const agent = agents[agentId];
+        const agentDiv = document.createElement('div');
+        agentDiv.classList.add('agent-container');
+        agentDiv.dataset.agentId = agentId;
+        if (agentId === 'allex') agentDiv.classList.add('central-agent');
+        agentDiv.style.cssText = positions[agentId];
+
+// Dentro da função renderAgentWeb, substitua esta parte:
+agentDiv.innerHTML = `
+    <img src="${agent.img}" alt="${agent.name}" class="agent-avatar">
+    <div class="agent-info">
+        <p class="agent-name">${agent.name}</p>
+        <p class="agent-title">${agent.title}</p>
+    </div>
+`;
+
+        
+        agentDiv.addEventListener('click', () => showAgentDetails(agentId));
+        agentWebFormation.appendChild(agentDiv);
+    });
+}
+
+// SUBSTITUA SUA FUNÇÃO 'showAgentDetails' POR ESTA VERSÃO MELHORADA
+function showAgentDetails(agentId) {
+    const agent = agents[agentId];
+    
+    // O novo HTML que será inserido no painel
+    panelContent.innerHTML = `
+        <div class="panel-header">
+            <h4 class="panel-main-title">Ficha do Expert</h4>
+            <div class="panel-agent-identity">
+                <h2>${agent.name}</h2>
+                <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" alt="Selo Quantum" class="panel-agent-seal">
+            </div>
+            <h3>${agent.title}</h3>
+        </div>
+        <div class="panel-body">
+            ${agent.description}
+        </div>
+    `;
+    
+    agentDetailsPanel.classList.add('active' );
+    agentWebDisplay.classList.add('panel-active');
+}
+
+
+// VERSÃO CORRIGIDA da função closeAgentDetails
+function closeAgentDetails() {
+    agentDetailsPanel.classList.remove('active');
+    agentWebDisplay.classList.remove('panel-active'); // <-- REMOVE A CLASSE
+}
+// Adicione o evento de clique para o botão de fechar
+closePanelBtn.addEventListener('click', closeAgentDetails);
 
         // =======================================================
         // == FUNÇÕES DAS SEÇÕES                              ==
@@ -614,24 +1115,6 @@
             });
         }
 
-        function renderCarousel() {
-            const mainAgent = agents[agentIds[currentCarouselIndex]];
-            carouselMainImg.src = mainAgent.img;
-            carouselAgentName.textContent = mainAgent.name;
-            carouselAgentTitle.textContent = mainAgent.title;
-            carouselAgentDescription.innerHTML = mainAgent.description;
-            carouselCounter.textContent = `${currentCarouselIndex + 1}/${agentIds.length}`;
-        }
-
-        carouselNextBtn.addEventListener('click', () => {
-            currentCarouselIndex = (currentCarouselIndex + 1) % agentIds.length;
-            renderCarousel();
-        });
-
-        carouselPrevBtn.addEventListener('click', () => {
-            currentCarouselIndex = (currentCarouselIndex - 1 + agentIds.length) % agentIds.length;
-            renderCarousel();
-        });
 
         // =======================================================
         // == LÓGICA DO NOVO CHAT EM TEIA                     ==
