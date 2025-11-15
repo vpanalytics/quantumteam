@@ -56,52 +56,98 @@
             align-items: center; 
             padding: 2rem; 
         }
-        .static-formation { 
-            position: relative; 
-            width: 600px; 
-            height: 600px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
-        #login-section .agent-container { 
-            position: absolute; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
-        #login-section .agent-avatar {
-            width: 140px;
-            height: auto;
-            display: block;
-        }
-        #login-section .central-agent .agent-avatar {
-            width: 220px;
-        }
-        #login-section .agent-info {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #000b1b;
-            color: var(--gold-primary);
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-            text-align: center;
-            white-space: nowrap;
-            border: 1px solid rgba(197, 167, 115, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        #login-section .central-agent .agent-info {
-            background-color: var(--gold-primary);
-            color: #000b1b;
-            border: none;
-            font-size: 0.9rem;
-        }
+/* --- ESTILOS CORRIGIDOS E FINAIS PARA A FORMAÇÃO DE LOGIN --- */
 
-        .login-box {
+/* 1. O container principal com a teia de fundo */
+.static-formation { 
+    position: relative; 
+    width: 700px;
+    height: 700px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-image: url('https://victorpaulovichbueno-gif.github.io/teia-quantum/foto' );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-4%);
+}
+
+/* 2. O container de CADA agente (que será criado pelo JS) */
+#login-section .agent-container {
+    position: absolute; /* Essencial para o posicionamento com top/left */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+/* NOVA REGRA: BRILHO FIXO APENAS NO AGENTE CENTRAL (ALLEX) */
+#login-section .central-agent {
+    filter: drop-shadow(0 0 15px var(--gold-primary));
+}
+
+
+/* 3. O avatar (imagem) de cada agente */
+#login-section .agent-avatar {
+    width: 90px;
+    height: auto;
+    display: block;
+}
+#login-section .central-agent .agent-avatar {
+    width: 130px; /* Avatar do Allex é maior */
+}
+
+/* 4. O crachá (título) de cada agente */
+#login-section .agent-info {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000b1b;
+    color: var(--gold-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border: 1px solid rgba(197, 167, 115, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+#login-section .central-agent .agent-info {
+    background-color: var(--gold-primary);
+    color: #000b1b;
+    font-size: 0.8rem;
+}
+
+/* 5. AS COORDENADAS FINAIS DA GRADE (Layout 3-4-5-4-3) */
+#login-section [data-agent-id="lucas"]    { top: 4%; left: 25%; transform: translateX(-50%); }
+#login-section [data-agent-id="fernando"] { top: 4%; left: 50%; transform: translateX(-50%); }
+#login-section [data-agent-id="ricardo"]  { top: 4%; left: 75%; transform: translateX(-50%); }
+
+#login-section [data-agent-id="julia"]    { top: 21%; left: 15%; transform: translateX(-50%); }
+#login-section [data-agent-id="rafaela"]  { top: 21%; left: 37%; transform: translateX(-50%); }
+#login-section [data-agent-id="leo"]      { top: 21%; left: 63%; transform: translateX(-50%); }
+#login-section [data-agent-id="marcos"]   { top: 21%; left: 85%; transform: translateX(-50%); }
+
+#login-section [data-agent-id="camila"]   { top: 42%; left: 5%;  transform: translateX(-50%); }
+#login-section [data-agent-id="isabela"]  { top: 42%; left: 25%; transform: translateX(-50%); }
+#login-section [data-agent-id="allex"]    { top: 40%; left: 50%; transform: translateX(-50%); }
+#login-section [data-agent-id="gabriela"] { top: 42%; left: 75%; transform: translateX(-50%); }
+#login-section [data-agent-id="tiago"]    { top: 42%; left: 95%; transform: translateX(-50%); }
+
+#login-section [data-agent-id="sofia"]    { top: 65%; left: 15%; transform: translateX(-50%); }
+#login-section [data-agent-id="eduardo"]  { top: 65%; left: 37%; transform: translateX(-50%); }
+#login-section [data-agent-id="drgustavo"]{ top: 65%; left: 63%; transform: translateX(-50%); }
+#login-section [data-agent-id="helena"]   { top: 65%; left: 85%; transform: translateX(-50%); }
+
+#login-section [data-agent-id="carolina"] { top: 85%; left: 25%; transform: translateX(-50%); }
+#login-section [data-agent-id="daniel"]   { top: 85%; left: 50%; transform: translateX(-50%); }
+#login-section [data-agent-id="beatriz"]  { top: 85%; left: 75%; transform: translateX(-50%); }
+
+
+.login-box {
             width: 100%;
             max-width: 400px;
             position: relative;
@@ -250,183 +296,187 @@
         #agents-info-section { display: none; }
 
         /* ============================================= */
-        /* == SEÇÃO "MESA DE MENTORES" (Layout de Grid) == */
-        /* ============================================= */
-        #agents-info-section {
-            display: grid;
-            grid-template-columns: 60% 40%;
-            height: 100%;
-            padding: 0;
-            background-image: url('https://victorpaulovichbueno-gif.github.io/sala-branca-quantum/sala' );
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .agents-grid-container {
-            padding: 3rem 4rem;
-            display: flex;
-            flex-direction: column;
-        }
-        .agents-grid-header {
-            text-align: left;
-            margin-bottom: 1rem;
-            flex-shrink: 0;
-        }
-        .agents-grid-header h1 {
-            font-family: var(--font-title);
-            font-size: 3rem;
-            color: var(--text-dark);
-        }
-        .agents-grid-header p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-        }
-        .agents-grid-formation {
-            flex-grow: 1;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .agents-grid-formation .agent-container {
-            position: absolute;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .agents-grid-formation .agent-avatar {
-            width: 110px;
-            height: auto;
-            display: block;
-        }
-        .agents-grid-formation .central-agent .agent-avatar {
-            width: 140px;
-        }
-        .agents-grid-formation .agent-info {
-            position: absolute; bottom: -15px; left: 50%;
-            transform: translateX(-50%);
-            background-color: #000b1b; color: var(--gold-primary);
-            padding: 0.4rem 1rem; border-radius: 8px;
-            text-align: center; white-space: nowrap;
-            border: 1px solid rgba(197, 167, 115, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            font-size: 0.8rem; font-weight: 500;
-        }
-        .agents-grid-formation .central-agent .agent-info {
-            background-color: var(--gold-primary); color: #000b1b;
-            font-size: 0.9rem;
-        }
-        .agents-grid-formation .agent-container:hover {
-            transform: scale(1.1);
-        }
-        .expert-card-panel {
-            background-color: rgba(249, 250, 251, 0.95);
-            backdrop-filter: blur(10px);
-            border-left: 1px solid var(--border-color);
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .expert-card-content .panel-header {
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .expert-card-content .panel-main-title {
-            font-family: var(--font-title);
-            font-size: 0.9rem;
-            color: var(--gold-primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-        }
-        .expert-card-content .panel-agent-identity {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-/* REGRA CORRIGIDA PARA O AVATAR NA FICHA DO EXPERT */
-.expert-card-content .panel-agent-avatar {
-    width: 90px;  /* Controla a largura da imagem */
-    height: auto; /* A altura se ajusta automaticamente para manter a proporção */
-    
-    /* A linha 'clip-path' foi REMOVIDA */
+/* == SEÇÃO "MESA DE MENTORES" (Layout de Grid) == */
+/* ============================================= */
+
+/* Layout principal da seção */
+#agents-info-section {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 100%;
+    padding: 0;
+    background-image: url('https://victorpaulovichbueno-gif.github.io/sala-branca-quantum/sala'  );
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-        .expert-card-content .panel-agent-name h2 {
-            font-size: 2rem;
-            margin-bottom: 0;
-        }
-        .expert-card-content .panel-agent-name h3 {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-        .expert-card-content .panel-body p {
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-        .expert-card-content .panel-body strong {
-            display: block;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            color: var(--text-dark);
-        }
-        .btn-access-chat {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background-color: var(--gold-primary);
-            color: #000b1b;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 2rem;
-            transition: background-color 0.3s ease;
-        }
-        .btn-access-chat:hover {
-            background-color: #dfc395;
-        }
-        .btn-access-chat img {
-            width: 40px;
-            height: auto;
-        }
-        .expert-card-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-        }
-        .nav-arrow {
-            background: none;
-            border: 1px solid var(--border-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        .nav-arrow:hover {
-            background-color: #e5e7eb;
-        }
-        .nav-dots {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .nav-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #d1d5db;
-            transition: background-color 0.3s ease;
-        }
-        .nav-dot.active {
-            background-color: var(--gold-primary);
-        }
+/* Container da grade (esquerda) */
+.agents-grid-container {
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+}
+.agents-grid-header {
+    text-align: left;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+.agents-grid-header h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--text-dark);
+}
+.agents-grid-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* --- ESTILOS DA GRADE (TRANSPLANTADOS DO LOGIN) --- */
+.agents-grid-formation {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://victorpaulovichbueno-gif.github.io/teia-quantum/foto' );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(0.85); /* Reduz um pouco para caber melhor no espaço */
+}
+.agents-grid-formation .agent-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.agents-grid-formation .agent-container:hover {
+    filter: drop-shadow(0 0 15px var(--gold-primary));
+    transform: scale(1.1);
+}
+/* NOVA REGRA: Estilo para o agente atualmente selecionado na grade */
+.agents-grid-formation .agent-container.active-agent {
+    filter: drop-shadow(0 0 20px var(--gold-primary));
+    transform: scale(1.05); /* Mantém um leve zoom para destaque */
+}
+
+.agents-grid-formation .agent-avatar {
+    width: 90px;
+    height: auto;
+    display: block;
+}
+.agents-grid-formation .central-agent .agent-avatar {
+    width: 130px;
+}
+.agents-grid-formation .agent-info {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000b1b;
+    color: var(--gold-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border: 1px solid rgba(197, 167, 115, 0.3);
+}
+.agents-grid-formation .central-agent .agent-info {
+    background-color: var(--gold-primary);
+    color: #000b1b;
+    font-size: 0.8rem;
+}
+
+/* --- COORDENADAS DA GRADE (TRANSPLANTADAS DO LOGIN) --- */
+#agents-info-section [data-agent-id="lucas"]    { top: -5%; left: 25%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="fernando"] { top: -5%; left: 50%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="ricardo"]  { top: -5%; left: 75%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="julia"]    { top: 16%; left: 15%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="rafaela"]  { top: 16%; left: 37%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="leo"]      { top: 16%; left: 63%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="marcos"]   { top: 16%; left: 85%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="camila"]   { top: 40%; left: 5%;  transform: translateX(-50%); }
+#agents-info-section [data-agent-id="isabela"]  { top: 40%; left: 25%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="allex"]    { top: 38%; left: 50%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="gabriela"] { top: 40%; left: 75%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="tiago"]    { top: 40%; left: 95%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="sofia"]    { top: 65%; left: 15%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="eduardo"]  { top: 65%; left: 37%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="drgustavo"]{ top: 65%; left: 63%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="helena"]   { top: 65%; left: 85%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="carolina"] { top: 86%; left: 25%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="daniel"]   { top: 86%; left: 50%; transform: translateX(-50%); }
+#agents-info-section [data-agent-id="beatriz"]  { top: 86%; left: 75%; transform: translateX(-50%); }
+
+/* --- ESTILOS DA FICHA DO EXPERT (PAINEL DIREITO) --- */
+.expert-card-panel {
+    background-color: rgba(249, 250, 251, 0.95);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid var(--border-color);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.expert-card-content .panel-header {
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.expert-card-content .panel-main-title {
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+.expert-card-content .panel-agent-identity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+/* --- ESTILOS CORRIGIDOS PARA O AVATAR NA FICHA --- */
+
+.panel-agent-avatar {
+    width: 100px;  /* Controla a largura da imagem */
+    height: auto;  /* A altura se ajusta para manter a proporção */
+    flex-shrink: 0; /* Impede que a imagem seja espremida */
+
+}
+
+/* 1. A Moldura (agora apenas um container de posicionamento) */
+.panel-agent-avatar-frame {
+    width: 100px;
+    height: 115px;
+    position: relative; /* Essencial para o alinhamento da imagem */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.panel-agent-avatar-frame:hover {
+    transform: scale(1.05);
+}
+
+/* 2. A Imagem (com sua própria borda) */
+.panel-agent-avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    
+    /* A BORDA APLICADA DIRETAMENTE NA IMAGEM */
+    border: 4px solid var(--gold-primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
 
         /* ============================================= */
         /* == TELA "CHATS" (Interface Imersiva)       == */
@@ -704,7 +754,43 @@
     background-color: #dfc395; /* Um dourado um pouco mais claro no hover */
 }
 
+/* --- ESTILOS FINAIS E APRIMORADOS PARA AS SETAS DE NAVEGAÇÃO --- */
 
+.nav-arrow {
+    background-color: rgba(0, 11, 27, 0.05); /* Fundo sutil, quase transparente */
+    border: 1px solid rgba(0, 11, 27, 0.1);   /* Borda muito sutil */
+    width: 44px;  /* Tamanho um pouco maior */
+    height: 44px;
+    border-radius: 50%; /* A mágica para deixá-las redondas */
+    
+    /* Centralizando o ícone da seta dentro do círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 1.5rem; /* Tamanho do ícone '<' e '>' */
+    color: var(--gold-primary); /* Cor dourada Quantum! */
+    
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transição suave para todos os efeitos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-arrow:hover {
+    background-color: var(--gold-primary); /* Fundo fica dourado ao passar o mouse */
+    color: #000b1b; /* Ícone da seta fica Azul Quantum */
+    transform: scale(1.1); /* Leve efeito de crescimento */
+    box-shadow: 0 4px 15px rgba(197, 167, 115, 0.4); /* Brilho dourado */
+}
+
+/* --- ESTILO FINAL PARA O CONTAINER DA NAVEGAÇÃO --- */
+.expert-card-navigation {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: space-between; /* Empurra as setas para os lados */
+    align-items: center; /* Alinha verticalmente */
+    padding-top: 2rem; /* Adiciona um espaço acima das setas */
+    width: 100%; /* Garante que o container ocupe toda a largura disponível */
+}
 
         /* ======================================================= */
         /* == REGRAS PARA LAYOUT MOBILE                       == */
@@ -830,9 +916,7 @@
                     </div>
                     <div class="expert-card-navigation">
                         <button id="expert-prev-btn" class="nav-arrow">‹</button>
-                        <div class="nav-dots" id="expert-nav-dots">
-                            <!-- Os pontos de navegação serão inseridos aqui -->
-                        </div>
+
                         <button id="expert-next-btn" class="nav-arrow">›</button>
                     </div>
                 </div>
@@ -873,16 +957,107 @@
         // =======================================================
         // == DADOS E BANCO DE DADOS SIMULADO                   ==
         // =======================================================
-        const agents = {
-            'allex': { name: 'Allex', title: 'MasterMind', img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.</p><p><strong>Exemplos de uso:</strong> Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.</p>` },
-            'rafaela': { name: 'Rafaela', title: 'Marketing Estratégico', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Branding, campanhas digitais, análise de mercado e comunicação. Rafaela é especialista em posicionar a marca e atrair o público certo.</p><p><strong>Exemplos de uso:</strong> Solicite a criação de uma campanha para um novo produto, peça uma análise dos concorrentes ou ideias para aumentar o engajamento nas redes sociais.</p>` },
-            'eduardo': { name: 'Eduardo', title: 'Dinheiro e Finanças', img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Análise de DRE, fluxo de caixa, projeções financeiras e otimização de custos. Eduardo garante a saúde financeira e a sustentabilidade do negócio.</p><p><strong>Exemplos de uso:</strong> Peça uma análise de viabilidade para um novo investimento, ajuda para criar o orçamento anual ou dicas para otimizar o fluxo de caixa.</p>` },
-            'andre': { name: 'André', title: 'Comercial e Vendas', img: 'https://victorpaulovichbueno-gif.github.io/agente-4/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Prospecção, negociação, funis de venda e gestão de relacionamento com o cliente (CRM  ). André é focado em converter leads em resultados.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para estruturar uma proposta comercial, simular uma negociação difícil ou obter insights sobre como melhorar sua taxa de conversão.</p>` },
-            'carolina': { name: 'Carolina', title: 'Recursos Humanos', img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Recrutamento e seleção, cultura organizacional, desenvolvimento de talentos e gestão de desempenho. Carolina cuida do ativo mais importante: as pessoas.</p><p><strong>Exemplos de uso:</strong> Peça ajuda para criar a descrição de uma nova vaga, ideias para melhorar o clima organizacional ou um plano de desenvolvimento para um colaborador.</p>` },
-            'beatriz': { name: 'Beatriz', title: 'Sucesso do Cliente', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Sucesso do cliente (Customer Success  ), onboarding, retenção e análise de feedback. Beatriz garante que os clientes obtenham o máximo valor do seu produto.</p><p><strong>Exemplos de uso:</strong> Solicite um roteiro para uma chamada de onboarding, peça para analisar as causas de churn ou crie uma pesquisa de satisfação do cliente (NPS).</p>` },
-            'leo': { name: 'Leo', title: 'Tecnologia e I.A.', img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.png', description: `<p><strong>Área de Experiência:</strong> Arquitetura de software, desenvolvimento, infraestrutura e inovação tecnológica. Leo resolve os desafios técnicos mais complexos.</p><p><strong>Exemplos de uso:</strong> Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, peça para ele revisar um código ou planejar a arquitetura de um novo sistema.</p>` },
-            'drgustavo': { name: 'Dr. Gustavo', title: 'Conselho Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png', description: `<p><strong>Área de Experiência:</strong> Direito empresarial, contratos, propriedade intelectual e conformidade (compliance  ). Dr. Gustavo protege a empresa de riscos legais.</p><p><strong>Exemplos de uso:</strong> Peça para ele revisar um contrato de serviço, tirar dúvidas sobre o registro de uma marca ou verificar se a empresa está em conformidade com a LGPD.</p>` }
-        };
+// VERSÃO FINAL E ORGANIZADA DO BANCO DE DADOS DE AGENTES
+const agents = {
+    'allex': { 
+        name: 'Allex', title: 'MasterMind', img: 'https://victorpaulovichbueno-gif.github.io/agente-1/unnamed.png', 
+        experience: 'Estratégia de negócios, liderança, desenvolvimento de produtos e visão de mercado. Allex é o ponto central para decisões de alto nível e direção da empresa.',
+        use_cases: 'Peça para ele analisar um novo plano de negócios, dar feedback sobre a estratégia de expansão ou ajudar a definir metas trimestrais para a empresa.'
+    },
+    'lucas': { 
+        name: 'Lucas', title: 'Comunicação e Relacionamentos', img: 'https://victorpaulovichbueno-gif.github.io/A1/foto',
+        experience: 'Especialista em comunicação interpessoal, resolução de conflitos e construção de narrativas. Ajuda a alinhar equipes e a melhorar a comunicação externa.',
+        use_cases: 'Use-o para mediar discussões difíceis, preparar um discurso importante ou criar um plano de comunicação para um novo projeto.'
+    },
+    'fernando': { 
+        name: 'Fernando', title: 'Comercial e Vendas', img: 'https://victorpaulovichbueno-gif.github.io/A2/foto',
+        experience: 'Mestre em técnicas de negociação, funis de venda e estratégias de crescimento de receita. Focado em resultados e performance comercial.',
+        use_cases: 'Consulte-o para refinar seu pitch de vendas, estruturar a comissão do seu time ou identificar novos canais de prospecção.'
+    },
+    'ricardo': { 
+        name: 'Ricardo', title: 'Consultor de Carreira', img: 'https://victorpaulovichbueno-gif.github.io/A3/foto',
+        experience: 'Orientador para desenvolvimento profissional, transição de carreira e planejamento de longo prazo. Ajuda a identificar pontos fortes e oportunidades de crescimento.',
+        use_cases: 'Peça ajuda para atualizar seu currículo, preparar-se para uma entrevista ou explorar novas possibilidades de carreira.'
+    },
+    'julia': { 
+        name: 'Julia', title: 'Artes e Design', img: 'https://victorpaulovichbueno-gif.github.io/A4/foto',
+        experience: 'Visionária criativa para identidade visual, branding e experiência do usuário. Transforma ideias em conceitos visuais impactantes e coesos.',
+        use_cases: 'Solicite a criação de um logotipo, a definição da paleta de cores para uma marca ou sugestões de layout para um website.'
+    },
+    'rafaela': { 
+        name: 'Rafaela', title: 'Marketing Estratégico', img: 'https://victorpaulovichbueno-gif.github.io/agente-2/unnamed.png',
+        experience: 'Arquiteta de campanhas de marketing digital, SEO, marketing de conteúdo e análise de métricas. Focada em posicionamento de marca e geração de leads.',
+        use_cases: 'Peça para ela criar um plano de marketing de 3 meses, sugerir estratégias de conteúdo para redes sociais ou analisar a performance de suas campanhas.'
+    },
+    'leo': { 
+        name: 'Leo', title: 'Tecnologia e I.A.', img: 'https://victorpaulovichbueno-gif.github.io/A6/foto',
+        experience: 'Inovador focado em arquitetura de software, implementação de I.A. e soluções tecnológicas escaláveis. Traduz necessidades de negócio em especificações técnicas.',
+        use_cases: 'Consulte-o para decidir a melhor stack de tecnologia para um novo projeto, entender como aplicar I.A. no seu negócio ou resolver um problema complexo de arquitetura.'
+    },
+    'marcos': { 
+        name: 'Marcos', title: 'Contabilidade', img: 'https://victorpaulovichbueno-gif.github.io/A7/foto',
+        experience: 'Especialista em saúde financeira, planejamento tributário e conformidade fiscal. Garante que os números estejam sempre organizados e otimizados.',
+        use_cases: 'Peça ajuda para entender seu balanço, planejar a declaração de impostos ou analisar a viabilidade financeira de um investimento.'
+    },
+    'camila': { 
+        name: 'Camila', title: 'Psicóloga', img: 'https://victorpaulovichbueno-gif.github.io/A8/foto',
+        experience: 'Apoio para o bem-estar mental, gestão de estresse e desenvolvimento da inteligência emocional. Oferece um espaço seguro para reflexão e crescimento pessoal.',
+        use_cases: 'Converse com ela para lidar com ansiedade, melhorar o foco no trabalho ou desenvolver estratégias para um melhor equilíbrio entre vida pessoal e profissional.'
+    },
+    'isabela': { 
+        name: 'Isabela', title: 'Espiritualidade', img: 'https://victorpaulovichbueno-gif.github.io/A9/foto',
+        experience: 'Guia para a jornada interior, meditação, mindfulness e busca por propósito. Ajuda a conectar-se com seus valores e a encontrar mais significado no dia a dia.',
+        use_cases: 'Procure-a para aprender técnicas de meditação, discutir questões sobre propósito de vida ou encontrar maneiras de ser mais presente e consciente.'
+    },
+    'gabriela': { 
+        name: 'Gabriela', title: 'Produtividade', img: 'https://victorpaulovichbueno-gif.github.io/A11/foto',
+        experience: 'Otimizadora de tempo, foco e organização. Especialista em métodos como GTD, Pomodoro e criação de sistemas para alta performance.',
+        use_cases: 'Peça para ela ajudar a organizar sua lista de tarefas, criar um plano de estudos ou montar uma rotina semanal mais eficiente.'
+    },
+    'tiago': { 
+        name: 'Tiago', title: 'Preparador Físico', img: 'https://victorpaulovichbueno-gif.github.io/agente-7/unnamed.png',
+        experience: 'Especialista em saúde corporal, performance atlética e bem-estar físico. Cria planos de treino e orienta sobre a importância do movimento para a saúde mental.',
+        use_cases: 'Consulte-o para montar um plano de treino para iniciantes, obter dicas de como manter a consistência ou entender como o exercício pode combater o estresse.'
+    },
+    'sofia': { 
+        name: 'Sofia', title: 'Nutrição Funcional', img: 'https://victorpaulovichbueno-gif.github.io/A13/foto',
+        experience: 'Focada em alimentação como base para a saúde integral. Entende como os nutrientes afetam a energia, o humor e a performance cognitiva.',
+        use_cases: 'Peça sugestões de cardápio para uma semana mais energética, dicas de alimentos para melhorar o foco ou como adaptar sua dieta para um objetivo específico.'
+    },
+    'eduardo': { 
+        name: 'Eduardo', title: 'Dinheiro e Finanças', img: 'https://victorpaulovichbueno-gif.github.io/agente-3/unnamed.png',
+        experience: 'Estrategista para investimentos, planejamento financeiro pessoal e criação de riqueza. Traduz o complexo mundo das finanças em passos práticos.',
+        use_cases: 'Consulte-o para criar um plano de aposentadoria, entender diferentes tipos de investimento ou organizar seu orçamento mensal.'
+    },
+    'drgustavo': { 
+        name: 'Dr. Gustavo', title: 'Conselho Jurídico', img: 'https://victorpaulovichbueno-gif.github.io/agente-8/unnamaed.png',
+        experience: 'Navegador das complexidades legais em áreas como contratos, propriedade intelectual e direito empresarial. Focado em prevenção de riscos.',
+        use_cases: 'Peça para ele revisar uma cláusula de contrato, explicar as implicações legais de uma decisão de negócio ou orientar sobre o registro de uma marca.'
+    },
+    'helena': { 
+        name: 'Helena', title: 'Inteligência Emocional', img: 'https://victorpaulovichbueno-gif.github.io/A16/foto',
+        experience: 'Especialista no desenvolvimento da autoconsciência, autogestão, empatia e habilidades sociais. Ajuda a transformar emoções em aliadas.',
+        use_cases: 'Converse com ela para aprender a lidar com feedback negativo, melhorar seus relacionamentos interpessoais ou aumentar sua autoconfiança.'
+    },
+    'carolina': { 
+        name: 'Carolina', title: 'Recursos Humanos', img: 'https://victorpaulovichbueno-gif.github.io/agente-5/unnamed.png',
+        experience: 'Especialista em cultura organizacional, gestão de talentos, recrutamento e desenvolvimento de equipes. Focada em criar ambientes de trabalho positivos.',
+        use_cases: 'Peça ajuda para estruturar um processo seletivo, criar um plano de desenvolvimento para um funcionário ou resolver um conflito dentro da equipe.'
+    },
+    'daniel': { 
+        name: 'Daniel', title: 'Desenvolvimento', img: 'https://victorpaulovichbueno-gif.github.io/A18/foto',
+        experience: 'Focado no crescimento pessoal e profissional contínuo. Ajuda a construir hábitos, aprender novas habilidades e sair da zona de conforto.',
+        use_cases: 'Procure-o para criar um plano de aprendizado para uma nova habilidade, definir metas de desenvolvimento pessoal ou encontrar motivação para seus projetos.'
+    },
+    'beatriz': { 
+        name: 'Beatriz', title: 'Sucesso do Cliente', img: 'https://victorpaulovichbueno-gif.github.io/agente-6/unnamed.png',
+        experience: 'Garante a melhor experiência e satisfação do cliente. Especialista em onboarding, retenção e coleta de feedback para melhoria contínua do produto.',
+        use_cases: 'Consulte-a para criar um fluxo de onboarding para novos usuários, desenvolver uma pesquisa de satisfação ou pensar em estratégias para reduzir o cancelamento (churn ).'
+    }
+};
+
+
+
         const agentIds = Object.keys(agents);
         const chatHistories = {
             'allex': [{ role: 'assistant', content: 'Allex aqui. Como posso ajudar a expandir sua visão hoje?' }],
@@ -983,99 +1158,80 @@
             }
         }
 
-        // =======================================================
-        // == LÓGICA DA "MESA DE MENTORES"                    ==
-        // =======================================================
-        function renderAgentWeb() {
-            if (!agentGridFormation) return;
+// VERSÃO FINAL E CORRIGIDA DA FUNÇÃO DA MESA DE MENTORES
+function renderAgentWeb() {
+    if (!agentGridFormation) return;
+    agentGridFormation.innerHTML = ''; 
 
-            agentGridFormation.innerHTML = ''; 
-// VERSÃO CORRIGIDA COM AGENTES MAIS PRÓXIMOS
-const positions = {
-    'allex':      'transform: translateY(0);',
-    'rafaela':    'transform: rotate(0deg) translateY(-210px) rotate(0deg);',
-    'eduardo':    'transform: rotate(51.4deg) translateY(-210px) rotate(-51.4deg);',
-    'andre':      'transform: rotate(102.8deg) translateY(-210px) rotate(-102.8deg);',
-    'carolina':   'transform: rotate(154.2deg) translateY(-210px) rotate(-154.2deg);',
-    'beatriz':    'transform: rotate(205.6deg) translateY(-210px) rotate(-205.6deg);',
-    'leo':        'transform: rotate(257deg) translateY(-210px) rotate(-257deg);',
-    'drgustavo':  'transform: rotate(308.4deg) translateY(-210px) rotate(-308.4deg);'
-};
+    expertAgentIds.forEach((agentId, index) => {
+        const agent = agents[agentId];
+        const agentDiv = document.createElement('div');
+        agentDiv.classList.add('agent-container');
+        agentDiv.dataset.agentId = agentId;
+        
+        if (agentId === 'allex') {
+            agentDiv.classList.add('central-agent');
+        }
 
-            expertAgentIds.forEach((agentId, index) => {
-                const agent = agents[agentId];
-                const agentDiv = document.createElement('div');
-                agentDiv.classList.add('agent-container');
-                agentDiv.dataset.agentId = agentId;
-                if (agentId === 'allex') agentDiv.classList.add('central-agent');
-                agentDiv.style.cssText = positions[agentId];
-                agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info">${agent.title}</div>`;
-                
-                agentDiv.addEventListener('click', () => {
-                    currentExpertIndex = index;
-                    showExpertDetails();
-                });
-                agentGridFormation.appendChild(agentDiv);
-            });
-
-            expertNavDots.innerHTML = '';
-            expertAgentIds.forEach(() => {
-                expertNavDots.innerHTML += `<div class="nav-dot"></div>`;
-            });
-
+        agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info">${agent.title}</div>`;
+        
+        agentDiv.addEventListener('click', () => {
+            currentExpertIndex = index;
             showExpertDetails();
-        }
+        });
+        
+        agentGridFormation.appendChild(agentDiv);
+    });
 
-        function showExpertDetails() {
-            if (!expertCardContent) return;
 
-            const agentId = expertAgentIds[currentExpertIndex];
-            const agent = agents[agentId];
+    showExpertDetails();
+}
+
+
+// DENTRO DA FUNÇÃO showExpertDetails()
+// VERSÃO FINAL E CORRETA - MOSTRANDO A IMAGEM ORIGINAL
+function showExpertDetails() {
+    if (!expertCardContent) return;
+
+    const agentId = expertAgentIds[currentExpertIndex];
+    const agent = agents[agentId];
+    
+    // Monta o HTML com uma <img> simples para o avatar
+    expertCardContent.innerHTML = `
+        <div class="panel-header">
+            <h4 class="panel-main-title">Ficha do Expert</h4>
+            <div class="panel-agent-identity">
+                
+                <img src="${agent.img}" alt="${agent.name}" class="panel-agent-avatar">
+                
+                <div class="panel-agent-name">
+                    <h2>${agent.name}</h2>
+                    <h3>${agent.title}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <strong>Área de Experiência:</strong>
+            <p>${agent.experience}</p>
             
-            expertCardContent.innerHTML = `
-                <div class="panel-header">
-                    <h4 class="panel-main-title">Ficha do Expert</h4>
-                    <div class="panel-agent-identity">
-                        <img src="${agent.img}" alt="${agent.name}" class="panel-agent-avatar">
-                        <div class="panel-agent-name">
-                            <h2>${agent.name}</h2>
-                            <h3>${agent.title}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    ${agent.description}
-                    <a href="#" class="btn-access-chat" data-agent-id="${agentId}">
-                        <img src="https://victorpaulovichbueno-gif.github.io/logo-quantum-selo/logo" alt="Acessar Chat">
-                        <span>ACESSAR CHAT</span>
-                    </a>
-                </div>
-            `;
+            <strong>Exemplos de uso:</strong>
+            <p>${agent.use_cases}</p>
+        </div>
+    `;
 
-            const accessChatBtn = expertCardContent.querySelector('.btn-access-chat' );
-            accessChatBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                activeChatAgentId = e.currentTarget.dataset.agentId;
-                showSection('chat-platform-section');
-            });
+    // Gerencia a classe 'active-agent' na grade da esquerda
+    const allGridAgents = agentGridFormation.querySelectorAll('.agent-container');
+    allGridAgents.forEach(agentDiv => {
+        agentDiv.classList.remove('active-agent');
+    });
 
-            const dots = expertNavDots.querySelectorAll('.nav-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentExpertIndex);
-            });
-        }
+    const activeGridAgent = agentGridFormation.querySelector(`[data-agent-id="${agentId}"]`);
+    if (activeGridAgent) {
+        activeGridAgent.classList.add('active-agent');
+    }
+}
 
-        if (expertPrevBtn && expertNextBtn) {
-            expertPrevBtn.addEventListener('click', () => {
-                currentExpertIndex = (currentExpertIndex - 1 + expertAgentIds.length) % expertAgentIds.length;
-                showExpertDetails();
-            });
 
-            expertNextBtn.addEventListener('click', () => {
-                currentExpertIndex = (currentExpertIndex + 1) % expertAgentIds.length;
-                showExpertDetails();
-            });
-        }
 
         // =======================================================
         // == LÓGICA DO CHAT IMERSIVO                         ==
@@ -1166,27 +1322,32 @@ function showConversation() {
             return "Esta é uma resposta simulada do " + agents[agentId].name + ". A integração real com a API virá a seguir.";
         }
 
-        // =======================================================
-        // == FUNÇÕES DE DESENHO E UTILIDADES                 ==
-        // =======================================================
-        function renderAgentFormation(container, isLogin) {
-            container.innerHTML = '';
-            const positions = { 'allex': '', 'rafaela': 'transform: rotate(0deg) translateY(-250px) rotate(0deg);', 'eduardo': 'transform: rotate(51.4deg) translateY(-250px) rotate(-51.4deg);', 'andre': 'transform: rotate(102.8deg) translateY(-250px) rotate(-102.8deg);', 'carolina': 'transform: rotate(154.2deg) translateY(-250px) rotate(-154.2deg);', 'beatriz': 'transform: rotate(205.6deg) translateY(-250px) rotate(-205.6deg);', 'leo': 'transform: rotate(257deg) translateY(-250px) rotate(-257deg);', 'drgustavo': 'transform: rotate(308.4deg) translateY(-250px) rotate(-308.4deg);' };
-            
-            agentIds.forEach(agentId => {
-                const agent = agents[agentId];
-                const agentDiv = document.createElement('div');
-                agentDiv.classList.add('agent-container');
-                agentDiv.dataset.agentId = agentId;
-                if (agentId === 'allex') agentDiv.classList.add('central-agent');
-                agentDiv.style.cssText = positions[agentId];
-                
-                const infoContent = isLogin ? agent.title : `<p class="agent-name">${agent.name}</p><p class="agent-title">${agent.title}</p>`;
-                agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info">${infoContent}</div>`;
-                
-                container.appendChild(agentDiv);
-            });
+// VERSÃO CORRIGIDA E FINAL DA FUNÇÃO DE RENDERIZAÇÃO
+function renderAgentFormation(container, isLogin) {
+    container.innerHTML = ''; // Limpa o container antes de adicionar
+    
+    // Pega TODOS os IDs de agentes do nosso banco de dados
+    const allAgentIds = Object.keys(agents);
+
+    allAgentIds.forEach(agentId => {
+        const agent = agents[agentId];
+        const agentDiv = document.createElement('div');
+        agentDiv.classList.add('agent-container');
+        agentDiv.dataset.agentId = agentId; // A 'ponte' para o CSS de posicionamento
+        
+        if (agentId === 'allex') {
+            agentDiv.classList.add('central-agent');
         }
+        
+        // O CSS vai cuidar do posicionamento, então não colocamos 'style' aqui.
+        
+        const infoContent = isLogin ? agent.title : `<p class="agent-name">${agent.name}</p><p class="agent-title">${agent.title}</p>`;
+        agentDiv.innerHTML = `<img src="${agent.img}" alt="${agent.name}" class="agent-avatar"><div class="agent-info">${infoContent}</div>`;
+        
+        container.appendChild(agentDiv);
+    });
+}
+
 
         function drawLines(canvasId, formationSelector) {
             const canvas = document.getElementById(canvasId);
@@ -1273,3 +1434,4 @@ function showConversation() {
     </script>
 </body>
 </html>
+
